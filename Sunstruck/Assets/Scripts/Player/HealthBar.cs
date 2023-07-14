@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.Rendering.Universal;
 
 public class HealthBar : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class HealthBar : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
-    //public Light2D playerLight;
+    public Light2D playerLight;
 
     private void Start()
     {
