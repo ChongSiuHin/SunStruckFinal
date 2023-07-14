@@ -2703,6 +2703,7 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   fill: {fileID: 997302060}
+  playerLight: {fileID: 0}
 --- !u!114 &704325340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5966,7 +5967,6 @@ GameObject:
   - component: {fileID: 1469973504}
   - component: {fileID: 1469973503}
   - component: {fileID: 1469973502}
-  - component: {fileID: 1469973506}
   - component: {fileID: 1469973505}
   m_Layer: 0
   m_Name: LightDetection
@@ -6080,20 +6080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1819e53c1898f1469b21bd735052b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1469973506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1469973500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b2d5822f8e0b9d4ab2d198f87dfa06b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  isPlayerInside: 0
 --- !u!1 &1476859301
 GameObject:
   m_ObjectHideFlags: 0
@@ -12049,7 +12035,6 @@ GameObject:
   - component: {fileID: 1820995542}
   - component: {fileID: 1820995548}
   - component: {fileID: 1820995549}
-  - component: {fileID: 1820995550}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -12288,18 +12273,6 @@ MonoBehaviour:
   - {fileID: 1811597123}
   - {fileID: 1927696367}
   - {fileID: 1867895033}
---- !u!114 &1820995550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820995539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb2c2cab0a185b4ba85ae1b71de8a29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1821503846
 GameObject:
   m_ObjectHideFlags: 0
