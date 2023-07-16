@@ -1509,9 +1509,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9fd82561073d34099c327c0334e865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background: {fileID: 0}
   nameText: {fileID: 380855877}
   dialogueText: {fileID: 1874295449}
   textSpeed: 0.1
+  isTalking: 0
   anim: {fileID: 1128920245}
   dialogue:
     name: Theoby

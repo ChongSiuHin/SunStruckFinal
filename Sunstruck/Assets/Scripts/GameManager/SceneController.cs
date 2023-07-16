@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
     [SerializeField] private Animator transitionAnim;
+    public GameObject blackScreen;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class SceneController : MonoBehaviour
 
     public void NextLevel()
     {
+        blackScreen.SetActive(true);
         StartCoroutine(LoadLevel());
     }
 

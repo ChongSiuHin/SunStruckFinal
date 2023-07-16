@@ -453,6 +453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 283678384}
+  - component: {fileID: 283678385}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -478,6 +479,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &283678385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283678383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ffdd51d35fcf8943a424f08d5b48bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionAnim: {fileID: 853100179}
+  blackScreen: {fileID: 853100175}
 --- !u!1 &298079440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3865,7 +3880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &853100176
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4695,7 +4710,6 @@ GameObject:
   - component: {fileID: 1410420206}
   - component: {fileID: 1410420205}
   - component: {fileID: 1410420204}
-  - component: {fileID: 1410420207}
   m_Layer: 5
   m_Name: SceneTransition
   m_TagString: Untagged
@@ -4785,19 +4799,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1410420207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1410420202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ffdd51d35fcf8943a424f08d5b48bd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 853100179}
 --- !u!1 &1575985615
 GameObject:
   m_ObjectHideFlags: 0
