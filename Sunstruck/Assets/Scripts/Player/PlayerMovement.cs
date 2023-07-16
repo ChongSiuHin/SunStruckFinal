@@ -80,8 +80,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Climable"))
+        {
             isLadder = true;
             isClimbing = true;
+        }     
     }
 
     private void OnTriggerExit2D(Collider2D collision)

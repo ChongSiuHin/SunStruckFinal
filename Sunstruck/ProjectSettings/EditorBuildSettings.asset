@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/BackStreet.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/AbandonedCargoArea.unity
+    path: Assets/Scenes/AbandonedCargoArea_Old.unity
     guid: 296d23eca19a8794d858119ebf66fb9d
   m_configObjects: {}
