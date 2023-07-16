@@ -11062,32 +11062,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &1540315729
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540315723}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0061969757, y: -0.2646935}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.34298706, y: 0.470613}
-  m_EdgeRadius: 0
 --- !u!4 &1552940672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8113529997551914832, guid: a368f885e3e5aa84887932851dcd6891, type: 3}
@@ -15821,7 +15795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4465442905674927810, guid: 47e3f42c9f1d7ad4fb2b2c20950a50f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.0044394
+      value: -5.4
       objectReference: {fileID: 0}
     - target: {fileID: 4465442905674927810, guid: 47e3f42c9f1d7ad4fb2b2c20950a50f8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15967,7 +15941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6248041599446934318, guid: d96a3db6e6978934d922fe49c440f9ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.9962997
+      value: -5.391861
       objectReference: {fileID: 0}
     - target: {fileID: 6248041599446934318, guid: d96a3db6e6978934d922fe49c440f9ce, type: 3}
       propertyPath: m_LocalPosition.z

@@ -88,20 +88,7 @@ public class StunGun : MonoBehaviour
             if (GetComponent<InteractionSystem>().pickUpStunGun && ammo > 0)
             {
                 hit = true;
-                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-                //if (Input.GetKeyDown(KeyCode.F) && useTimer > 0)
-                //{
-                //    stunEnemy = true;
-                //    if (stunEnemy)
-                //        Physics2D.IgnoreCollision(enemyCollider, playerCollider, true);
-                //    ammo--;
-                //    useTimer = useDuration;
-                //}
-                //else if(useTimer <= 0)
-                //{
-                //    transform.position = this.GetComponent<CheckpointRespawn>().respawnPoint;
-                //    useTimer = useDuration;
-                //}                 
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;                
             }
             else
                 transform.position = this.GetComponent<CheckpointRespawn>().respawnPoint;

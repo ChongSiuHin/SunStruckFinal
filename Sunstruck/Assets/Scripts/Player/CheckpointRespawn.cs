@@ -10,6 +10,7 @@ public class CheckpointRespawn : MonoBehaviour
 
     public Vector3 respawnPoint;
     private bool isCheckPoint;
+    private int i = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +22,18 @@ public class CheckpointRespawn : MonoBehaviour
     void Update()
     {
         deadSpace.transform.position = new Vector2(transform.position.x, deadSpace.transform.position.y);
-        if(isCheckPoint && Input.GetKeyDown(KeyCode.F))
+        if(isCheckPoint && Input.GetKeyDown(KeyCode.J))
         {
-            AudioManager.Instance.RespawnPoint();
             respawnPoint = transform.position;
             checkpoint.GetComponent<Animator>().SetTrigger("Activate");
+            if (i == 0)
+            {
+                AudioManager.Instance.RespawnPoint();
+                StartCoroutine(SmolRobot());
+                i++;
+            }
+            else if (i > 0)
+                FindObjectOfType<DialogueManager>().StartDialogue();
         }  
     }
 
@@ -43,9 +51,9 @@ public class CheckpointRespawn : MonoBehaviour
         
         if(collision.CompareTag("NextScene") && GetComponent<InteractionSystem>().pickUpStunGun)
         {
-            if(Input.GetKeyDown(KeyCode.F))
+            if(Input.GetKeyDown(KeyCode.J))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneController.instance.NextLevel();
                 respawnPoint = transform.position;
             }
         } 
@@ -57,5 +65,11 @@ public class CheckpointRespawn : MonoBehaviour
         {
             isCheckPoint = false;
         }      
-    } 
+    }
+
+    IEnumerator SmolRobot()
+    {
+        yield return new WaitForSeconds(1.5f);
+        FindObjectOfType<DialogueManager>().StartDialogue();
+    }
 }
