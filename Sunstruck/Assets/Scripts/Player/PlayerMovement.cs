@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private HidingMechanism hide;
     private InteractionSystem interactionSystem;
     private bool PKJump;
+    private Transform playerTrans;
+    private GameObject currentTriggerObj;
 
     private bool canJumpFromClimbable = false;
 
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         hide = GetComponent<HidingMechanism>();
+        playerTrans = GetComponent<Transform>();
         playerRb.gravityScale = 3f;
     }
     private void Update()
@@ -101,6 +104,15 @@ public class PlayerMovement : MonoBehaviour
             Platform = false;
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (isClimbing)
+        {
+            playerTrans.position = new Vector3(currentTriggerObj.transform.position.x, playerTrans.position.y, playerTrans.position.z);
+        }
+    }
+
     private void walk()
     {
         playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
