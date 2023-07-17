@@ -18,6 +18,7 @@ public class StunGun : MonoBehaviour
     private float useTimer;
     private Collider2D enemyCollider;
     private Collider2D playerCollider;
+    private bool isCharging = false;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +78,7 @@ public class StunGun : MonoBehaviour
             stunTimer = stunDuration;
             Physics2D.IgnoreCollision(enemyCollider, playerCollider, false);
         }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -105,6 +107,54 @@ public class StunGun : MonoBehaviour
             }
             else
                 transform.position = this.GetComponent<CheckpointRespawn>().respawnPoint;
+        }
+    }
+
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("ChargingStation"))
+        {
+            StartCoroutine(ChargeStunGun());
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("ChargingStation") && !isCharging && ammo < maxHits)
+        {
+            StartCoroutine(ChargeStunGun());
+        }
+    }
+
+    IEnumerator ChargeStunGun()
+    {
+        isCharging = true;
+
+            while (ammo < maxHits)
+        {
+            yield return new WaitForSeconds(2);
+
+            ammo++;
+
+            UpdateAmmoUI(ammo);
+        }
+        isCharging = false;
+    }
+
+    void UpdateAmmoUI(int ammo)
+    {
+        for (int i = 0; i < circles.Length; i++)
+        {
+            circles[i].SetActive(i < ammo);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("ChargingStation"))
+        {
+            StopCoroutine(ChargeStunGun());
         }
     }
 }

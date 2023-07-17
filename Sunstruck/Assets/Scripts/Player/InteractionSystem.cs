@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 public class InteractionSystem : MonoBehaviour
 {
@@ -15,8 +16,23 @@ public class InteractionSystem : MonoBehaviour
     private BoxCollider2D playerBox;
     private UIController uiController;
     public bool PKJump = true;
+    public Light2D playerLight;
+    public HealthBar healthBar;
 
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        playerLight = GetComponentInChildren<Light2D>();
+        if (playerLight != null)
+        {
+            playerLight.enabled = false;
+        }
+        else
+        {
+            Debug.LogError("No Light2D component found on the game object.");
+        }
+    }
     void Start()
     {
         PKJump = true;
@@ -57,6 +73,7 @@ public class InteractionSystem : MonoBehaviour
                 box.GetComponent<StaticBox>().beingMove = false;
                 this.GetComponent<PlayerMovement>().speed = 3f;
             }
+;
         }
         
 
@@ -85,6 +102,9 @@ public class InteractionSystem : MonoBehaviour
             print("Suit Picked Up");
             pickUpSuit = true;
             Destroy(obj);
+            Debug.Log("its work");
+            healthBar.gameObject.SetActive(true);
+            playerLight.enabled = true;
             //AudioManager.Instance.suit();
         }
         else

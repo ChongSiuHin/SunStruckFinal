@@ -4780,7 +4780,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287135708}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.2678585, y: -0.60123837, z: -10.017796}
+  m_LocalPosition: {x: -4.4706583, y: -0.6008469, z: -10.017796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4868,8 +4868,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 382594619}
   settingMenu: {fileID: 792648475}
-  backgroundMusic: {fileID: 0}
-  WalkingMusic: {fileID: 0}
+  backgroundMusic: {fileID: 1719826868}
+  WalkingMusic: {fileID: 1719826868}
 --- !u!1 &290240380
 GameObject:
   m_ObjectHideFlags: 0
