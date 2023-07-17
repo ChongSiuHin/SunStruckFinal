@@ -56,7 +56,7 @@ public class InteractionSystem : MonoBehaviour
         
         if(hitbox.collider != null)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.J))
             {
                 PKJump = false;
                 box = hitbox.collider.gameObject;
@@ -66,7 +66,7 @@ public class InteractionSystem : MonoBehaviour
                 box.GetComponent<StaticBox>().beingMove = true;
                 this.GetComponent<PlayerMovement>().speed /= 2f;
             }
-            else if (Input.GetKeyUp(KeyCode.F))
+            else if (Input.GetKeyUp(KeyCode.J))
             {
                 PKJump = true;
                 box.GetComponent<FixedJoint2D>().enabled = false;
@@ -95,7 +95,9 @@ public class InteractionSystem : MonoBehaviour
             print("StunGun Picked Up");
             pickUpStunGun = true;
             stunGun.GetComponent<Animator>().SetBool("stunGunPickUp", true);
+            SceneController.instance.Cutscene();
             AudioManager.Instance.StunGunP();
+            
         }
         else if(obj.tag == "Suit")
         {
@@ -115,7 +117,7 @@ public class InteractionSystem : MonoBehaviour
 
         if (obj.tag == "NextScene")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneController.instance.NextLevel();
             GetComponent<CheckpointRespawn>().respawnPoint = transform.position;
         }
     }
