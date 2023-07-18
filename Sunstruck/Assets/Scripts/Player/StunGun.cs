@@ -53,10 +53,6 @@ public class StunGun : MonoBehaviour
                 ammo--;
                 useTimer = useDuration;
                 UpdateAmmoUI(ammo);
-                //if (hitsCount <= maxHits)
-                //{
-                //    circles[hitsCount - 1].SetActive(false);
-                //}
             }
             else if (useTimer <= 0)
             {
