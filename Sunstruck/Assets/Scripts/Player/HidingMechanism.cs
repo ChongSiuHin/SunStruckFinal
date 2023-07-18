@@ -22,7 +22,7 @@ public class HidingMechanism : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hideAllow && Input.GetKeyDown(KeyCode.F))
+        if (hideAllow && Input.GetKeyDown(KeyCode.J))
         {
             isHiding = true;
             isHide = true;
@@ -32,12 +32,12 @@ public class HidingMechanism : MonoBehaviour
             //anima.SetBool("IsHiding", true);
             this.GetComponent<SpriteRenderer>().enabled = false;
         }
-        else if (Input.GetKeyUp(KeyCode.F))
+        else if (Input.GetKeyUp(KeyCode.J))
         {
             cancelHiding();
         }
 
-        if (hideAllow2 && Input.GetKeyDown(KeyCode.F))
+        if (hideAllow2 && Input.GetKeyDown(KeyCode.J))
         {
             isHiding = true;
             isHide2 = true;
@@ -47,7 +47,7 @@ public class HidingMechanism : MonoBehaviour
             //anima.SetBool("IsHiding", true);
             this.GetComponent<SpriteRenderer>().enabled = false;
         }
-        else if (Input.GetKeyUp(KeyCode.F))
+        else if (Input.GetKeyUp(KeyCode.J))
         {
             cancelHiding();
         }

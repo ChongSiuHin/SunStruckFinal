@@ -60,7 +60,7 @@ public class InteractionSystem : MonoBehaviour
         }
         
 
-        if (hititem.collider != null && Input.GetKeyDown(KeyCode.F))
+        if (hititem.collider != null && Input.GetKeyDown(KeyCode.J))
         {
             pickUp(hititem.collider.gameObject);
         }

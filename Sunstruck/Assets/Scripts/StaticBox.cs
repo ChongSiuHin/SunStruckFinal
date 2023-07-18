@@ -6,7 +6,7 @@ public class StaticBox : MonoBehaviour
 {
     public bool beingMove;
     float xPos;
-
+    
     // Start is called before the first frame update
     void Start()
     {
