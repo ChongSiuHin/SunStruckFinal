@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    //public AudioSource backgroundMusicSource;
+    public AudioSource backgroundMusicSource;
     public AudioSource runSoundSource;
     public AudioSource robotSoundSource;
 
