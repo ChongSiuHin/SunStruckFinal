@@ -32,7 +32,7 @@ public class HidingSpot : MonoBehaviour
                 }
                 //AudioManager.Instance.Hiding();
                 anima.SetBool("IsHiding", true);
-                Debug.Log("Player hiding");
+                //Debug.Log("Player hiding");
                 //gameObject.GetComponent<SpriteRenderer>().sprite = nSprite;
             }
             else
@@ -44,7 +44,7 @@ public class HidingSpot : MonoBehaviour
             }
             //Debug.Log(HidingMechanism.isHide);
         }
-        Debug.Log(playerCheck);
+        //Debug.Log(playerCheck);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -150,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isRunning)
             {
+                Debug.Log("WasStop");
                 isRunning = false;
                 AudioManager.Instance.StopCurrentSound();
             }

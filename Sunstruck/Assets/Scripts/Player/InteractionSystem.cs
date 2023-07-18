@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 public class InteractionSystem : MonoBehaviour
 {
@@ -15,8 +16,23 @@ public class InteractionSystem : MonoBehaviour
     private BoxCollider2D playerBox;
     private UIController uiController;
     public bool PKJump = true;
+    public Light2D playerLight;
+    public HealthBar healthBar;
 
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        playerLight = GetComponentInChildren<Light2D>();
+        if (playerLight != null)
+        {
+            playerLight.enabled = false;
+        }
+        else
+        {
+            Debug.LogError("No Light2D component found on the game object.");
+        }
+    }
     void Start()
     {
         PKJump = true;
@@ -57,10 +73,11 @@ public class InteractionSystem : MonoBehaviour
                 box.GetComponent<StaticBox>().beingMove = false;
                 this.GetComponent<PlayerMovement>().speed = 3f;
             }
+;
         }
         
 
-        if (hititem.collider != null && Input.GetKeyDown(KeyCode.J))
+        if (hititem.collider != null && Input.GetKeyDown(KeyCode.F))
         {
             pickUp(hititem.collider.gameObject);
         }
@@ -78,15 +95,17 @@ public class InteractionSystem : MonoBehaviour
             print("StunGun Picked Up");
             pickUpStunGun = true;
             stunGun.GetComponent<Animator>().SetBool("stunGunPickUp", true);
-            SceneController.instance.Cutscene();
             AudioManager.Instance.StunGunP();
-            
+            SceneController.instance.Cutscene(); 
         }
         else if(obj.tag == "Suit")
         {
             print("Suit Picked Up");
             pickUpSuit = true;
             Destroy(obj);
+            Debug.Log("its work");
+            healthBar.gameObject.SetActive(true);
+            playerLight.enabled = true;
             //AudioManager.Instance.suit();
         }
         else
