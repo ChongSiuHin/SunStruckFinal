@@ -19,6 +19,7 @@ public class CutsceneController : MonoBehaviour
 
     IEnumerator EndCutScene()
     {
+
         yield return new WaitForSeconds(10);
         SceneManager.UnloadSceneAsync("Cutscene2");
     }

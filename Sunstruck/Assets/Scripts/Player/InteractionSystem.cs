@@ -9,8 +9,8 @@ public class InteractionSystem : MonoBehaviour
     [SerializeField] private LayerMask movableObj;
     [SerializeField] private LayerMask interactableObj;
     [SerializeField] private GameObject stunGun;
-    public bool pickUpStunGun;
-    public bool pickUpSuit;
+    public bool pickUpStunGun = false;
+    public bool pickUpSuit = false;
     private GameObject box;
     private BoxCollider2D playerBox;
     private UIController uiController;
@@ -50,7 +50,7 @@ public class InteractionSystem : MonoBehaviour
                 box.GetComponent<StaticBox>().beingMove = true;
                 this.GetComponent<PlayerMovement>().speed /= 2f;
             }
-            else if (Input.GetKeyUp(KeyCode.J))
+            if (Input.GetKeyUp(KeyCode.J))
             {
                 PKJump = true;
                 box.GetComponent<FixedJoint2D>().enabled = false;
@@ -75,23 +75,20 @@ public class InteractionSystem : MonoBehaviour
     {
         if (obj.tag == "StunGun")
         {
-            print("StunGun Picked Up");
+            if (!pickUpStunGun)
+            {
+                SceneController.instance.Cutscene();
+                AudioManager.Instance.StunGunP();
+            }
             pickUpStunGun = true;
-            stunGun.GetComponent<Animator>().SetBool("stunGunPickUp", true);
-            SceneController.instance.Cutscene();
-            AudioManager.Instance.StunGunP();
-            
+            stunGun.GetComponent<Animator>().SetBool("stunGunPickUp", true); 
         }
-        else if(obj.tag == "Suit")
+        
+        if(obj.tag == "Suit")
         {
             print("Suit Picked Up");
             pickUpSuit = true;
             Destroy(obj);
-        }
-        else
-        {
-            pickUpStunGun = false;
-            pickUpSuit = false;
         }
 
         if (obj.tag == "NextScene")
