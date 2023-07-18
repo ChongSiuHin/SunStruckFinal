@@ -36,7 +36,7 @@ public class StunGun : MonoBehaviour
         if (hit)
         {
             useTimer -= 1 * Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.F) && useTimer > 0 && !isFire)
+            if (Input.GetKeyDown(KeyCode.J) && useTimer > 0 && !isFire)
             {
                 hitsCount++;
                 isFire = true;

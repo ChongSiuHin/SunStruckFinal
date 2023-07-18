@@ -28,7 +28,6 @@ public class HealthBar : MonoBehaviour
         lastDamageTime = Time.time;
         fill.color = gradient.Evaluate(1f);
         SetActive(false);
-        //gameObject.SetActive(false);
     }
 
     private void Update()

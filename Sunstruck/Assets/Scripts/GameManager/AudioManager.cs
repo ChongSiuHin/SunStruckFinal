@@ -50,7 +50,6 @@ public class AudioManager : MonoBehaviour
     {
         runSoundSource.clip = runSound;
         runSoundSource.Play();
-        //audioSource.PlayOneShot(runSound);
     }
 
     public void StopCurrentSound()
@@ -89,8 +88,6 @@ public class AudioManager : MonoBehaviour
     public void Hiding()
     {
         audioSource.PlayOneShot(TrashCan);
-        //audioSource.clip = TrashCan;
-        //audioSource.Play();
     }
 
     public void RespawnPoint()

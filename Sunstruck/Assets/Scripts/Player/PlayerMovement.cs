@@ -40,11 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         PKJump = interactionSystem.PKJump;
         horizontal = Input.GetAxis("Horizontal");
-        if(hide.isHiding)
-        {
-
-        }
-        else
+        if(!hide.isHiding)
         {
             walk();
         }
@@ -55,20 +51,13 @@ public class PlayerMovement : MonoBehaviour
         if (isClimbing)
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
+            playerRb.gravityScale = 0f;
         }
         else
         {
-            //walk();
             playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
+            playerRb.gravityScale = 3f;
         }
-        playerRb.gravityScale = 3f;
-        //if (isClimbing)
-        //{
-        //    playerRb.gravityScale = 0f;
-        //    playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
-        //}
-        //else
-        //    playerRb.gravityScale = 3f;
     }
 
     private bool isGrounded()
@@ -81,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("Climable"))
         {
+            currentTriggerObj = collision.gameObject;
             isLadder = true;
             isClimbing = true;
         }     
@@ -144,7 +134,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.localScale = new Vector2(-1, 1);
             }
-            //AudioManager.Instance.StopCurrentSound();
         }
         else
         {
@@ -169,14 +158,5 @@ public class PlayerMovement : MonoBehaviour
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
         }
         verticle = Input.GetAxis("Vertical");
-
-        //if (isLadder && (verticle > 0f || verticle < 0f))
-        //{
-        //    isClimbing = true;
-        //}
-        //else if (isLadder)
-        //{
-        //    isClimbing = true;
-        //}
     }
 }
