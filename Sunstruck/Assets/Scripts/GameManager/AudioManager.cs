@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    //public AudioSource backgroundMusicSource;
+    public AudioSource backgroundMusicSource;
     public AudioSource runSoundSource;
     public AudioSource robotSoundSource;
 
@@ -24,10 +24,10 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = backgroundMusic;
-        audioSource.loop = true;
-        audioSource.Play();
+        backgroundMusicSource = GetComponent<AudioSource>();
+        backgroundMusicSource.clip = backgroundMusic;
+        backgroundMusicSource.loop = true;
+        backgroundMusicSource.Play();
     }
     private void Awake()
     {

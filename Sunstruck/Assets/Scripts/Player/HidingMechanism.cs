@@ -31,6 +31,7 @@ public class HidingMechanism : MonoBehaviour
             this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             //anima.SetBool("IsHiding", true);
             this.GetComponent<SpriteRenderer>().enabled = false;
+            AudioManager.Instance.StopCurrentSound();
         }
         else if (Input.GetKeyUp(KeyCode.F))
         {
@@ -46,6 +47,7 @@ public class HidingMechanism : MonoBehaviour
             this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             //anima.SetBool("IsHiding", true);
             this.GetComponent<SpriteRenderer>().enabled = false;
+            AudioManager.Instance.StopCurrentSound();
         }
         else if (Input.GetKeyUp(KeyCode.F))
         {
