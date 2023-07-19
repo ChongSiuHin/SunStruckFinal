@@ -16,6 +16,7 @@ TagManager:
   - Ground
   - Suit
   - ChargingStation
+  - Switches
   layers:
   - Default
   - TransparentFX

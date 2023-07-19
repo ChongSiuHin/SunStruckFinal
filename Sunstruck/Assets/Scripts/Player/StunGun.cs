@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StunGun : MonoBehaviour
 {
-    [SerializeField] private int ammo;
+    [SerializeField] public int ammo;
     [SerializeField] private float stunDuration;
     [SerializeField] private float useDuration;
 
@@ -136,7 +136,7 @@ public class StunGun : MonoBehaviour
         isCharging = false;
     }
 
-    void UpdateAmmoUI(int ammo)
+    public void UpdateAmmoUI(int ammo)
     {
         for (int i = 0; i < circles.Length; i++)
         {

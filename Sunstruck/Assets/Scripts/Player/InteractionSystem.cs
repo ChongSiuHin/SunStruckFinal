@@ -9,12 +9,15 @@ public class InteractionSystem : MonoBehaviour
     [SerializeField] private LayerMask movableObj;
     [SerializeField] private LayerMask interactableObj;
     [SerializeField] private GameObject stunGun;
+    
     public bool pickUpStunGun = false;
     public bool pickUpSuit = false;
     private GameObject box;
     private BoxCollider2D playerBox;
     private UIController uiController;
     public bool PKJump = true;
+
+    private bool switchAllow;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +72,12 @@ public class InteractionSystem : MonoBehaviour
         {
             uiController.ShowUI();
         }
+
+        if(switchAllow && Input.GetKeyDown(KeyCode.J))
+        {
+            FindObjectOfType<StunGun>().UpdateAmmoUI(--FindObjectOfType<StunGun>().ammo);
+            FindObjectOfType<CameraSystem>().switchOn();
+        }
     }
     
     public void pickUp(GameObject obj)
@@ -95,6 +104,21 @@ public class InteractionSystem : MonoBehaviour
         {
             SceneController.instance.NextLevel();
             GetComponent<CheckpointRespawn>().respawnPoint = transform.position;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Switches"))
+        {
+            switchAllow = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Switches"))
+        {
+            switchAllow = false;
         }
     }
 
