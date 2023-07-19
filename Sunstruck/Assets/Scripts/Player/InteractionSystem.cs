@@ -76,7 +76,7 @@ public class InteractionSystem : MonoBehaviour
         if(switchAllow && Input.GetKeyDown(KeyCode.J))
         {
             FindObjectOfType<StunGun>().UpdateAmmoUI(--FindObjectOfType<StunGun>().ammo);
-            FindObjectOfType<CameraSystem>().switchOn();
+            FindObjectOfType<CameraSystem>().switchOnCargo();
         }
     }
     

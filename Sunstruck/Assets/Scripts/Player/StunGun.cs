@@ -28,6 +28,7 @@ public class StunGun : MonoBehaviour
         stunTimer = stunDuration;
         useTimer = useDuration;
         isFire = false;
+        stunEnemy = false;
     }
 
     // Update is called once per frame
@@ -40,13 +41,11 @@ public class StunGun : MonoBehaviour
             {
                 hitsCount++;
                 isFire = true;
-                Debug.Log("Stun Enemy");
                 stunEnemy = true;
                 if (stunEnemy)
                 {
                     AudioManager.Instance.StunGunF();
                     AudioManager.Instance.RobotStuning();
-                    Debug.Log("stunning");
                     Physics2D.IgnoreCollision(enemyCollider, playerCollider, true);
                     GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 }

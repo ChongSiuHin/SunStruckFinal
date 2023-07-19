@@ -10,9 +10,30 @@ public class CameraSystem : MonoBehaviour
     [SerializeField] private Animator cargoAnim;
     private float hitZoomIn;
 
+    private float shakeIntensity = 3f;
+    private float shakeTime = 1f;
+    private float timer;
+
+    private CinemachineBasicMultiChannelPerlin _cbmcp;
+
+    private void Start()
+    {
+        StopShake();
+    }
+
     private void Update()
     {
         captureByEnemy();
+
+        if(timer > 0)
+        {
+            timer -= Time.deltaTime;
+
+            if(timer <= 0)
+            {
+                StopShake();
+            }
+        }
     }
 
     private void captureByEnemy()
@@ -20,10 +41,12 @@ public class CameraSystem : MonoBehaviour
         if (FindObjectOfType<StunGun>().hit)
         {
             hitZoomIn -= 1f;
+            ShakeCamera();
         }
         else
         {
             hitZoomIn += 1f;
+            StopShake();
         }
 
         hitZoomIn = Mathf.Clamp(hitZoomIn, 1.5f, 3f);
@@ -32,7 +55,7 @@ public class CameraSystem : MonoBehaviour
         cinemachineVirtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(cinemachineVirtualCamera.m_Lens.OrthographicSize, hitZoomIn, Time.deltaTime * zoomSpeed);
     }
 
-    public void switchOn()
+    public void switchOnCargo()
     {
         StartCoroutine(dropCargo());
     }
@@ -48,8 +71,24 @@ public class CameraSystem : MonoBehaviour
 
     IEnumerator followBackPlayer()
     {
+        ShakeCamera();
         yield return new WaitForSeconds(1);
         cinemachineVirtualCamera.LookAt = player.transform;
         cinemachineVirtualCamera.Follow = player.transform;
+    }
+
+    public void ShakeCamera()
+    {
+        CinemachineBasicMultiChannelPerlin _cbmcp = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _cbmcp.m_AmplitudeGain = shakeIntensity;
+
+        timer = shakeTime;
+    }
+
+    public void StopShake()
+    {
+        CinemachineBasicMultiChannelPerlin _cbmcp = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _cbmcp.m_AmplitudeGain = 0f;
+        timer = 0f;
     }
 }
