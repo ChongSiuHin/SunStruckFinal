@@ -25,8 +25,6 @@ public class PlayerMovement : MonoBehaviour
     private Transform playerTrans;
     private GameObject currentTriggerObj;
 
-    private bool canJumpFromClimbable = false;
-
     private void Awake()
     {
         interactionSystem = GetComponent<InteractionSystem>();

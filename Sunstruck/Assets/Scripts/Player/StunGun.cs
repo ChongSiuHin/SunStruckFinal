@@ -7,6 +7,7 @@ public class StunGun : MonoBehaviour
     [SerializeField] public int ammo;
     [SerializeField] private float stunDuration;
     [SerializeField] private float useDuration;
+    [SerializeField] private GameObject popUpKey;
 
     public bool stunEnemy;
     public bool hit;
@@ -52,6 +53,7 @@ public class StunGun : MonoBehaviour
                 ammo--;
                 useTimer = useDuration;
                 UpdateAmmoUI(ammo);
+                popUpKey.SetActive(false);
             }
             else if (useTimer <= 0)
             {
@@ -62,6 +64,7 @@ public class StunGun : MonoBehaviour
                 }
                 useTimer = useDuration;
                 hit = false;
+                popUpKey.SetActive(false);
             }
         }
 
@@ -90,7 +93,8 @@ public class StunGun : MonoBehaviour
             if (GetComponent<InteractionSystem>().pickUpStunGun && ammo > 0)
             {
                 hit = true;
-                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;                
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                popUpKey.SetActive(true);
             }
             else
                 transform.position = this.GetComponent<CheckpointRespawn>().respawnPoint;

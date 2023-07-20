@@ -18,6 +18,8 @@ public class InteractionSystem : MonoBehaviour
     public bool PKJump = true;
 
     private bool switchAllow;
+    private bool isSwitchedOn;
+    public bool offset;
 
     // Start is called before the first frame update
     void Start()
@@ -75,8 +77,12 @@ public class InteractionSystem : MonoBehaviour
 
         if(switchAllow && Input.GetKeyDown(KeyCode.J))
         {
-            FindObjectOfType<StunGun>().UpdateAmmoUI(--FindObjectOfType<StunGun>().ammo);
-            FindObjectOfType<CameraSystem>().switchOnCargo();
+            if (!isSwitchedOn)
+            {
+                FindObjectOfType<StunGun>().UpdateAmmoUI(--FindObjectOfType<StunGun>().ammo);
+                FindObjectOfType<CameraSystem>().switchOnCargo();
+                isSwitchedOn = true;
+            }
         }
     }
     
@@ -113,12 +119,23 @@ public class InteractionSystem : MonoBehaviour
         {
             switchAllow = true;
         }
+
+        if (collision.CompareTag("Offset"))
+        {
+            offset = true;
+        }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Switches"))
         {
             switchAllow = false;
+        }
+
+        if (collision.CompareTag("Offset"))
+        {
+            offset = false;
         }
     }
 

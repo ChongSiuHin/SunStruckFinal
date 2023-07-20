@@ -17,6 +17,7 @@ TagManager:
   - Suit
   - ChargingStation
   - Switches
+  - Offset
   layers:
   - Default
   - TransparentFX
