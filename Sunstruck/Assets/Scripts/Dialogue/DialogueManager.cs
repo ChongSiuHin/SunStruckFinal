@@ -9,9 +9,12 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public float textSpeed;
-    public bool isTalking;
+    public bool DialogueOn;
 
-    public Animator anim;
+    private GameObject dialogueBox;
+    private Animator anim;
+    private bool Checkpoint;
+    private bool OldMan;
     public Dialogue dialogue;
 
     private int index;
@@ -20,23 +23,37 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         dialogueText.text = string.Empty;
-        isTalking = true;
+        DialogueOn = false;
     }
 
     // Update is called once per frameZ
     void Update()
     {
-        //Triggering next sentence
-        if(Input.anyKeyDown)
+        Checkpoint = FindObjectOfType<CheckpointRespawn>().isCheckPoint;
+        if(Checkpoint)
         {
-            if(dialogueText.text == dialogue.sentences[index])
+            dialogueBox = GameObject.FindGameObjectWithTag("DialogueCheckpoint");
+        }
+
+        OldMan = FindObjectOfType<CheckpointRespawn>().isOldMan;
+        if (OldMan)
+        {
+            dialogueBox = GameObject.FindGameObjectWithTag("DialogueOldMan");
+        }
+
+        anim = dialogueBox.GetComponentInChildren<Animator>();
+
+        //Triggering next sentence
+        if (Input.anyKeyDown)
+        {
+            if(dialogueText.text == dialogue.sentences_n1[index])
             {
                 DisplayNextSentence();
             }
             else
             {
                 StopAllCoroutines();
-                dialogueText.text = dialogue.sentences[index];
+                dialogueText.text = dialogue.sentences_n1[index];
             }
             
         }
@@ -44,18 +61,27 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
-        anim.SetBool("IsOpen", true);
+        DialogueOn = true;
+        if (Checkpoint)
+        {
+            anim.SetBool("IsOpenSmol", true);
+        }
+        else if (OldMan)
+        {
+            anim.SetBool("IsOpenOldMan", true);
+        }
+        
         background.SetActive(true);
         index = 0;
 
-        nameText.text = dialogue.name;
+        nameText.text = dialogue.name_1;
 
         StartCoroutine(TypeSentence());
     }
 
     public void DisplayNextSentence()
     {
-        if(index < dialogue.sentences.Length - 1)
+        if(index < dialogue.sentences_n1.Length - 1)
         {
             index++;
             dialogueText.text = string.Empty;
@@ -70,7 +96,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence()
     {
         dialogueText.text = "";
-        foreach(char letter in dialogue.sentences[index].ToCharArray())
+        foreach(char letter in dialogue.sentences_n1[index].ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(textSpeed);
@@ -79,8 +105,17 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        anim.SetBool("IsOpen", false);
+        if (Checkpoint)
+        {
+            anim.SetBool("IsOpenSmol", false);
+        }
+        else if (OldMan)
+        {
+            anim.SetBool("IsOpenOldMan", false);
+        }
+
         background.SetActive(false);
-        isTalking = false;
+
+        DialogueOn = false;
     }
 }

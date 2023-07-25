@@ -9,7 +9,8 @@ public class CheckpointRespawn : MonoBehaviour
     [SerializeField] private GameObject checkpoint;
 
     public Vector3 respawnPoint;
-    private bool isCheckPoint;
+    public bool isCheckPoint;
+    public bool isOldMan;
     private int i = 0;
 
     // Start is called before the first frame update
@@ -34,7 +35,12 @@ public class CheckpointRespawn : MonoBehaviour
             }
             else if (i > 0)
                 FindObjectOfType<DialogueManager>().StartDialogue();
-        }  
+        }
+
+        if (isOldMan && Input.GetKeyDown(KeyCode.J))
+        {
+            StartCoroutine(OldMan());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,18 +50,14 @@ public class CheckpointRespawn : MonoBehaviour
             transform.position = respawnPoint;
         }
 
-        if(collision.CompareTag("Checkpoint"))
+        else if(collision.CompareTag("Checkpoint"))
         {
             isCheckPoint = true;
         }
         
-        if(collision.CompareTag("NextScene") && GetComponent<InteractionSystem>().pickUpStunGun)
+        else if(collision.CompareTag("OldMan") && GetComponent<InteractionSystem>().pickUpStunGun)
         {
-            if(Input.GetKeyDown(KeyCode.J))
-            {
-                SceneController.instance.NextLevel();
-                respawnPoint = transform.position;
-            }
+            isOldMan = true;
         } 
     }
 
@@ -64,12 +66,28 @@ public class CheckpointRespawn : MonoBehaviour
         if(collision.CompareTag("Checkpoint"))
         {
             isCheckPoint = false;
-        }      
+        }
+
+        if(collision.CompareTag("OldMan"))
+        {
+            isOldMan = false;
+        }
     }
 
     IEnumerator SmolRobot()
     {
         yield return new WaitForSeconds(1.5f);
         FindObjectOfType<DialogueManager>().StartDialogue();
+    }
+
+    IEnumerator OldMan()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue();
+        while (FindObjectOfType<DialogueManager>().DialogueOn)
+        {
+            yield return null;
+        }
+        SceneController.instance.NextLevel();
+        respawnPoint = transform.position;
     }
 }

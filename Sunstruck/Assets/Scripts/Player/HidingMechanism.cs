@@ -33,7 +33,7 @@ public class HidingMechanism : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.J))
         {
-            cancelHiding();
+            CancelHiding();
         }
 
         if (hideAllow2 && Input.GetKeyDown(KeyCode.J))
@@ -48,11 +48,11 @@ public class HidingMechanism : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.J))
         {
-            cancelHiding();
+            CancelHiding();
         }
     }
 
-    public void cancelHiding()
+    public void CancelHiding()
     {
         isHiding = false;
         isHide = false;

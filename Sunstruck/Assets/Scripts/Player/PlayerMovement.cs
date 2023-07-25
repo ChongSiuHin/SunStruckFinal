@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] public float speed;
+    public float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float climbSpeed;
     [SerializeField] private LayerMask groundLayer;
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         if(!hide.isHiding)
         {
-            walk();
+            Walk();
         }
     }
 
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool isGrounded()
+    private bool IsGrounded()
     {
         RaycastHit2D hitGround = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return hitGround.collider != null;
@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void walk()
+    private void Walk()
     {
         playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
 
@@ -137,13 +137,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isRunning)
             {
-                Debug.Log("WasStop");
                 isRunning = false;
                 AudioManager.Instance.StopCurrentSound();
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded() && PKJump)
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() && PKJump)
         {
             isClimbing = false;
             AudioManager.Instance.PlayJumpSound();

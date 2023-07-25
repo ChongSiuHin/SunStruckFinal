@@ -67,7 +67,7 @@ public class InteractionSystem : MonoBehaviour
 
         if (hititem.collider != null && Input.GetKeyDown(KeyCode.J))
         {
-            pickUp(hititem.collider.gameObject);
+            PickUp(hititem.collider.gameObject);
         }
 
         if(pickUpStunGun)
@@ -80,13 +80,13 @@ public class InteractionSystem : MonoBehaviour
             if (!isSwitchedOn)
             {
                 FindObjectOfType<StunGun>().UpdateAmmoUI(--FindObjectOfType<StunGun>().ammo);
-                FindObjectOfType<CameraSystem>().switchOnCargo();
+                FindObjectOfType<CameraSystem>().SwitchOnCargo();
                 isSwitchedOn = true;
             }
         }
     }
     
-    public void pickUp(GameObject obj)
+    public void PickUp(GameObject obj)
     {
         if (obj.tag == "StunGun")
         {

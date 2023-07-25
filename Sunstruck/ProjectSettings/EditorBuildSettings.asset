@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScreen.unity
     guid: 7eb35d0473a55e942b9d33b7334c0af3
   - enabled: 1
-    path: Assets/Scenes/FrontStreet.unity
+    path: Assets/Scenes/MachineCity/FrontStreet.unity
     guid: e99c612d82b19e9458693d88ef2c0aec
   - enabled: 1
-    path: Assets/Scenes/BackStreet.unity
+    path: Assets/Scenes/MachineCity/BackStreet.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/AbandonedCargoArea.unity
+    path: Assets/Scenes/MachineCity/AbandonedCargoArea.unity
     guid: 460bd2c1fa3c6884297f5a5bf5c17a48
   - enabled: 1
     path: Assets/Scenes/Cutscene2.unity

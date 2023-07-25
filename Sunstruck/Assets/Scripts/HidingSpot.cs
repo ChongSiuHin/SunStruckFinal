@@ -5,16 +5,10 @@ using UnityEngine;
 public class HidingSpot : MonoBehaviour
 {
     [SerializeField] private Sprite nSprite;
-    private Sprite oriSprite;
     private HidingMechanism checkHide;
     private bool playerCheck = false;
     public Animator anima;
     private bool hasPlayedAudio = false;
-
-    private void Start()
-    {
-        //oriSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
-    }
 
     // Update is called once per frame
     void Update()

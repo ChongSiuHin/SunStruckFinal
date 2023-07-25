@@ -23,7 +23,7 @@ public class CameraSystem : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "AbandonedCargoArea")
         {
-            StartCoroutine(previewLevelACA());
+            StartCoroutine(PreviewLevelACA());
         }
         
         StopShake();
@@ -31,7 +31,7 @@ public class CameraSystem : MonoBehaviour
 
     private void Update()
     {
-        captureByEnemy();
+        CaptureByEnemy();
 
         if (timer > 0)
         {
@@ -43,10 +43,10 @@ public class CameraSystem : MonoBehaviour
             }
         }
 
-        viewEnemyBelow();
+        ViewEnemyBelow();
     }
 
-    private void captureByEnemy()
+    private void CaptureByEnemy()
     {
         if (FindObjectOfType<StunGun>().hit)
         {
@@ -64,21 +64,21 @@ public class CameraSystem : MonoBehaviour
         cinemachineVirtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(cinemachineVirtualCamera.m_Lens.OrthographicSize, hitZoomIn, Time.deltaTime * zoomSpeed);
     }
 
-    public void switchOnCargo()
+    public void SwitchOnCargo()
     {
-        StartCoroutine(dropCargo());
+        StartCoroutine(DropCargo());
     }
 
-    IEnumerator dropCargo()
+    IEnumerator DropCargo()
     {
         cinemachineVirtualCamera.LookAt = cargoAnim.transform;
         cinemachineVirtualCamera.Follow = cargoAnim.transform;
         yield return new WaitForSeconds(1);
         cargoAnim.SetTrigger("Drop");
-        StartCoroutine(followBackPlayer());
+        StartCoroutine(FollowBackPlayer());
     }
 
-    IEnumerator followBackPlayer()
+    IEnumerator FollowBackPlayer()
     {
         ShakeCamera();
         yield return new WaitForSeconds(1);
@@ -101,7 +101,7 @@ public class CameraSystem : MonoBehaviour
         timer = 0f;
     }
 
-    IEnumerator previewLevelACA()
+    IEnumerator PreviewLevelACA()
     {
         player.GetComponent<PlayerMovement>().enabled = false;
         cutsceneCam.enabled = true;
@@ -112,7 +112,7 @@ public class CameraSystem : MonoBehaviour
         cutsceneCam.enabled = false;
     }
 
-    public void viewEnemyBelow()
+    public void ViewEnemyBelow()
     {
         CinemachineFramingTransposer offsetCam = cinemachineVirtualCamera.GetComponentInChildren<CinemachineFramingTransposer>();
         if (FindObjectOfType<InteractionSystem>().offset)

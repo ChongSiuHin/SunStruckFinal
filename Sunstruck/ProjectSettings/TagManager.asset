@@ -18,6 +18,9 @@ TagManager:
   - ChargingStation
   - Switches
   - Offset
+  - DialogueCheckpoint
+  - DialogueOldMan
+  - OldMan
   layers:
   - Default
   - TransparentFX
