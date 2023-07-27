@@ -4780,7 +4780,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287135708}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.49559, y: -0.47626388, z: -10.017796}
+  m_LocalPosition: {x: -4.4955797, y: -0.49666727, z: -10.017796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5121,7 +5121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289419903}
   m_LocalRotation: {x: 0, y: 0, z: -0.0075131096, w: 0.9999718}
-  m_LocalPosition: {x: -7.9, y: -3.31, z: 0}
+  m_LocalPosition: {x: -7.08, y: -3.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13973,7 +13973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011230335}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.0465403, y: -0.47702587, z: -10.017796}
+  m_LocalPosition: {x: -5.2265406, y: -0.49702585, z: -10.017796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14437,7 +14437,7 @@ GameObject:
   - component: {fileID: 6562310968071692190}
   m_Layer: 0
   m_Name: TrashCan_2
-  m_TagString: Hidepoint
+  m_TagString: Hidepoint2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

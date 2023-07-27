@@ -59,6 +59,7 @@ public class InteractionSystem : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.J))
             {
                 PKJump = false;
+                AudioManager.Instance.PushBox();
                 box = hitbox.collider.gameObject;
 
                 box.GetComponent<FixedJoint2D>().enabled = true;

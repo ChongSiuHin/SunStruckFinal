@@ -31,15 +31,12 @@ public class HidingSpot2 : MonoBehaviour
                     hasPlayedAudio = true;
                 }
                 anima.SetBool("IsHiding1", true);
-                //Debug.Log("Player hiding");
-                //gameObject.GetComponent<SpriteRenderer>().sprite = nSprite;
             }
             else
             {
                 anima.SetBool("IsHiding1", false);
-                //Debug.Log("Player show");
                 hasPlayedAudio = false;
-                //gameObject.GetComponent<SpriteRenderer>().sprite = oriSprite;
+
             }
         }
     }

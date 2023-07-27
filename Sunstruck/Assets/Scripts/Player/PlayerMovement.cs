@@ -54,21 +54,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isClimbing)
         {
+            AudioManager.Instance.CLimbingRope();
             playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
         }
         else
         {
-            //walk();
             playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
         }
         playerRb.gravityScale = 3f;
-        //if (isClimbing)
-        //{
-        //    playerRb.gravityScale = 0f;
-        //    playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
-        //}
-        //else
-        //    playerRb.gravityScale = 3f;
     }
 
     private bool isGrounded()

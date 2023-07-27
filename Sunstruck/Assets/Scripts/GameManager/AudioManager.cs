@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip RobotRun;
     public AudioClip RobotStun;
     public AudioClip Checkpoint;
+    public AudioClip PushingBox;
+    public AudioClip Climbing;
 
 
     public void Start()
@@ -43,7 +45,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayJumpSound()
     {
-        audioSource.PlayOneShot(jumpSound);
+        runSoundSource.PlayOneShot(jumpSound);
     }
 
     public void PlayRunSound()
@@ -78,24 +80,36 @@ public class AudioManager : MonoBehaviour
 
     public void StunGunP()
     {
-        audioSource.PlayOneShot(StunGunPickUp);
+        backgroundMusicSource.PlayOneShot(StunGunPickUp);
     }
 
     public void StunGunF()
     {
-        audioSource.PlayOneShot(StunGunFire);
+        backgroundMusicSource.PlayOneShot(StunGunFire);
     }
 
     public void Hiding()
     {
-        audioSource.PlayOneShot(TrashCan);
+        backgroundMusicSource.PlayOneShot(TrashCan);
         //audioSource.clip = TrashCan;
         //audioSource.Play();
     }
 
     public void RespawnPoint()
     {
-        audioSource.PlayOneShot(Checkpoint);
+        backgroundMusicSource.PlayOneShot(Checkpoint);
+    }
+
+    public void CLimbingRope()
+    {
+        runSoundSource.clip = Climbing;
+        runSoundSource.Play();
+    }
+
+    public void PushBox()
+    {
+        runSoundSource.clip = PushingBox;
+        runSoundSource.Play();
     }
 }
 

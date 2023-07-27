@@ -22,7 +22,8 @@ public class EnermyProt : MonoBehaviour
     public float agroRange;
     public bool isPlayerSeek;
     public bool isFacingLeft = false;
-   private bool playSound;
+    private bool playSound;
+    private bool isPausing = false;
 
     public bool hitPlayer;
 
@@ -42,12 +43,12 @@ public class EnermyProt : MonoBehaviour
     {
         if (isFacingLeft)
         {
-            endPos = Enemy.position + (Vector3.right * agroRange);
+            endPos = Enemy.position + (Vector3.left * agroRange);
             Debug.Log("is left");
         }
         else
         {
-            endPos = Enemy.position + (Vector3.left * agroRange);
+            endPos = Enemy.position + (Vector3.right * agroRange);
         }
 
         if (player.GetComponent<StunGun>().hit && hitPlayer)
@@ -64,14 +65,18 @@ public class EnermyProt : MonoBehaviour
         else
         {
             playSound = true;
-            anima.SetBool("Run", true);
             if (CanSeekPlayer(agroRange))
             {
+                anima.SetBool("Run", true);
                 chasing();
             }
             else
             {
-                walkAround();
+                if (!isPausing)
+                {
+                    anima.SetBool("Run", true);
+                    walkAround();
+                }
             }
         }
 
@@ -120,23 +125,23 @@ public class EnermyProt : MonoBehaviour
 
     public void walkAround()
     {
-            
-            Vector2 point = currentPoint.position - transform.position;
-            if (currentPoint == pointB.transform)
-            {
-                rb.velocity = new Vector2(speed, 0);
-                isFacingLeft = false;
-            }
-            else
-            {
-                rb.velocity = new Vector2(-speed, 0);
-                isFacingLeft = true;
-            }
+        if (isPausing) return;
 
-            if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f & currentPoint == pointB.transform)
+        Vector2 point = currentPoint.position - transform.position;
+        if (currentPoint == pointB.transform)
+        {
+            rb.velocity = new Vector2(speed, 0);
+            isFacingLeft = false;
+        }
+        else
+        {
+            rb.velocity = new Vector2(-speed, 0);
+            isFacingLeft = true;
+        }
+
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f & currentPoint == pointB.transform)
             {
-                //isFacingLeft = false;
-                flip();
+                StartCoroutine(PauseBeforeMoving());
                 currentPoint = pointA.transform;
                 if (playSound)
                 {
@@ -146,8 +151,7 @@ public class EnermyProt : MonoBehaviour
             }
             else if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f & currentPoint == pointA.transform)
             {
-                //isFacingLeft = true;
-                flip();
+                StartCoroutine(PauseBeforeMoving());
                 currentPoint = pointB.transform;
                 if (playSound)
                 {
@@ -156,14 +160,6 @@ public class EnermyProt : MonoBehaviour
                 }
             }
     }
-
-    //private void stun()
-    //{
-    //    if (!playSound)
-    //    {
-            
-    //    }
-    //}
 
     private void flip()
     {
@@ -200,11 +196,13 @@ public class EnermyProt : MonoBehaviour
         }
     }
 
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        isCollidingWithPlayer = false;
-    //    }
-    //}
+    IEnumerator PauseBeforeMoving()
+    {
+        isPausing = true;
+        rb.velocity = new Vector2(0, 0);
+        anima.SetBool("Run", false);
+        yield return new WaitForSeconds(1f);
+        isPausing = false;
+        flip();
+    }
 }
