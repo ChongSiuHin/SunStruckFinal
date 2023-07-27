@@ -46,22 +46,25 @@ public class DialogueManager : MonoBehaviour
         //Triggering next sentence
         if (Input.anyKeyDown)
         {
-            if(dialogueText.text == dialogue.sentences_n1[index])
+            if(dialogueText.text == dialogue.sentences[index])
             {
                 DisplayNextSentence();
             }
             else
             {
                 StopAllCoroutines();
-                dialogueText.text = dialogue.sentences_n1[index];
-            }
-            
+                dialogueText.text = dialogue.sentences[index];
+            }  
         }
+
+        nameText.text = dialogue.name;
     }
 
     public void StartDialogue()
     {
         DialogueOn = true;
+        nameText.text = dialogue.name;
+
         if (Checkpoint)
         {
             anim.SetBool("IsOpenSmol", true);
@@ -74,14 +77,12 @@ public class DialogueManager : MonoBehaviour
         background.SetActive(true);
         index = 0;
 
-        nameText.text = dialogue.name_1;
-
         StartCoroutine(TypeSentence());
     }
 
     public void DisplayNextSentence()
     {
-        if(index < dialogue.sentences_n1.Length - 1)
+        if(index < dialogue.sentences.Length - 1)
         {
             index++;
             dialogueText.text = string.Empty;
@@ -96,7 +97,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence()
     {
         dialogueText.text = "";
-        foreach(char letter in dialogue.sentences_n1[index].ToCharArray())
+        foreach(char letter in dialogue.sentences[index].ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(textSpeed);

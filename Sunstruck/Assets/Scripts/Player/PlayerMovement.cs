@@ -145,8 +145,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() && PKJump)
         {
             isClimbing = false;
-            AudioManager.Instance.PlayJumpSound();
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
+            AudioManager.Instance.PlayJumpSound();
         }
         else if(Input.GetKeyDown(KeyCode.Space) && isLadder)
         {
@@ -154,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
             AudioManager.Instance.PlayJumpSound();
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
         }
+
         verticle = Input.GetAxis("Vertical");
     }
 }

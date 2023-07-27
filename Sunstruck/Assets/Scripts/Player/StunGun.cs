@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StunGun : MonoBehaviour
 {
-    [SerializeField] public int ammo;
+    public int ammo;
     [SerializeField] private float stunDuration;
     [SerializeField] private float useDuration;
     [SerializeField] private GameObject popUpKey;

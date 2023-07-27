@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CheckpointRespawn : MonoBehaviour
 {
     [SerializeField] private GameObject deadSpace;
-    [SerializeField] private GameObject checkpoint;
+    [SerializeField] private GameObject[] checkpoint;
 
     public Vector3 respawnPoint;
     public bool isCheckPoint;
     public bool isOldMan;
+    private bool activable;
     private int i = 0;
 
     // Start is called before the first frame update
@@ -26,15 +26,18 @@ public class CheckpointRespawn : MonoBehaviour
         if(isCheckPoint && Input.GetKeyDown(KeyCode.J))
         {
             respawnPoint = transform.position;
-            checkpoint.GetComponent<Animator>().SetTrigger("Activate");
-            if (i == 0)
+            checkpoint[i].GetComponent<Animator>().SetTrigger("Activate");
+            i++;
+            if (activable)
             {
                 AudioManager.Instance.RespawnPoint();
                 StartCoroutine(SmolRobot());
-                i++;
+                activable = false;
             }
-            else if (i > 0)
+            else
+            {
                 FindObjectOfType<DialogueManager>().StartDialogue();
+            }    
         }
 
         if (isOldMan && Input.GetKeyDown(KeyCode.J))
