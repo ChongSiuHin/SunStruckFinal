@@ -9,12 +9,17 @@ public class InteractionSystem : MonoBehaviour
     [SerializeField] private LayerMask movableObj;
     [SerializeField] private LayerMask interactableObj;
     [SerializeField] private GameObject stunGun;
-    public bool pickUpStunGun;
-    public bool pickUpSuit;
+    
+    public bool pickUpStunGun = false;
+    public bool pickUpSuit = false;
     private GameObject box;
     private BoxCollider2D playerBox;
     private UIController uiController;
     public bool PKJump = true;
+
+    private bool switchAllow;
+    private bool isSwitchedOn;
+    public bool offset;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +45,7 @@ public class InteractionSystem : MonoBehaviour
         
         if(hitbox.collider != null)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.J))
             {
                 PKJump = false;
                 box = hitbox.collider.gameObject;
@@ -50,7 +55,7 @@ public class InteractionSystem : MonoBehaviour
                 box.GetComponent<StaticBox>().beingMove = true;
                 this.GetComponent<PlayerMovement>().speed /= 2f;
             }
-            else if (Input.GetKeyUp(KeyCode.F))
+            if (Input.GetKeyUp(KeyCode.J))
             {
                 PKJump = true;
                 box.GetComponent<FixedJoint2D>().enabled = false;
@@ -60,43 +65,77 @@ public class InteractionSystem : MonoBehaviour
         }
         
 
-        if (hititem.collider != null && Input.GetKeyDown(KeyCode.F))
+        if (hititem.collider != null && Input.GetKeyDown(KeyCode.J))
         {
-            pickUp(hititem.collider.gameObject);
+            PickUp(hititem.collider.gameObject);
         }
 
         if(pickUpStunGun)
         {
             uiController.ShowUI();
         }
+
+        if(switchAllow && Input.GetKeyDown(KeyCode.J))
+        {
+            if (!isSwitchedOn)
+            {
+                FindObjectOfType<StunGun>().UpdateAmmoUI(--FindObjectOfType<StunGun>().ammo);
+                FindObjectOfType<CameraSystem>().SwitchOnCargo();
+                isSwitchedOn = true;
+            }
+        }
     }
     
-    public void pickUp(GameObject obj)
+    public void PickUp(GameObject obj)
     {
         if (obj.tag == "StunGun")
         {
-            print("StunGun Picked Up");
+            if (!pickUpStunGun)
+            {
+                SceneController.instance.Cutscene();
+                AudioManager.Instance.StunGunP();
+            }
             pickUpStunGun = true;
-            stunGun.GetComponent<Animator>().SetBool("stunGunPickUp", true);
-            AudioManager.Instance.StunGunP();
+            stunGun.GetComponent<Animator>().SetBool("stunGunPickUp", true); 
         }
-        else if(obj.tag == "Suit")
+        
+        if(obj.tag == "Suit")
         {
             print("Suit Picked Up");
             pickUpSuit = true;
             Destroy(obj);
-            //AudioManager.Instance.suit();
-        }
-        else
-        {
-            pickUpStunGun = false;
-            pickUpSuit = false;
         }
 
         if (obj.tag == "NextScene")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneController.instance.NextLevel();
             GetComponent<CheckpointRespawn>().respawnPoint = transform.position;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Switches"))
+        {
+            switchAllow = true;
+        }
+
+        if (collision.CompareTag("Offset"))
+        {
+            offset = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Switches"))
+        {
+            switchAllow = false;
+        }
+
+        if (collision.CompareTag("Offset"))
+        {
+            offset = false;
         }
     }
 

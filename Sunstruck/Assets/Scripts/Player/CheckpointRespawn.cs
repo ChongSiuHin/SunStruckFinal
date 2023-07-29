@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CheckpointRespawn : MonoBehaviour
 {
     [SerializeField] private GameObject deadSpace;
-    [SerializeField] private GameObject checkpoint;
+    [SerializeField] private GameObject[] checkpoint;
 
     public Vector3 respawnPoint;
-    private bool isCheckPoint;
+    public bool isCheckPoint;
+    public bool isOldMan;
+    private bool activable;
+    private int i = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +23,27 @@ public class CheckpointRespawn : MonoBehaviour
     void Update()
     {
         deadSpace.transform.position = new Vector2(transform.position.x, deadSpace.transform.position.y);
-        if(isCheckPoint && Input.GetKeyDown(KeyCode.F))
+        if(isCheckPoint && Input.GetKeyDown(KeyCode.J))
         {
-            AudioManager.Instance.RespawnPoint();
             respawnPoint = transform.position;
-            checkpoint.GetComponent<Animator>().SetTrigger("Activate");
-        }  
+            checkpoint[i].GetComponent<Animator>().SetTrigger("Activate");
+            i++;
+            if (activable)
+            {
+                AudioManager.Instance.RespawnPoint();
+                StartCoroutine(SmolRobot());
+                activable = false;
+            }
+            else
+            {
+                FindObjectOfType<DialogueTrigger>().StartDialogue();
+            }    
+        }
+
+        if (isOldMan && Input.GetKeyDown(KeyCode.J))
+        {
+            StartCoroutine(OldMan());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,18 +53,14 @@ public class CheckpointRespawn : MonoBehaviour
             transform.position = respawnPoint;
         }
 
-        if(collision.CompareTag("Checkpoint"))
+        else if(collision.CompareTag("Checkpoint"))
         {
             isCheckPoint = true;
         }
         
-        if(collision.CompareTag("NextScene") && GetComponent<InteractionSystem>().pickUpStunGun)
+        else if(collision.CompareTag("OldMan") && GetComponent<InteractionSystem>().pickUpStunGun)
         {
-            if(Input.GetKeyDown(KeyCode.F))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                respawnPoint = transform.position;
-            }
+            isOldMan = true;
         } 
     }
 
@@ -56,6 +69,28 @@ public class CheckpointRespawn : MonoBehaviour
         if(collision.CompareTag("Checkpoint"))
         {
             isCheckPoint = false;
-        }      
-    } 
+        }
+
+        if(collision.CompareTag("OldMan"))
+        {
+            isOldMan = false;
+        }
+    }
+
+    IEnumerator SmolRobot()
+    {
+        yield return new WaitForSeconds(1.5f);
+        FindObjectOfType<DialogueTrigger>().StartDialogue();
+    }
+
+    IEnumerator OldMan()
+    {
+        FindObjectOfType<DialogueTrigger>().StartDialogue();
+        while (DialogueManager.isActive)
+        {
+            yield return null;
+        }
+        SceneController.instance.NextLevel();
+        respawnPoint = transform.position;
+    }
 }

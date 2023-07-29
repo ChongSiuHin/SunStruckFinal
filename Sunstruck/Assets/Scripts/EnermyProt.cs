@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnermyProt : MonoBehaviour
 {
-    private StunGun stungun;
-
     public GameObject pointA;
     public GameObject pointB;
     private Rigidbody2D rb;
@@ -43,7 +41,6 @@ public class EnermyProt : MonoBehaviour
         if (isFacingLeft)
         {
             endPos = Enemy.position + (Vector3.right * agroRange);
-            Debug.Log("is left");
         }
         else
         {
@@ -67,11 +64,11 @@ public class EnermyProt : MonoBehaviour
             anima.SetBool("Run", true);
             if (CanSeekPlayer(agroRange))
             {
-                chasing();
+                Chasing();
             }
             else
             {
-                walkAround();
+                WalkAround();
             }
         }
 
@@ -105,7 +102,7 @@ public class EnermyProt : MonoBehaviour
 
     }
 
-    public void chasing()
+    public void Chasing()
     {
             if (transform.position.x > playerTransform.position.x)
             {
@@ -118,7 +115,7 @@ public class EnermyProt : MonoBehaviour
         //}
     }
 
-    public void walkAround()
+    public void WalkAround()
     {
             
             Vector2 point = currentPoint.position - transform.position;
@@ -136,23 +133,21 @@ public class EnermyProt : MonoBehaviour
             if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f & currentPoint == pointB.transform)
             {
                 //isFacingLeft = false;
-                flip();
+                Flip();
                 currentPoint = pointA.transform;
                 if (playSound)
                 {
                     AudioManager.Instance.RobotMoving();
-                    Debug.Log("Stuning");
                 }
             }
             else if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f & currentPoint == pointA.transform)
             {
                 //isFacingLeft = true;
-                flip();
+                Flip();
                 currentPoint = pointB.transform;
                 if (playSound)
                 {
                     AudioManager.Instance.RobotMoving();
-                    Debug.Log("walking");
                 }
             }
     }
@@ -165,7 +160,7 @@ public class EnermyProt : MonoBehaviour
     //    }
     //}
 
-    private void flip()
+    private void Flip()
     {
         Vector3 localScale = transform.localScale;
         //Debug.Log("flip1");

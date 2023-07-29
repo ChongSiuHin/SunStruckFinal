@@ -17,6 +17,7 @@ public class HealthBar : MonoBehaviour
     public Image fill;
 
     public Light2D playerLight;
+    public float damageCooldown = 2f;
 
     private void Start()
     {
@@ -27,17 +28,17 @@ public class HealthBar : MonoBehaviour
         lastDamageTime = Time.time;
         fill.color = gradient.Evaluate(1f);
         SetActive(false);
-        //gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (currentHealth < maxHealth)
+        if (Time.time - lastDamageTime >= damageCooldown && currentHealth < maxHealth)
         {
             currentHealth += regenRate * Time.deltaTime;
             currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
             healthSlider.value = currentHealth;
-            //UpdateLightIntensity();
+            fill.color = gradient.Evaluate(healthSlider.normalizedValue);
+            UpdateLightIntensity();
         }
     }
 
@@ -50,19 +51,20 @@ public class HealthBar : MonoBehaviour
             healthSlider.value = currentHealth;
             lastDamageTime = Time.time;
             fill.color = gradient.Evaluate(healthSlider.normalizedValue);
-            //UpdateLightIntensity();
+            UpdateLightIntensity();
         }
     }
+
     public void SetActive(bool isActive)
     {
         gameObject.SetActive(isActive);
     }
 
-    //private void UpdateLightIntensity()
-    //{
-    //    if (playerLight != null)
-    //    {
-    //        playerLight.intensity = currentHealth / maxHealth;
-    //    }
-    //}
+    private void UpdateLightIntensity()
+    {
+        if (playerLight != null)
+        {
+            playerLight.intensity = currentHealth / maxHealth;
+        }
+    }
 }

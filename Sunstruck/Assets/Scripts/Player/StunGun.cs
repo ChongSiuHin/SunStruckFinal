@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class StunGun : MonoBehaviour
 {
-    [SerializeField] private int ammo;
+    public int ammo;
     [SerializeField] private float stunDuration;
     [SerializeField] private float useDuration;
+    [SerializeField] private GameObject popUpKey;
 
     public bool stunEnemy;
     public bool hit;
@@ -18,12 +19,17 @@ public class StunGun : MonoBehaviour
     private float useTimer;
     private Collider2D enemyCollider;
     private Collider2D playerCollider;
+    private bool isCharging = false;
+    public bool isFire;
+    private bool shouldStopCharging = false;
 
     // Start is called before the first frame update
     void Start()
     {
         stunTimer = stunDuration;
         useTimer = useDuration;
+        isFire = false;
+        stunEnemy = false;
     }
 
     // Update is called once per frame
@@ -32,26 +38,22 @@ public class StunGun : MonoBehaviour
         if (hit)
         {
             useTimer -= 1 * Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.F) && useTimer > 0)
+            if (Input.GetKeyDown(KeyCode.J) && useTimer > 0 && !isFire)
             {
                 hitsCount++;
-                Debug.Log("Stun Enemy");
+                isFire = true;
                 stunEnemy = true;
                 if (stunEnemy)
                 {
                     AudioManager.Instance.StunGunF();
                     AudioManager.Instance.RobotStuning();
-                    Debug.Log("stunning");
                     Physics2D.IgnoreCollision(enemyCollider, playerCollider, true);
                     GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 }
                 ammo--;
                 useTimer = useDuration;
-
-                if (hitsCount <= maxHits)
-                {
-                    circles[hitsCount - 1].SetActive(false);
-                }
+                UpdateAmmoUI(ammo);
+                popUpKey.SetActive(false);
             }
             else if (useTimer <= 0)
             {
@@ -62,6 +64,7 @@ public class StunGun : MonoBehaviour
                 }
                 useTimer = useDuration;
                 hit = false;
+                popUpKey.SetActive(false);
             }
         }
 
@@ -76,7 +79,9 @@ public class StunGun : MonoBehaviour
             hit = false;
             stunTimer = stunDuration;
             Physics2D.IgnoreCollision(enemyCollider, playerCollider, false);
+            isFire = false;
         }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -89,22 +94,65 @@ public class StunGun : MonoBehaviour
             {
                 hit = true;
                 GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-                //if (Input.GetKeyDown(KeyCode.F) && useTimer > 0)
-                //{
-                //    stunEnemy = true;
-                //    if (stunEnemy)
-                //        Physics2D.IgnoreCollision(enemyCollider, playerCollider, true);
-                //    ammo--;
-                //    useTimer = useDuration;
-                //}
-                //else if(useTimer <= 0)
-                //{
-                //    transform.position = this.GetComponent<CheckpointRespawn>().respawnPoint;
-                //    useTimer = useDuration;
-                //}                 
+                popUpKey.SetActive(true);
             }
             else
                 transform.position = this.GetComponent<CheckpointRespawn>().respawnPoint;
+        }
+    }
+
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("ChargingStation"))
+        {
+            shouldStopCharging = false;
+            StartCoroutine(ChargeStunGun());
+        }
+    }
+
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("ChargingStation") && !isCharging && ammo < maxHits)
+        {
+            shouldStopCharging = false;
+            StartCoroutine(ChargeStunGun());
+        }
+    }
+
+    IEnumerator ChargeStunGun()
+    {
+        isCharging = true;
+
+            while (ammo < maxHits && !shouldStopCharging)
+        {
+            yield return new WaitForSeconds(2);
+
+            ammo++;
+            if (hitsCount > 0)
+            {
+                hitsCount--;
+            }
+
+            UpdateAmmoUI(ammo);
+        }
+        isCharging = false;
+    }
+
+    public void UpdateAmmoUI(int ammo)
+    {
+        for (int i = 0; i < circles.Length; i++)
+        {
+            circles[i].SetActive(i < ammo);
+        }
+
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("ChargingStation"))
+        {
+            shouldStopCharging = true;
         }
     }
 }

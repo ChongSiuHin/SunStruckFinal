@@ -17,50 +17,48 @@ public class HidingMechanism : MonoBehaviour
     public void Start()
     {
         targetRB = targetObject.GetComponent<Rigidbody2D>();
-        //Debug.Log(isHiding);
     }
     // Update is called once per frame
     void Update()
     {
-        if (hideAllow && Input.GetKeyDown(KeyCode.F))
+        if (hideAllow && Input.GetKeyDown(KeyCode.J))
         {
             isHiding = true;
             isHide = true;
             HideVelocity();
             this.GetComponent<BoxCollider2D>().isTrigger = true;
             this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            //anima.SetBool("IsHiding", true);
             this.GetComponent<SpriteRenderer>().enabled = false;
+            AudioManager.Instance.StopCurrentSound();
         }
-        else if (Input.GetKeyUp(KeyCode.F))
+        else if (Input.GetKeyUp(KeyCode.J))
         {
-            cancelHiding();
+            CancelHiding();
         }
 
-        if (hideAllow2 && Input.GetKeyDown(KeyCode.F))
+        if (hideAllow2 && Input.GetKeyDown(KeyCode.J))
         {
             isHiding = true;
             isHide2 = true;
             HideVelocity();
             this.GetComponent<BoxCollider2D>().isTrigger = true;
             this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            //anima.SetBool("IsHiding", true);
             this.GetComponent<SpriteRenderer>().enabled = false;
+            AudioManager.Instance.StopCurrentSound();
         }
-        else if (Input.GetKeyUp(KeyCode.F))
+        else if (Input.GetKeyUp(KeyCode.J))
         {
-            cancelHiding();
+            CancelHiding();
         }
     }
 
-    public void cancelHiding()
+    public void CancelHiding()
     {
         isHiding = false;
         isHide = false;
         isHide2 = false;
         this.GetComponent<BoxCollider2D>().isTrigger = false;
         this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        //anima.SetBool("IsHiding", false);
         this.GetComponent<SpriteRenderer>().enabled = true;
         ShowVelocity();
     }
@@ -92,7 +90,6 @@ public class HidingMechanism : MonoBehaviour
     {
         if (targetRB != null)
         {
-            //AudioManager.Instance.Hiding();
             originalVelocity = targetRB.velocity;
             targetRB.velocity = Vector2.zero;
         }

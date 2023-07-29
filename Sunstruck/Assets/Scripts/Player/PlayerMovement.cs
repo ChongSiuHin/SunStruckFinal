@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] public float speed;
+    public float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float climbSpeed;
     [SerializeField] private LayerMask groundLayer;
@@ -22,8 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private HidingMechanism hide;
     private InteractionSystem interactionSystem;
     private bool PKJump;
-
-    private bool canJumpFromClimbable = false;
+    private Transform playerTrans;
+    private GameObject currentTriggerObj;
 
     private void Awake()
     {
@@ -31,19 +31,25 @@ public class PlayerMovement : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         hide = GetComponent<HidingMechanism>();
+        playerTrans = GetComponent<Transform>();
         playerRb.gravityScale = 3f;
     }
     private void Update()
     {
-        PKJump = interactionSystem.PKJump;
-        horizontal = Input.GetAxis("Horizontal");
-        if(hide.isHiding)
+        if (DialogueManager.isActive)
         {
-
+            playerRb.bodyType = RigidbodyType2D.Static;
+            return;
         }
         else
+            playerRb.bodyType = RigidbodyType2D.Dynamic;
+            
+
+        PKJump = interactionSystem.PKJump;
+        horizontal = Input.GetAxis("Horizontal");
+        if(!hide.isHiding)
         {
-            walk();
+            Walk();
         }
     }
 
@@ -52,23 +58,16 @@ public class PlayerMovement : MonoBehaviour
         if (isClimbing)
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
+            playerRb.gravityScale = 0f;
         }
         else
         {
-            //walk();
             playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
+            playerRb.gravityScale = 3f;
         }
-        playerRb.gravityScale = 3f;
-        //if (isClimbing)
-        //{
-        //    playerRb.gravityScale = 0f;
-        //    playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
-        //}
-        //else
-        //    playerRb.gravityScale = 3f;
     }
 
-    private bool isGrounded()
+    private bool IsGrounded()
     {
         RaycastHit2D hitGround = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return hitGround.collider != null;
@@ -77,8 +76,11 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Climable"))
+        {
+            currentTriggerObj = collision.gameObject;
             isLadder = true;
             isClimbing = true;
+        }     
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -101,7 +103,16 @@ public class PlayerMovement : MonoBehaviour
             Platform = false;
         }
     }
-    private void walk()
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (isClimbing)
+        {
+            playerTrans.position = new Vector3(currentTriggerObj.transform.position.x, playerTrans.position.y, playerTrans.position.z);
+        }
+    }
+
+    private void Walk()
     {
         playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
 
@@ -130,7 +141,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.localScale = new Vector2(-1, 1);
             }
-            //AudioManager.Instance.StopCurrentSound();
         }
         else
         {
@@ -141,11 +151,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded() && PKJump)
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() && PKJump)
         {
             isClimbing = false;
-            AudioManager.Instance.PlayJumpSound();
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
+            AudioManager.Instance.PlayJumpSound();
         }
         else if(Input.GetKeyDown(KeyCode.Space) && isLadder)
         {
@@ -153,15 +163,7 @@ public class PlayerMovement : MonoBehaviour
             AudioManager.Instance.PlayJumpSound();
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
         }
-        verticle = Input.GetAxis("Vertical");
 
-        //if (isLadder && (verticle > 0f || verticle < 0f))
-        //{
-        //    isClimbing = true;
-        //}
-        //else if (isLadder)
-        //{
-        //    isClimbing = true;
-        //}
+        verticle = Input.GetAxis("Vertical");
     }
 }
