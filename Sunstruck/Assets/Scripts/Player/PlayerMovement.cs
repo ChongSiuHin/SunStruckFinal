@@ -64,14 +64,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isClimbing)
         {
-            AudioManager.Instance.CLimbingRope();
             playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
+            playerRb.gravityScale = 0f;
+            AudioManager.Instance.CLimbingRope();
         }
         else
         {
+            playerRb.gravityScale = 3f;
             playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
         }
-        playerRb.gravityScale = 3f;
+        
     }
 
     private bool isGrounded()
@@ -84,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("Climable"))
         {
+            currentTriggerObj = collision.gameObject;
             isLadder = true;
             isClimbing = true;
         }     
@@ -153,7 +156,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isRunning)
             {
-                Debug.Log("WasStop");
                 isRunning = false;
                 AudioManager.Instance.StopCurrentSound();
             }
@@ -162,14 +164,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded() && PKJump)
         {
             isClimbing = false;
-            AudioManager.Instance.PlayJumpSound();
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
+            AudioManager.Instance.PlayJumpSound();
         }
         else if(Input.GetKeyDown(KeyCode.Space) && isLadder)
         {
-            isClimbing = false;
-            AudioManager.Instance.PlayJumpSound();
+            isClimbing = false;         
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
+            AudioManager.Instance.PlayJumpSound();
         }
         verticle = Input.GetAxis("Vertical");
 

@@ -26,6 +26,23 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = string.Empty;
     }
 
+    private void FixedUpdate()
+    {
+        //    //Triggering next sentence
+        if (Input.anyKeyDown)
+        {
+            if (dialogueText.text == sentenceToDisplay.sentence)
+            {
+                NextSentence();
+            }
+            else
+            {
+                StopAllCoroutines();
+                dialogueText.text = sentenceToDisplay.sentence;
+            }
+        }
+    }
+
     public void OpenDialogue(Sentence[] sentences, Actor[] actors)
     {
         anim.SetBool("IsOpen", true);
@@ -53,7 +70,7 @@ public class DialogueManager : MonoBehaviour
         activeSentence++;
         if(activeSentence < currentSentences.Length)
         {
-            dialogueText.text = string.Empty;
+            //dialogueText.text = string.Empty;
             DisplaySentence();
         }
         else
@@ -79,22 +96,5 @@ public class DialogueManager : MonoBehaviour
         background.SetActive(false);
 
         isActive = false;
-    }
-
-    private void Update()
-    {
-        //    //Triggering next sentence
-        if (Input.anyKeyDown)
-        {
-            if (dialogueText.text == sentenceToDisplay.sentence)
-            {
-                NextSentence();
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogueText.text = sentenceToDisplay.sentence;
-            }
-        }
-    }
+    } 
 }

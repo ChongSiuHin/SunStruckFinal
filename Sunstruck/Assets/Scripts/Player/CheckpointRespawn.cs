@@ -10,8 +10,10 @@ public class CheckpointRespawn : MonoBehaviour
     public Vector3 respawnPoint;
     public bool isCheckPoint;
     public bool isOldMan;
-    private bool activable;
+    private bool activable = true;
     private int i = 0;
+
+    private DialogueTrigger dTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,7 @@ public class CheckpointRespawn : MonoBehaviour
             }
             else
             {
-                FindObjectOfType<DialogueTrigger>().StartDialogue();
+                dTrigger.StartDialogue();
             }    
         }
 
@@ -56,11 +58,13 @@ public class CheckpointRespawn : MonoBehaviour
         else if(collision.CompareTag("Checkpoint"))
         {
             isCheckPoint = true;
+            dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
         }
         
         else if(collision.CompareTag("OldMan") && GetComponent<InteractionSystem>().pickUpStunGun)
         {
             isOldMan = true;
+            dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
         } 
     }
 
@@ -80,12 +84,12 @@ public class CheckpointRespawn : MonoBehaviour
     IEnumerator SmolRobot()
     {
         yield return new WaitForSeconds(1.5f);
-        FindObjectOfType<DialogueTrigger>().StartDialogue();
+        dTrigger.StartDialogue();
     }
 
     IEnumerator OldMan()
     {
-        FindObjectOfType<DialogueTrigger>().StartDialogue();
+        dTrigger.StartDialogue();
         while (DialogueManager.isActive)
         {
             yield return null;

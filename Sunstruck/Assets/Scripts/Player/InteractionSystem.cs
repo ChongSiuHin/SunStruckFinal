@@ -33,7 +33,7 @@ public class InteractionSystem : MonoBehaviour
         }
         else
         {
-            Debug.LogError("UIManager object not found in the scene!");
+            Debug.Log("UIManager object not found in the scene!");
         }
     }
 
@@ -94,6 +94,7 @@ public class InteractionSystem : MonoBehaviour
             if (!pickUpStunGun)
             {
                 SceneController.instance.Cutscene();
+                StartCoroutine(StunGunDialogue(obj));
                 AudioManager.Instance.StunGunP();
             }
             pickUpStunGun = true;
@@ -140,6 +141,11 @@ public class InteractionSystem : MonoBehaviour
         }
     }
 
+    IEnumerator StunGunDialogue(GameObject obj)
+    {
+        yield return new WaitForSeconds(10.5f);
+        obj.GetComponent<DialogueTrigger>().StartDialogue();
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
