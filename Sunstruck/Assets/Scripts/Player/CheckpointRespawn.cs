@@ -36,7 +36,7 @@ public class CheckpointRespawn : MonoBehaviour
             }
             else
             {
-                FindObjectOfType<DialogueManager>().StartDialogue();
+                FindObjectOfType<DialogueTrigger>().StartDialogue();
             }    
         }
 
@@ -80,13 +80,13 @@ public class CheckpointRespawn : MonoBehaviour
     IEnumerator SmolRobot()
     {
         yield return new WaitForSeconds(1.5f);
-        FindObjectOfType<DialogueManager>().StartDialogue();
+        FindObjectOfType<DialogueTrigger>().StartDialogue();
     }
 
     IEnumerator OldMan()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue();
-        while (FindObjectOfType<DialogueManager>().DialogueOn)
+        FindObjectOfType<DialogueTrigger>().StartDialogue();
+        while (DialogueManager.isActive)
         {
             yield return null;
         }

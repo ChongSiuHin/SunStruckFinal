@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -9,84 +10,51 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public float textSpeed;
-    public bool DialogueOn;
 
-    private GameObject dialogueBox;
-    private Animator anim;
-    private bool Checkpoint;
-    private bool OldMan;
-    public Dialogue dialogue;
+    public Animator anim;
+    public Image actorImage;
 
-    private int index;
+    Sentence[] currentSentences;
+    Actor[] currentActors;
+    private Sentence sentenceToDisplay;
 
-    // Start is called before the first frame update
+    public static bool isActive = false;
+    int activeSentence = 0;
+
     void Start()
     {
         dialogueText.text = string.Empty;
-        DialogueOn = false;
     }
 
-    // Update is called once per frameZ
-    void Update()
+    public void OpenDialogue(Sentence[] sentences, Actor[] actors)
     {
-        Checkpoint = FindObjectOfType<CheckpointRespawn>().isCheckPoint;
-        if(Checkpoint)
-        {
-            dialogueBox = GameObject.FindGameObjectWithTag("DialogueCheckpoint");
-        }
-
-        OldMan = FindObjectOfType<CheckpointRespawn>().isOldMan;
-        if (OldMan)
-        {
-            dialogueBox = GameObject.FindGameObjectWithTag("DialogueOldMan");
-        }
-
-        anim = dialogueBox.GetComponentInChildren<Animator>();
-
-        //Triggering next sentence
-        if (Input.anyKeyDown)
-        {
-            if(dialogueText.text == dialogue.sentences[index])
-            {
-                DisplayNextSentence();
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogueText.text = dialogue.sentences[index];
-            }  
-        }
-
-        nameText.text = dialogue.name;
-    }
-
-    public void StartDialogue()
-    {
-        DialogueOn = true;
-        nameText.text = dialogue.name;
-
-        if (Checkpoint)
-        {
-            anim.SetBool("IsOpenSmol", true);
-        }
-        else if (OldMan)
-        {
-            anim.SetBool("IsOpenOldMan", true);
-        }
-        
+        anim.SetBool("IsOpen", true);
+        currentSentences = sentences;
+        currentActors = actors;
+        activeSentence = 0;
+        isActive = true;
         background.SetActive(true);
-        index = 0;
 
-        StartCoroutine(TypeSentence());
+        DisplaySentence();
     }
 
-    public void DisplayNextSentence()
+    void DisplaySentence()
     {
-        if(index < dialogue.sentences.Length - 1)
+        sentenceToDisplay = currentSentences[activeSentence];
+        StartCoroutine(TypeSentence());
+
+        Actor actorToDisplay = currentActors[sentenceToDisplay.actorId];
+        nameText.text = actorToDisplay.name;
+        actorImage.sprite = actorToDisplay.sprite;
+    }
+
+    public void NextSentence()
+    {
+        activeSentence++;
+        if(activeSentence < currentSentences.Length)
         {
-            index++;
             dialogueText.text = string.Empty;
-            StartCoroutine(TypeSentence());
+            DisplaySentence();
         }
         else
         {
@@ -97,7 +65,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence()
     {
         dialogueText.text = "";
-        foreach(char letter in dialogue.sentences[index].ToCharArray())
+        foreach (char letter in sentenceToDisplay.sentence.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(textSpeed);
@@ -106,17 +74,27 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        if (Checkpoint)
-        {
-            anim.SetBool("IsOpenSmol", false);
-        }
-        else if (OldMan)
-        {
-            anim.SetBool("IsOpenOldMan", false);
-        }
+        anim.SetBool("IsOpen", false);
 
         background.SetActive(false);
 
-        DialogueOn = false;
+        isActive = false;
+    }
+
+    private void Update()
+    {
+        //    //Triggering next sentence
+        if (Input.anyKeyDown)
+        {
+            if (dialogueText.text == sentenceToDisplay.sentence)
+            {
+                NextSentence();
+            }
+            else
+            {
+                StopAllCoroutines();
+                dialogueText.text = sentenceToDisplay.sentence;
+            }
+        }
     }
 }

@@ -36,6 +36,15 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (DialogueManager.isActive)
+        {
+            playerRb.bodyType = RigidbodyType2D.Static;
+            return;
+        }
+        else
+            playerRb.bodyType = RigidbodyType2D.Dynamic;
+            
+
         PKJump = interactionSystem.PKJump;
         horizontal = Input.GetAxis("Horizontal");
         if(!hide.isHiding)

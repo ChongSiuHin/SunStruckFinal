@@ -3398,10 +3398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3238206f6cda34e8c94135b0dd798a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 1304927235}
-  settingMenu: {fileID: 57755817}
-  backgroundMusic: {fileID: 0}
-  WalkingMusic: {fileID: 0}
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6485,50 +6481,11 @@ Transform:
   m_Father: {fileID: 899960585}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1227288255 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1062863676560047137, guid: e8e0a039dd66cb247b5b8f92129a4a05, type: 3}
-  m_PrefabInstance: {fileID: 3890808482766986804}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1227288256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6562310969260641607, guid: e8e0a039dd66cb247b5b8f92129a4a05, type: 3}
   m_PrefabInstance: {fileID: 3890808482766986804}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1227288259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227288255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5baaf40cc8a5df40a874e57e6031915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nSprite: {fileID: -1557739476, guid: 74bc0367b87b939468b82270744080fc, type: 3}
-  anima: {fileID: 1227288260}
---- !u!95 &1227288260
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227288255}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b87aecaedb854c744ab5ee485edd93b8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1239026659
 GameObject:
   m_ObjectHideFlags: 0
@@ -18875,22 +18832,6 @@ PrefabInstance:
     - target: {fileID: 1062863676560047137, guid: e8e0a039dd66cb247b5b8f92129a4a05, type: 3}
       propertyPath: m_Name
       value: TrashCan_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1062863676560047137, guid: e8e0a039dd66cb247b5b8f92129a4a05, type: 3}
-      propertyPath: m_TagString
-      value: Hidepoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 5204126662234009045, guid: e8e0a039dd66cb247b5b8f92129a4a05, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6541395097802095778, guid: e8e0a039dd66cb247b5b8f92129a4a05, type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6541395097802095778, guid: e8e0a039dd66cb247b5b8f92129a4a05, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -83152153
       objectReference: {fileID: 0}
     - target: {fileID: 6562310969260641607, guid: e8e0a039dd66cb247b5b8f92129a4a05, type: 3}
       propertyPath: m_RootOrder
