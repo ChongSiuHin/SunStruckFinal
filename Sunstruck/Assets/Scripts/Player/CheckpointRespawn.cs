@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckpointRespawn : MonoBehaviour
 {
@@ -13,9 +14,8 @@ public class CheckpointRespawn : MonoBehaviour
     private bool activable = true;
     private int i = 0;
 
-    private DialogueTrigger dTrigger;
+    public DialogueTrigger dTrigger;
 
-    // Start is called before the first frame update
     void Start()
     {
         respawnPoint = transform.position;
