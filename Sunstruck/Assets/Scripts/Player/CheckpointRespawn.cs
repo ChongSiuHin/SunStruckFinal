@@ -12,7 +12,6 @@ public class CheckpointRespawn : MonoBehaviour
     public bool isCheckPoint;
     public bool isOldMan;
     private bool activable = true;
-    private int i = 0;
 
     public DialogueTrigger dTrigger;
     public static GameObject currentTriggerObj;
@@ -29,13 +28,12 @@ public class CheckpointRespawn : MonoBehaviour
         if(isCheckPoint && Input.GetKeyDown(KeyCode.J))
         {
             respawnPoint = transform.position;
-            checkpoint[i].GetComponent<Animator>().SetTrigger("Activate");
-            i++;
+            currentTriggerObj.GetComponent<Animator>().SetTrigger("Activate");
             if (activable)
             {
-                AudioManager.Instance.RespawnPoint();
                 StartCoroutine(SmolRobot());
                 activable = false;
+                AudioManager.Instance.RespawnPoint();
             }
             else
             {

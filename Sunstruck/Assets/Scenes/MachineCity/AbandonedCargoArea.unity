@@ -6882,7 +6882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9fd82561073d34099c327c0334e865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objWithIdleSentence: {fileID: 1528874059}
   background: {fileID: 218017725}
   nameText: {fileID: 1042611289}
   dialogueText: {fileID: 518622712}
@@ -12421,6 +12420,7 @@ MonoBehaviour:
   - name: Theoby
     sprite: {fileID: -1466312166, guid: a5ff23e631d633e49b499fc4ce2efeb6, type: 3}
   hasIdleSentence: 1
+  isRepeat: 0
   idleSentences:
   - actorId: 0
     idleSentence: Why are you still here? GO!!!! Your sister needs you.
@@ -12934,6 +12934,7 @@ MonoBehaviour:
   - name: Theoby
     sprite: {fileID: -1466312166, guid: a5ff23e631d633e49b499fc4ce2efeb6, type: 3}
   hasIdleSentence: 0
+  isRepeat: 0
   idleSentences: []
 --- !u!1 &1647828562
 GameObject:
