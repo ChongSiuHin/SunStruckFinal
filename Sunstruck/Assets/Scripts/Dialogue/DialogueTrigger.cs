@@ -7,11 +7,12 @@ public class DialogueTrigger : MonoBehaviour
     public Sentence[] sentences;
     public Actor[] actors;
     public bool hasIdleSentence;
+    public bool isRepeat = false;
     public IdleSentence[] idleSentences;
 
     public void StartDialogue()
     {
-        FindObjectOfType<DialogueManager>().OpenDialogue(sentences, actors, idleSentences);
+        FindObjectOfType<DialogueManager>().OpenDialogue(sentences, actors, idleSentences, isRepeat);
     }
 }
 

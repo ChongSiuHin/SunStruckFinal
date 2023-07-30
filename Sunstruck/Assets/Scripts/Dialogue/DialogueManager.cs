@@ -17,15 +17,14 @@ public class DialogueManager : MonoBehaviour
     Sentence[] currentSentences;
     Actor[] currentActors;
     IdleSentence[] currentIdleSentences;
-    //private Sentence sentenceToDisplay;
 
     public static bool isActive = false;
-    public static bool isRepeat = false;
     int activeSentence = 0;
 
     void Start()
     {
         dialogueText.text = string.Empty;
+        currentIdleSentences = CheckpointRespawn.currentTriggerObj.GetComponent<DialogueTrigger>().idleSentences;
     }
 
     private void Update()
@@ -33,16 +32,32 @@ public class DialogueManager : MonoBehaviour
         //    //Triggering next sentence
         if (Input.anyKeyDown)
         {
-            if (isRepeat)
+            if (CheckpointRespawn.currentTriggerObj.GetComponent<DialogueTrigger>().hasIdleSentence)
             {
-                if (dialogueText.text == currentIdleSentences[activeSentence].idleSentence)
+                if (CheckpointRespawn.currentTriggerObj.GetComponent<DialogueTrigger>().isRepeat)
                 {
-                    NextIdleSentence();
+                    if (dialogueText.text == currentIdleSentences[activeSentence].idleSentence)
+                    {
+                        NextIdleSentence();
+                    }
+                    else
+                    {
+                        StopAllCoroutines();
+                        dialogueText.text = currentIdleSentences[activeSentence].idleSentence;
+                    }
                 }
                 else
                 {
-                    StopAllCoroutines();
-                    dialogueText.text = currentIdleSentences[activeSentence].idleSentence;
+                    Debug.Log(currentSentences[activeSentence].sentence);
+                    if (dialogueText.text == currentSentences[activeSentence].sentence)
+                    {
+                        NextSentence();
+                    }
+                    else
+                    {
+                        StopAllCoroutines();
+                        dialogueText.text = currentSentences[activeSentence].sentence;
+                    }
                 }
             }
             else
@@ -58,15 +73,16 @@ public class DialogueManager : MonoBehaviour
                 }
             }
         }
-        
+            
     }
 
-    public void OpenDialogue(Sentence[] sentences, Actor[] actors, IdleSentence[] idleSentences)
+    public void OpenDialogue(Sentence[] sentences, Actor[] actors, IdleSentence[] idleSentences, bool isRepeat)
     {
         anim.SetBool("IsOpen", true);
         isActive = true;
         background.SetActive(true);
         activeSentence = 0;
+
         if (!isRepeat)
         {
             currentSentences = sentences;
@@ -150,9 +166,9 @@ public class DialogueManager : MonoBehaviour
 
         isActive = false;
 
-        if (FindObjectOfType<DialogueTrigger>().hasIdleSentence)
+        if (CheckpointRespawn.currentTriggerObj.GetComponent<DialogueTrigger>().hasIdleSentence)
         {
-            isRepeat = true;
+            CheckpointRespawn.currentTriggerObj.GetComponent<DialogueTrigger>().isRepeat = true;
         }
     } 
 }

@@ -15,6 +15,7 @@ public class CheckpointRespawn : MonoBehaviour
     private int i = 0;
 
     public DialogueTrigger dTrigger;
+    public static GameObject currentTriggerObj;
 
     void Start()
     {
@@ -59,12 +60,14 @@ public class CheckpointRespawn : MonoBehaviour
         {
             isCheckPoint = true;
             dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
+            currentTriggerObj = collision.gameObject;
         }
         
         else if(collision.CompareTag("OldMan") && GetComponent<InteractionSystem>().pickUpStunGun)
         {
             isOldMan = true;
             dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
+            currentTriggerObj = collision.gameObject;
         } 
     }
 
@@ -84,6 +87,7 @@ public class CheckpointRespawn : MonoBehaviour
     IEnumerator SmolRobot()
     {
         yield return new WaitForSeconds(1.5f);
+        Debug.Log("Start");
         dTrigger.StartDialogue();
     }
 
