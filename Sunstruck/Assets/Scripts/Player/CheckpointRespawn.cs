@@ -12,9 +12,9 @@ public class CheckpointRespawn : MonoBehaviour
     public bool isCheckPoint;
     public bool isOldMan;
     private bool activable = true;
-    private int i = 0;
 
     public DialogueTrigger dTrigger;
+    public static GameObject currentTriggerObj;
 
     void Start()
     {
@@ -28,13 +28,12 @@ public class CheckpointRespawn : MonoBehaviour
         if(isCheckPoint && Input.GetKeyDown(KeyCode.J))
         {
             respawnPoint = transform.position;
-            checkpoint[i].GetComponent<Animator>().SetTrigger("Activate");
-            i++;
+            currentTriggerObj.GetComponent<Animator>().SetTrigger("Activate");
             if (activable)
             {
-                AudioManager.Instance.RespawnPoint();
                 StartCoroutine(SmolRobot());
                 activable = false;
+                AudioManager.Instance.RespawnPoint();
             }
             else
             {
@@ -59,12 +58,14 @@ public class CheckpointRespawn : MonoBehaviour
         {
             isCheckPoint = true;
             dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
+            currentTriggerObj = collision.gameObject;
         }
         
         else if(collision.CompareTag("OldMan") && GetComponent<InteractionSystem>().pickUpStunGun)
         {
             isOldMan = true;
             dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
+            currentTriggerObj = collision.gameObject;
         } 
     }
 
@@ -84,6 +85,7 @@ public class CheckpointRespawn : MonoBehaviour
     IEnumerator SmolRobot()
     {
         yield return new WaitForSeconds(1.5f);
+        Debug.Log("Start");
         dTrigger.StartDialogue();
     }
 
