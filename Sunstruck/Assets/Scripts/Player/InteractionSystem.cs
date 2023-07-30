@@ -9,6 +9,7 @@ public class InteractionSystem : MonoBehaviour
     [SerializeField] private LayerMask movableObj;
     [SerializeField] private LayerMask interactableObj;
     [SerializeField] private GameObject stunGun;
+    [SerializeField] private GameObject castPoint;
     
     public bool pickUpStunGun = false;
     public bool pickUpSuit = false;
@@ -40,7 +41,7 @@ public class InteractionSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hitbox = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance, movableObj);
+        RaycastHit2D hitbox = Physics2D.Raycast(castPoint.transform.position, Vector2.right * castPoint.transform.localScale.x, distance, movableObj);
         RaycastHit2D hititem = Physics2D.BoxCast(playerBox.bounds.center, playerBox.size, 0, Vector2.zero, 0, interactableObj);
         
         if(hitbox.collider != null)
@@ -48,13 +49,15 @@ public class InteractionSystem : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.J))
             {
                 PKJump = false;
-                AudioManager.Instance.PushBox();
+                
                 box = hitbox.collider.gameObject;
 
                 box.GetComponent<FixedJoint2D>().enabled = true;
                 box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
                 box.GetComponent<StaticBox>().beingMove = true;
                 this.GetComponent<PlayerMovement>().speed /= 2f;
+
+                AudioManager.Instance.PushBox();
             }
             if (Input.GetKeyUp(KeyCode.J))
             {
@@ -149,6 +152,6 @@ public class InteractionSystem : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position,(Vector2)transform.position + Vector2.right * transform.localScale.x * distance);
+        Gizmos.DrawLine(castPoint.transform.position, (Vector2)castPoint.transform.position + Vector2.right * castPoint.transform.localScale.x * distance);
     }
 }
