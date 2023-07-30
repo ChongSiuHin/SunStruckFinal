@@ -842,7 +842,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Robot_Sprite_Anim_Scan2-Sheet_31: -1592139231
-      Robot_Sprite_Anim_Scan2-Sheet_26: 619848510
+      Robot_Sprite_Anim_Scan2-Sheet_32: -1170965162
       Robot_Sprite_Anim_Scan2-Sheet_12: 511929575
       Robot_Sprite_Anim_Scan2-Sheet_25: 356416649
       Robot_Sprite_Anim_Scan2-Sheet_6: -1114262928
@@ -871,10 +871,10 @@ TextureImporter:
       Robot_Sprite_Anim_Scan2-Sheet_20: -1493716048
       Robot_Sprite_Anim_Scan2-Sheet_17: -1444720862
       Robot_Sprite_Anim_Scan2-Sheet_3: 1783134224
-      Robot_Sprite_Anim_Scan2-Sheet_4: -542943596
+      Robot_Sprite_Anim_Scan2-Sheet_26: 619848510
       Robot_Sprite_Anim_Scan2-Sheet_24: -597116848
       Robot_Sprite_Anim_Scan2-Sheet_18: 328525632
-      Robot_Sprite_Anim_Scan2-Sheet_32: -1170965162
+      Robot_Sprite_Anim_Scan2-Sheet_4: -542943596
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
