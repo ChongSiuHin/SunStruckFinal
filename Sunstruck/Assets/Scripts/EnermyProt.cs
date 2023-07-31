@@ -75,7 +75,12 @@ public class EnermyProt : MonoBehaviour
                 if (!isPausing)
                 {
                     anima.SetBool("Run", true);
+                    anima.SetBool("Scanning", false);
                     walkAround();
+                }
+                else if (isPausing)
+                {
+                    anima.SetBool("Scanning", true);
                 }
             }
         }
@@ -141,6 +146,7 @@ public class EnermyProt : MonoBehaviour
 
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f & currentPoint == pointB.transform)
             {
+                //anima.SetBool("Scanning", true);
                 StartCoroutine(PauseBeforeMoving());
                 currentPoint = pointA.transform;
                 if (playSound)
@@ -151,6 +157,7 @@ public class EnermyProt : MonoBehaviour
             }
             else if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f & currentPoint == pointA.transform)
             {
+                //anima.SetBool("Scanning", true);
                 StartCoroutine(PauseBeforeMoving());
                 currentPoint = pointB.transform;
                 if (playSound)
@@ -200,9 +207,10 @@ public class EnermyProt : MonoBehaviour
     {
         isPausing = true;
         rb.velocity = new Vector2(0, 0);
-        anima.SetBool("Run", false);
-        yield return new WaitForSeconds(1f);
+        //anima.SetBool("Run", false);
+        yield return new WaitForSeconds(4f);
         isPausing = false;
+        //anima.SetBool("Scanning", false);
         flip();
     }
 }
