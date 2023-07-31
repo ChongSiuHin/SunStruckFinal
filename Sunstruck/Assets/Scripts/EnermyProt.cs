@@ -73,8 +73,8 @@ public class EnermyProt : MonoBehaviour
             {
                 if (!isPausing)
                 {
-                    anima.SetBool("Run", true);
                     anima.SetBool("Scanning", false);
+                    anima.SetBool("Run", true);
                     walkAround();
                 }
                 else if (isPausing)
@@ -204,10 +204,9 @@ public class EnermyProt : MonoBehaviour
     {
         isPausing = true;
         rb.velocity = new Vector2(0, 0);
-        //anima.SetBool("Run", false);
+        //anima.SetBool("Scanning", true);
         yield return new WaitForSeconds(4f);
         isPausing = false;
-        //anima.SetBool("Scanning", false);
         flip();
     }
 }

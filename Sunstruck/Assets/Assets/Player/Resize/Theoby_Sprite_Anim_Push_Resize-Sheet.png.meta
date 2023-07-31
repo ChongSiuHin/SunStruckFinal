@@ -115,7 +115,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Push_Resize-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 75
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee761d16cb861814294fe460b6552866
+      internalID: 1662474267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Push_Resize-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 75
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07ad10f2ae637954a8520b2d1582a145
+      internalID: -868700567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Push_Resize-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 0
+        width: 75
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eb76a2f6aa988b4782957e0e7032617
+      internalID: -691078820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Push_Resize-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 1
+        width: 75
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba2ccac5a11bee34a8691df8ad43f28d
+      internalID: -522963163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Push_Resize-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 0
+        width: 75
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 287c9fc7e96c7084db65fb9bff10aa0b
+      internalID: 404485002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Push_Resize-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 0
+        width: 75
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d92a04fcb45d1104cb4441c37d876d31
+      internalID: 1692760169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +252,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Theoby_Sprite_Anim_Push_Resize-Sheet_3: -522963163
+      Theoby_Sprite_Anim_Push_Resize-Sheet_0: 1662474267
+      Theoby_Sprite_Anim_Push_Resize-Sheet_2: -691078820
+      Theoby_Sprite_Anim_Push_Resize-Sheet_4: 404485002
+      Theoby_Sprite_Anim_Push_Resize-Sheet_1: -868700567
+      Theoby_Sprite_Anim_Push_Resize-Sheet_5: 1692760169
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

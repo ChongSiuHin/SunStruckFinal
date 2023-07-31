@@ -115,7 +115,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Jump_Resize-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 75
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70243e5200c9677428704b42406e32b6
+      internalID: 1745997565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Jump_Resize-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 73
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bd68f2ab41ee0a4bb379a0e5463c6fd
+      internalID: 994917657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Jump_Resize-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 0
+        width: 70
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ee1fbb61d1f537498b44cad96f2729a
+      internalID: 496989836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Jump_Resize-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 0
+        width: 76
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6732e5ec0b71d894e90a3744f8569fa4
+      internalID: -2049296697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Jump_Resize-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 0
+        width: 73
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d4a471b9a7bd634bae807960a70bc63
+      internalID: 1963893917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Jump_Resize-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 0
+        width: 72
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 007206665786f9a4489725c8b8c5350c
+      internalID: 1080234106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Jump_Resize-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 0
+        width: 71
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ecd75557fbd65498613c116412d6b8
+      internalID: 442203799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Jump_Resize-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 1
+        width: 71
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a38001129c447a04a96db2276485d7eb
+      internalID: -174097049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theoby_Sprite_Anim_Jump_Resize-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 0
+        width: 67
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a311c001d2bac09489b30ab462b2a07c
+      internalID: -207003031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +315,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Theoby_Sprite_Anim_Jump_Resize-Sheet_8: -207003031
+      Theoby_Sprite_Anim_Jump_Resize-Sheet_7: -174097049
+      Theoby_Sprite_Anim_Jump_Resize-Sheet_5: 1080234106
+      Theoby_Sprite_Anim_Jump_Resize-Sheet_3: -2049296697
+      Theoby_Sprite_Anim_Jump_Resize-Sheet_0: 1745997565
+      Theoby_Sprite_Anim_Jump_Resize-Sheet_1: 994917657
+      Theoby_Sprite_Anim_Jump_Resize-Sheet_2: 496989836
+      Theoby_Sprite_Anim_Jump_Resize-Sheet_6: 442203799
+      Theoby_Sprite_Anim_Jump_Resize-Sheet_4: 1963893917
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

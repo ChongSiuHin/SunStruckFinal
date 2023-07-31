@@ -18,6 +18,7 @@ public class InteractionSystem : MonoBehaviour
     private UIController uiController;
     private StunGun stunGunScript;
     public bool PKJump = true;
+    public Animator anima;
 
     private bool switchAllow;
     private bool isSwitchedOn;
@@ -57,7 +58,7 @@ public class InteractionSystem : MonoBehaviour
                 PKJump = false;
                 
                 box = hitbox.collider.gameObject;
-
+                anima.SetBool("Push", true);
                 box.GetComponent<FixedJoint2D>().enabled = true;
                 box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
                 box.GetComponent<StaticBox>().beingMove = true;
@@ -68,6 +69,7 @@ public class InteractionSystem : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.J))
             {
                 PKJump = true;
+                anima.SetBool("Push", false);
                 box.GetComponent<FixedJoint2D>().enabled = false;
                 box.GetComponent<StaticBox>().beingMove = false;
                 this.GetComponent<PlayerMovement>().speed = 3f;
@@ -103,8 +105,8 @@ public class InteractionSystem : MonoBehaviour
         {
             if (!pickUpStunGun)
             {
-                SceneController.instance.Cutscene();
-                StartCoroutine(StunGunDialogue(obj));
+                //SceneController.instance.Cutscene();
+                //StartCoroutine(StunGunDialogue(obj));
                 AudioManager.Instance.StunGunP();
             }
             pickUpStunGun = true;
