@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class HidingMechanism : MonoBehaviour
 {
-    public bool isHiding = false;
-    public static bool isHide = false;
+    public static bool isHiding = false;
 
     private bool hideAllow;
     private Rigidbody2D playerRb;
@@ -27,7 +26,6 @@ public class HidingMechanism : MonoBehaviour
         if (hideAllow && Input.GetKeyDown(KeyCode.J))
         {
             isHiding = true;
-            isHide = true;
             HideVelocity();
             playerRb.bodyType = RigidbodyType2D.Static;
             playerBox.enabled = false;
@@ -45,7 +43,6 @@ public class HidingMechanism : MonoBehaviour
     public void CancelHiding()
     {
         isHiding = false;
-        isHide = false;
         playerBox.enabled = true;
         playerRb.bodyType = RigidbodyType2D.Dynamic;
         playerSprite.enabled = true;

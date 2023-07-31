@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D playerRb;
     private BoxCollider2D playerCollider;
     public Animator anima;
-    private HidingMechanism hide;
     private InteractionSystem interactionSystem;
     private bool PKJump;
     private Transform playerTrans;
@@ -32,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
         interactionSystem = GetComponent<InteractionSystem>();
         playerRb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
-        hide = GetComponent<HidingMechanism>();
         playerTrans = GetComponent<Transform>();
         playerRb.gravityScale = 3f;
     }
@@ -40,13 +38,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (DialogueManager.isActive)
         {
-            playerRb.velocity = new Vector2(0, 0);
+            playerRb.bodyType = RigidbodyType2D.Static;
+            interactionSystem.enabled = false;
+            GetComponent<CheckpointRespawn>().enabled = false;
             return;
+        }
+        else if(!HidingMechanism.isHiding)
+        {
+            playerRb.bodyType = RigidbodyType2D.Dynamic;
+            interactionSystem.enabled = true;
+            GetComponent<CheckpointRespawn>().enabled = true;
         }
 
         PKJump = interactionSystem.PKJump;
         horizontal = Input.GetAxis("Horizontal");
-        if(hide.isHiding)
+        if(HidingMechanism.isHiding)
         {
 
         }

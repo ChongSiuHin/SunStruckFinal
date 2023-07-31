@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6541395097802095778}
   - component: {fileID: 5204126662234009045}
   - component: {fileID: 1227288260}
-  - component: {fileID: 1227288259}
   m_Layer: 0
   m_Name: TrashCan_1
   m_TagString: Hidepoint
@@ -133,17 +132,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1227288259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062863676560047137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5baaf40cc8a5df40a874e57e6031915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nSprite: {fileID: -1557739476, guid: 74bc0367b87b939468b82270744080fc, type: 3}
-  anima: {fileID: 1227288260}

@@ -18,7 +18,7 @@ public class InteractionSystem : MonoBehaviour
     private UIController uiController;
     private StunGun stunGunScript;
     public bool PKJump = true;
-    public Animator anima;
+    private Animator anima;
 
     private bool switchAllow;
     private bool isSwitchedOn;
@@ -34,6 +34,7 @@ public class InteractionSystem : MonoBehaviour
         playerBox = GetComponent<BoxCollider2D>();
         stunGunScript = GetComponent<StunGun>();
         cameraSystemScript = FindObjectOfType<CameraSystem>();
+        anima = GetComponent<Animator>();
         GameObject uiManagerObj = GameObject.Find("UIManager");
         if (uiManagerObj != null)
         {
@@ -105,8 +106,8 @@ public class InteractionSystem : MonoBehaviour
         {
             if (!pickUpStunGun)
             {
-                //SceneController.instance.Cutscene();
-                //StartCoroutine(StunGunDialogue(obj));
+                SceneController.instance.Cutscene();
+                StartCoroutine(StunGunDialogue(obj));
                 AudioManager.Instance.StunGunP();
             }
             pickUpStunGun = true;
@@ -157,6 +158,7 @@ public class InteractionSystem : MonoBehaviour
     IEnumerator StunGunDialogue(GameObject obj)
     {
         yield return new WaitForSeconds(10.5f);
+        CheckpointRespawn.currentTriggerObj = obj;
         obj.GetComponent<DialogueTrigger>().StartDialogue();
     }
     private void OnDrawGizmos()
