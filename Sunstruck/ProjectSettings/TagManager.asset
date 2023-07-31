@@ -18,8 +18,6 @@ TagManager:
   - ChargingStation
   - Switches
   - Offset
-  - DialogueCheckpoint
-  - DialogueOldMan
   - OldMan
   layers:
   - Default
@@ -31,7 +29,7 @@ TagManager:
   - Movable
   - Interactable
   - Rope
-  - 
+  - Action
   - 
   - 
   - 

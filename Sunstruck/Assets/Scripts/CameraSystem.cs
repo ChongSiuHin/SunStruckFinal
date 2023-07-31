@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class CameraSystem : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
-    [SerializeField] private CinemachineVirtualCamera cutsceneCam;
+    [SerializeField] private GameObject cutsceneCam;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject OldMan;
     [SerializeField] private Animator cargoAnim;
+    [SerializeField] private Animator craneAnim;
     private float hitZoomIn;
     private float offsetY;
 
@@ -23,6 +26,7 @@ public class CameraSystem : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "AbandonedCargoArea")
         {
+            OldMan.GetComponent<DialogueTrigger>().StartDialogue();
             StartCoroutine(PreviewLevelACA());
         }
         
@@ -74,14 +78,11 @@ public class CameraSystem : MonoBehaviour
         cinemachineVirtualCamera.LookAt = cargoAnim.transform;
         cinemachineVirtualCamera.Follow = cargoAnim.transform;
         yield return new WaitForSeconds(1);
-        cargoAnim.SetTrigger("Drop");
-        StartCoroutine(FollowBackPlayer());
-    }
-
-    IEnumerator FollowBackPlayer()
-    {
+        craneAnim.enabled = true;
+        yield return new WaitForSeconds(0.83f);
+        cargoAnim.enabled = true;
         ShakeCamera();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         cinemachineVirtualCamera.LookAt = player.transform;
         cinemachineVirtualCamera.Follow = player.transform;
     }
@@ -104,12 +105,19 @@ public class CameraSystem : MonoBehaviour
     IEnumerator PreviewLevelACA()
     {
         player.GetComponent<PlayerMovement>().enabled = false;
-        cutsceneCam.enabled = true;
+        while (DialogueManager.isActive)
+        {
+            yield return null;
+        }
+
+        cutsceneCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
         cinemachineVirtualCamera.enabled = false;
+        cutsceneCam.GetComponent<PlayableDirector>().enabled = true;
+        
         yield return new WaitForSeconds(20);
         player.GetComponent<PlayerMovement>().enabled = true;
         cinemachineVirtualCamera.enabled = true;
-        cutsceneCam.enabled = false;
+        cutsceneCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
     }
 
     public void ViewEnemyBelow()

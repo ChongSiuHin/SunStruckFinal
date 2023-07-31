@@ -5,6 +5,7 @@ using UnityEngine;
 public class HidingSpot2 : MonoBehaviour
 {
     [SerializeField] private Sprite nSprite;
+    private HidingMechanism checkHide;
     private bool playerCheck = false;
     public Animator anima;
     private bool hasPlayedAudio = false;
@@ -14,6 +15,8 @@ public class HidingSpot2 : MonoBehaviour
     {
         if (playerCheck)
         {
+            //checkHide = FindObjectOfType<HidingMechanism>();
+
             if (HidingMechanism.isHide2)
             {
                 if (!hasPlayedAudio)
@@ -27,6 +30,7 @@ public class HidingSpot2 : MonoBehaviour
             {
                 anima.SetBool("IsHiding1", false);
                 hasPlayedAudio = false;
+
             }
         }
     }

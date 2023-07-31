@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     private Transform playerTrans;
     private GameObject currentTriggerObj;
 
+    private bool canJumpFromClimbable = false;
+
     private void Awake()
     {
         interactionSystem = GetComponent<InteractionSystem>();
@@ -42,14 +44,19 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         else
+        {
             playerRb.bodyType = RigidbodyType2D.Dynamic;
-            
+        }
 
         PKJump = interactionSystem.PKJump;
         horizontal = Input.GetAxis("Horizontal");
-        if(!hide.isHiding)
+        if(hide.isHiding)
         {
-            Walk();
+
+        }
+        else
+        {
+            walk();
         }
     }
 
@@ -59,15 +66,17 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
             playerRb.gravityScale = 0f;
+            AudioManager.Instance.CLimbingRope();
         }
         else
         {
-            playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
             playerRb.gravityScale = 3f;
+            playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
         }
+        
     }
 
-    private bool IsGrounded()
+    private bool isGrounded()
     {
         RaycastHit2D hitGround = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return hitGround.collider != null;
@@ -112,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Walk()
+    private void walk()
     {
         playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
 
@@ -141,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.localScale = new Vector2(-1, 1);
             }
+            //AudioManager.Instance.StopCurrentSound();
         }
         else
         {
@@ -151,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() && PKJump)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded() && PKJump)
         {
             isClimbing = false;
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
@@ -159,11 +169,19 @@ public class PlayerMovement : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Space) && isLadder)
         {
-            isClimbing = false;
-            AudioManager.Instance.PlayJumpSound();
+            isClimbing = false;         
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
+            AudioManager.Instance.PlayJumpSound();
         }
-
         verticle = Input.GetAxis("Vertical");
+
+        //if (isLadder && (verticle > 0f || verticle < 0f))
+        //{
+        //    isClimbing = true;
+        //}
+        //else if (isLadder)
+        //{
+        //    isClimbing = true;
+        //}
     }
 }

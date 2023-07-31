@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnermyProt : MonoBehaviour
 {
+    private StunGun stungun;
+
     public GameObject pointA;
     public GameObject pointB;
     private Rigidbody2D rb;
@@ -20,7 +22,8 @@ public class EnermyProt : MonoBehaviour
     public float agroRange;
     public bool isPlayerSeek;
     public bool isFacingLeft = false;
-   private bool playSound;
+    private bool playSound;
+    private bool isPausing = false;
 
     public bool hitPlayer;
 
@@ -40,11 +43,11 @@ public class EnermyProt : MonoBehaviour
     {
         if (isFacingLeft)
         {
-            endPos = Enemy.position + (Vector3.right * agroRange);
+            endPos = Enemy.position + (Vector3.left * agroRange);
         }
         else
         {
-            endPos = Enemy.position + (Vector3.left * agroRange);
+            endPos = Enemy.position + (Vector3.right * agroRange);
         }
 
         if (player.GetComponent<StunGun>().hit && hitPlayer)
@@ -61,14 +64,18 @@ public class EnermyProt : MonoBehaviour
         else
         {
             playSound = true;
-            anima.SetBool("Run", true);
             if (CanSeekPlayer(agroRange))
             {
-                Chasing();
+                anima.SetBool("Run", true);
+                chasing();
             }
             else
             {
-                WalkAround();
+                if (!isPausing)
+                {
+                    anima.SetBool("Run", true);
+                    walkAround();
+                }
             }
         }
 
@@ -102,7 +109,7 @@ public class EnermyProt : MonoBehaviour
 
     }
 
-    public void Chasing()
+    public void chasing()
     {
             if (transform.position.x > playerTransform.position.x)
             {
@@ -115,25 +122,25 @@ public class EnermyProt : MonoBehaviour
         //}
     }
 
-    public void WalkAround()
+    public void walkAround()
     {
-            
-            Vector2 point = currentPoint.position - transform.position;
-            if (currentPoint == pointB.transform)
-            {
-                rb.velocity = new Vector2(speed, 0);
-                isFacingLeft = false;
-            }
-            else
-            {
-                rb.velocity = new Vector2(-speed, 0);
-                isFacingLeft = true;
-            }
+        if (isPausing) return;
 
-            if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f & currentPoint == pointB.transform)
+        Vector2 point = currentPoint.position - transform.position;
+        if (currentPoint == pointB.transform)
+        {
+            rb.velocity = new Vector2(speed, 0);
+            isFacingLeft = false;
+        }
+        else
+        {
+            rb.velocity = new Vector2(-speed, 0);
+            isFacingLeft = true;
+        }
+
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f & currentPoint == pointB.transform)
             {
-                //isFacingLeft = false;
-                Flip();
+                StartCoroutine(PauseBeforeMoving());
                 currentPoint = pointA.transform;
                 if (playSound)
                 {
@@ -142,8 +149,7 @@ public class EnermyProt : MonoBehaviour
             }
             else if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f & currentPoint == pointA.transform)
             {
-                //isFacingLeft = true;
-                Flip();
+                StartCoroutine(PauseBeforeMoving());
                 currentPoint = pointB.transform;
                 if (playSound)
                 {
@@ -152,15 +158,7 @@ public class EnermyProt : MonoBehaviour
             }
     }
 
-    //private void stun()
-    //{
-    //    if (!playSound)
-    //    {
-            
-    //    }
-    //}
-
-    private void Flip()
+    private void flip()
     {
         Vector3 localScale = transform.localScale;
         //Debug.Log("flip1");
@@ -195,11 +193,13 @@ public class EnermyProt : MonoBehaviour
         }
     }
 
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        isCollidingWithPlayer = false;
-    //    }
-    //}
+    IEnumerator PauseBeforeMoving()
+    {
+        isPausing = true;
+        rb.velocity = new Vector2(0, 0);
+        anima.SetBool("Run", false);
+        yield return new WaitForSeconds(1f);
+        isPausing = false;
+        flip();
+    }
 }

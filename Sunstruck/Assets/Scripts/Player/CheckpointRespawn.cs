@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckpointRespawn : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class CheckpointRespawn : MonoBehaviour
     public Vector3 respawnPoint;
     public bool isCheckPoint;
     public bool isOldMan;
-    private bool activable;
-    private int i = 0;
+    private bool activable = true;
 
-    // Start is called before the first frame update
+    public DialogueTrigger dTrigger;
+    public static GameObject currentTriggerObj;
+
     void Start()
     {
         respawnPoint = transform.position;
@@ -26,17 +28,16 @@ public class CheckpointRespawn : MonoBehaviour
         if(isCheckPoint && Input.GetKeyDown(KeyCode.J))
         {
             respawnPoint = transform.position;
-            checkpoint[i].GetComponent<Animator>().SetTrigger("Activate");
-            i++;
+            currentTriggerObj.GetComponent<Animator>().SetTrigger("Activate");
             if (activable)
             {
-                AudioManager.Instance.RespawnPoint();
                 StartCoroutine(SmolRobot());
                 activable = false;
+                AudioManager.Instance.RespawnPoint();
             }
             else
             {
-                FindObjectOfType<DialogueTrigger>().StartDialogue();
+                dTrigger.StartDialogue();
             }    
         }
 
@@ -56,11 +57,15 @@ public class CheckpointRespawn : MonoBehaviour
         else if(collision.CompareTag("Checkpoint"))
         {
             isCheckPoint = true;
+            dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
+            currentTriggerObj = collision.gameObject;
         }
         
         else if(collision.CompareTag("OldMan") && GetComponent<InteractionSystem>().pickUpStunGun)
         {
             isOldMan = true;
+            dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
+            currentTriggerObj = collision.gameObject;
         } 
     }
 
@@ -80,12 +85,13 @@ public class CheckpointRespawn : MonoBehaviour
     IEnumerator SmolRobot()
     {
         yield return new WaitForSeconds(1.5f);
-        FindObjectOfType<DialogueTrigger>().StartDialogue();
+        Debug.Log("Start");
+        dTrigger.StartDialogue();
     }
 
     IEnumerator OldMan()
     {
-        FindObjectOfType<DialogueTrigger>().StartDialogue();
+        dTrigger.StartDialogue();
         while (DialogueManager.isActive)
         {
             yield return null;
