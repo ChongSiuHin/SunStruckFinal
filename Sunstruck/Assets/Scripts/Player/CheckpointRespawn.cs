@@ -85,7 +85,6 @@ public class CheckpointRespawn : MonoBehaviour
     IEnumerator SmolRobot()
     {
         yield return new WaitForSeconds(1.5f);
-        Debug.Log("Start");
         dTrigger.StartDialogue();
     }
 

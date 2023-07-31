@@ -315,8 +315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHiding: 0
-  targetObject: {fileID: 6094136711215164032}
-  anima: {fileID: 6094136711215164034}
 --- !u!114 &3226677040076340680
 MonoBehaviour:
   m_ObjectHideFlags: 0

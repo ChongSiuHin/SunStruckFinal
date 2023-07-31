@@ -22,6 +22,8 @@ public class InteractionSystem : MonoBehaviour
     private bool switchAllow;
     private bool isSwitchedOn;
     private Animator currentObjAnim;
+    private CameraSystem cameraSystemScript;
+
     public bool offset;
 
     // Start is called before the first frame update
@@ -30,6 +32,7 @@ public class InteractionSystem : MonoBehaviour
         PKJump = true;
         playerBox = GetComponent<BoxCollider2D>();
         stunGunScript = GetComponent<StunGun>();
+        cameraSystemScript = FindObjectOfType<CameraSystem>();
         GameObject uiManagerObj = GameObject.Find("UIManager");
         if (uiManagerObj != null)
         {
@@ -87,7 +90,7 @@ public class InteractionSystem : MonoBehaviour
             if (!isSwitchedOn)
             {
                 stunGunScript.UpdateAmmoUI(--stunGunScript.ammo);
-                FindObjectOfType<CameraSystem>().SwitchOnCargo();
+                cameraSystemScript.SwitchOnCargo();
                 currentObjAnim.enabled = true;
                 isSwitchedOn = true;
             }
