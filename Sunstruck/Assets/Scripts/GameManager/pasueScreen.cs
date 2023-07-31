@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PasueScreen : MonoBehaviour
+public class pasueScreen : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject pauseAnimator;
     private static bool isPaused;
     public GameObject settingMenu;
     public AudioSource backgroundMusic;
@@ -14,6 +15,7 @@ public class PasueScreen : MonoBehaviour
     private void Start()
     {
         pauseMenu.SetActive(false);
+        pauseAnimator.SetActive(false);
         settingMenu.SetActive(false);
 
     }
@@ -23,7 +25,8 @@ public class PasueScreen : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(isPaused)
+            pauseAnimator.SetActive(true);
+            if (isPaused)
             {
                 ResumeGame();
             }

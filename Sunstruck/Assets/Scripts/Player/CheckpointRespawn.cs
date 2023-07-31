@@ -95,7 +95,10 @@ public class CheckpointRespawn : MonoBehaviour
         {
             yield return null;
         }
-        SceneController.instance.NextLevel();
-        respawnPoint = transform.position;
+        if(SceneManager.GetActiveScene().name != "AbandonedCargoArea")
+        {
+            SceneController.instance.NextLevel();
+            respawnPoint = transform.position;
+        }  
     }
 }

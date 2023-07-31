@@ -19,20 +19,18 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D playerRb;
     private BoxCollider2D playerCollider;
     public Animator anima;
-    private HidingMechanism hide;
     private InteractionSystem interactionSystem;
     private bool PKJump;
     private Transform playerTrans;
     private GameObject currentTriggerObj;
 
-    private bool canJumpFromClimbable = false;
+    private bool isJumping = false;
 
     private void Awake()
     {
         interactionSystem = GetComponent<InteractionSystem>();
         playerRb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
-        hide = GetComponent<HidingMechanism>();
         playerTrans = GetComponent<Transform>();
         playerRb.gravityScale = 3f;
     }
@@ -40,13 +38,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (DialogueManager.isActive)
         {
-            playerRb.velocity = new Vector2(0, 0);
+            playerRb.bodyType = RigidbodyType2D.Static;
+            interactionSystem.enabled = false;
+            GetComponent<CheckpointRespawn>().enabled = false;
             return;
+        }
+        else if(!HidingMechanism.isHiding)
+        {
+            playerRb.bodyType = RigidbodyType2D.Dynamic;
+            interactionSystem.enabled = true;
+            GetComponent<CheckpointRespawn>().enabled = true;
         }
 
         PKJump = interactionSystem.PKJump;
         horizontal = Input.GetAxis("Horizontal");
-        if(hide.isHiding)
+        if(HidingMechanism.isHiding)
         {
 
         }
@@ -58,23 +64,66 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isClimbing)
+        if (isLadder)
         {
-            playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
-            playerRb.gravityScale = 0f;
-            AudioManager.Instance.CLimbingRope();
+            if (Mathf.Abs(verticle) > 0f)
+            {
+                anima.SetBool("Climbing", false);
+                anima.SetBool("RopeToGround", true);
+                anima.SetBool("RopeJump", false);
+                anima.SetBool("ClimbMove", true);
+                playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
+                playerRb.gravityScale = 0f;
+                AudioManager.Instance.CLimbingRope();
+            }
+            else
+            {
+                anima.SetBool("Climbing", true);
+                playerRb.gravityScale = 0f;
+                playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
+            }
         }
         else
         {
             playerRb.gravityScale = 3f;
             playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
         }
-        
+
+        if (isGrounded())
+        {
+            isJumping = false;
+            anima.SetBool("Jump", false);
+            anima.SetBool("RopeToGround", false);
+            anima.SetBool("ClimbMove", false);
+        }
     }
+
+    //private void FixedUpdate()
+    //{
+    //    if (isClimbing)
+    //    {
+    //        anima.SetBool("Climbing", true);
+    //        playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
+    //        playerRb.gravityScale = 0f;
+    //        AudioManager.Instance.CLimbingRope();
+    //    }
+    //    else
+    //    {
+    //        playerRb.gravityScale = 3f;
+    //        playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
+    //    }
+
+    //    if (isGrounded())
+    //    {
+    //        isJumping = false;
+    //        anima.SetBool("Jump", false);
+    //    }
+
+    //}
 
     private bool isGrounded()
     {
-        RaycastHit2D hitGround = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        RaycastHit2D hitGround = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0, Vector2.down, 0.02f, groundLayer);
         return hitGround.collider != null;
     }
 
@@ -119,9 +168,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void walk()
     {
-        playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
-
-        anima.SetFloat("speed", Mathf.Abs(horizontal));
+        if (!isJumping)
+        {
+            playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
+            anima.SetFloat("speed", Mathf.Abs(horizontal));
+        }
 
         if (horizontal != 0f)
         {
@@ -159,13 +210,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded() && PKJump)
         {
+            isJumping = true;
             isClimbing = false;
+            anima.SetBool("Jump", true);
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
             AudioManager.Instance.PlayJumpSound();
         }
         else if(Input.GetKeyDown(KeyCode.Space) && isLadder)
         {
-            isClimbing = false;         
+            isJumping = true;
+            isClimbing = false;
+            anima.SetBool("RopeJump", true);
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
             AudioManager.Instance.PlayJumpSound();
         }
