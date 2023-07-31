@@ -75,6 +75,7 @@ public class CameraSystem : MonoBehaviour
 
     IEnumerator DropCargo()
     {
+        yield return new WaitForSeconds(1);
         cinemachineVirtualCamera.LookAt = cargoAnim.transform;
         cinemachineVirtualCamera.Follow = cargoAnim.transform;
         yield return new WaitForSeconds(1);
