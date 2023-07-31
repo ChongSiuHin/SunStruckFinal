@@ -40,12 +40,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (DialogueManager.isActive)
         {
-            playerRb.bodyType = RigidbodyType2D.Static;
+            playerRb.velocity = new Vector2(0, 0);
             return;
-        }
-        else
-        {
-            playerRb.bodyType = RigidbodyType2D.Dynamic;
         }
 
         PKJump = interactionSystem.PKJump;

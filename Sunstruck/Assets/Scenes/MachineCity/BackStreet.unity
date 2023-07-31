@@ -789,6 +789,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6094136711215164040, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094136711215164041, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4272,6 +4280,7 @@ MonoBehaviour:
   - name: Thoeby
     sprite: {fileID: -1466312166, guid: a5ff23e631d633e49b499fc4ce2efeb6, type: 3}
   hasIdleSentence: 0
+  isRepeat: 0
   idleSentences: []
 --- !u!1 &980188200
 GameObject:
@@ -5660,20 +5669,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6562310969260641607, guid: e8e0a039dd66cb247b5b8f92129a4a05, type: 3}
   m_PrefabInstance: {fileID: 3890808482766986804}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1227288259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227288255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5baaf40cc8a5df40a874e57e6031915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nSprite: {fileID: -1557739476, guid: 74bc0367b87b939468b82270744080fc, type: 3}
-  anima: {fileID: 1227288260}
 --- !u!95 &1227288260
 Animator:
   serializedVersion: 4
@@ -12237,6 +12232,7 @@ MonoBehaviour:
   - name: Smol
     sprite: {fileID: -283785721, guid: 99c3a0874e39e7c489b587a72fb5d366, type: 3}
   hasIdleSentence: 0
+  isRepeat: 0
   idleSentences: []
 --- !u!4 &1552940672 stripped
 Transform:
@@ -17400,6 +17396,7 @@ MonoBehaviour:
   - name: Theoby
     sprite: {fileID: -1466312166, guid: a5ff23e631d633e49b499fc4ce2efeb6, type: 3}
   hasIdleSentence: 0
+  isRepeat: 0
   idleSentences: []
 --- !u!1 &2117141810
 GameObject:
