@@ -11,7 +11,6 @@ TagManager:
   - Enemy
   - NextScene
   - StunGun
-  - Hidepoint2
   - Platform
   - Ground
   - Suit
@@ -19,6 +18,7 @@ TagManager:
   - Switches
   - Offset
   - OldMan
+  - Room
   layers:
   - Default
   - TransparentFX

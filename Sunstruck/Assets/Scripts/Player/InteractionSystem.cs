@@ -25,7 +25,7 @@ public class InteractionSystem : MonoBehaviour
     private Animator currentObjAnim;
     private CameraSystem cameraSystemScript;
 
-    public bool offset;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -136,10 +136,7 @@ public class InteractionSystem : MonoBehaviour
             currentObjAnim = collision.gameObject.GetComponent<Animator>();
         }
 
-        if (collision.CompareTag("Offset"))
-        {
-            offset = true;
-        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -149,10 +146,7 @@ public class InteractionSystem : MonoBehaviour
             switchAllow = false;
         }
 
-        if (collision.CompareTag("Offset"))
-        {
-            offset = false;
-        }
+        
     }
 
     IEnumerator StunGunDialogue(GameObject obj)

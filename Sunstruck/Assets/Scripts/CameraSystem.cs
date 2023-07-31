@@ -9,6 +9,7 @@ public class CameraSystem : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] private GameObject cutsceneCam;
+    [SerializeField] private CinemachineVirtualCamera roomCam;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject OldMan;
     [SerializeField] private Animator cargoAnim;
@@ -48,6 +49,8 @@ public class CameraSystem : MonoBehaviour
         }
 
         ViewEnemyBelow();
+
+        FollowPlayerOnTrigger();
     }
 
     private void CaptureByEnemy()
@@ -105,7 +108,7 @@ public class CameraSystem : MonoBehaviour
 
     IEnumerator PreviewLevelACA()
     {
-        player.GetComponent<PlayerMovement>().enabled = false;
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         while (DialogueManager.isActive)
         {
             yield return null;
@@ -116,7 +119,7 @@ public class CameraSystem : MonoBehaviour
         cutsceneCam.GetComponent<PlayableDirector>().enabled = true;
         
         yield return new WaitForSeconds(20);
-        player.GetComponent<PlayerMovement>().enabled = true;
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         cinemachineVirtualCamera.enabled = true;
         cutsceneCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
     }
@@ -124,7 +127,7 @@ public class CameraSystem : MonoBehaviour
     public void ViewEnemyBelow()
     {
         CinemachineFramingTransposer offsetCam = cinemachineVirtualCamera.GetComponentInChildren<CinemachineFramingTransposer>();
-        if (FindObjectOfType<InteractionSystem>().offset)
+        if (PlayerMovement.offset)
         {
             offsetY -= 0.2f;
         }
@@ -137,5 +140,19 @@ public class CameraSystem : MonoBehaviour
 
         float offsetSpeed = 5f;
         offsetCam.m_TrackedObjectOffset.y = Mathf.Lerp(offsetCam.m_TrackedObjectOffset.y, offsetY, Time.deltaTime * offsetSpeed);
+    }
+
+    public void FollowPlayerOnTrigger()
+    {
+        if (PlayerMovement.inRoom)
+        {
+            roomCam.enabled = true;
+            cinemachineVirtualCamera .enabled = false;
+        }
+        else
+        {
+            cinemachineVirtualCamera.enabled = true;
+            roomCam.enabled = false;
+        }
     }
 }

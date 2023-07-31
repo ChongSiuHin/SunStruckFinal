@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     private GameObject currentTriggerObj;
 
     private bool isJumping = false;
+    public static bool offset;
+    public static bool inRoom;
 
     private void Awake()
     {
@@ -134,7 +136,17 @@ public class PlayerMovement : MonoBehaviour
             currentTriggerObj = collision.gameObject;
             isLadder = true;
             isClimbing = true;
-        }     
+        }
+
+        if (collision.CompareTag("Offset"))
+        {
+            offset = true;
+        }
+
+        if (collision.CompareTag("Room"))
+        {
+            inRoom = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -143,6 +155,16 @@ public class PlayerMovement : MonoBehaviour
         {
             isLadder = false;
             isClimbing = false;
+        }
+
+        if (collision.CompareTag("Offset"))
+        {
+            offset = false;
+        }
+
+        if (collision.CompareTag("Room"))
+        {
+            inRoom = false;
         }
     }
 
