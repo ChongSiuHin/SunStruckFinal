@@ -18,6 +18,7 @@ public class InteractionSystem : MonoBehaviour
     private UIController uiController;
     private StunGun stunGunScript;
     public bool PKJump = true;
+    private Animator anima;
 
     private bool switchAllow;
     private bool isSwitchedOn;
@@ -33,6 +34,7 @@ public class InteractionSystem : MonoBehaviour
         playerBox = GetComponent<BoxCollider2D>();
         stunGunScript = GetComponent<StunGun>();
         cameraSystemScript = FindObjectOfType<CameraSystem>();
+        anima = GetComponent<Animator>();
         GameObject uiManagerObj = GameObject.Find("UIManager");
         if (uiManagerObj != null)
         {
@@ -57,7 +59,7 @@ public class InteractionSystem : MonoBehaviour
                 PKJump = false;
                 
                 box = hitbox.collider.gameObject;
-
+                anima.SetBool("Push", true);
                 box.GetComponent<FixedJoint2D>().enabled = true;
                 box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
                 box.GetComponent<StaticBox>().beingMove = true;
@@ -68,6 +70,7 @@ public class InteractionSystem : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.J))
             {
                 PKJump = true;
+                anima.SetBool("Push", false);
                 box.GetComponent<FixedJoint2D>().enabled = false;
                 box.GetComponent<StaticBox>().beingMove = false;
                 this.GetComponent<PlayerMovement>().speed = 3f;
@@ -155,6 +158,7 @@ public class InteractionSystem : MonoBehaviour
     IEnumerator StunGunDialogue(GameObject obj)
     {
         yield return new WaitForSeconds(10.5f);
+        CheckpointRespawn.currentTriggerObj = obj;
         obj.GetComponent<DialogueTrigger>().StartDialogue();
     }
     private void OnDrawGizmos()

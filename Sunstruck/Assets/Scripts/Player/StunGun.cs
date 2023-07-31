@@ -86,7 +86,7 @@ public class StunGun : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Enemy") && !GetComponent<HidingMechanism>().isHiding)
+        if (collision.collider.CompareTag("Enemy") && !HidingMechanism.isHiding)
         {
             enemyCollider = collision.otherCollider;
             playerCollider = collision.collider;

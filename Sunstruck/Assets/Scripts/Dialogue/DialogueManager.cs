@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        //    //Triggering next sentence
+        //Triggering next sentence
         if (Input.anyKeyDown)
         {
             if (CheckpointRespawn.currentTriggerObj.GetComponent<DialogueTrigger>().hasIdleSentence)
@@ -48,7 +48,6 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(currentSentences[activeSentence].sentence);
                     if (dialogueText.text == currentSentences[activeSentence].sentence)
                     {
                         NextSentence();
