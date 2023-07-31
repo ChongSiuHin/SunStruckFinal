@@ -188,20 +188,6 @@ PrefabInstance:
       objectReference: {fileID: 985219776}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abb538d5f8af85546927da657f544141, type: 3}
---- !u!114 &28791460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062863676588011136}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5baaf40cc8a5df40a874e57e6031915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nSprite: {fileID: -1557739476, guid: 74bc0367b87b939468b82270744080fc, type: 3}
-  anima: {fileID: 6562310969284452327}
 --- !u!1 &35773061
 GameObject:
   m_ObjectHideFlags: 0
@@ -15235,11 +15221,10 @@ GameObject:
   - component: {fileID: 6562310968071692189}
   - component: {fileID: 6541395099245850232}
   - component: {fileID: 5204126661307989775}
-  - component: {fileID: 6562310968071692191}
   - component: {fileID: 6562310968071692190}
   m_Layer: 0
   m_Name: TrashCan_2
-  m_TagString: Hidepoint2
+  m_TagString: Hidepoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15255,10 +15240,9 @@ GameObject:
   - component: {fileID: 6562310969284452326}
   - component: {fileID: 6541395097774124547}
   - component: {fileID: 5204126662243893108}
-  - component: {fileID: 28791460}
   - component: {fileID: 6562310969284452327}
   m_Layer: 0
-  m_Name: TrashCan_1
+  m_Name: TrashCan
   m_TagString: Hidepoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15587,7 +15571,7 @@ Animator:
   m_GameObject: {fileID: 1062863675653156603}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1573c8a9595881b47a8a784733083cdc, type: 2}
+  m_Controller: {fileID: 9100000, guid: b87aecaedb854c744ab5ee485edd93b8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -15597,20 +15581,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6562310968071692191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062863675653156603}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b9f2877837f0847b2877f4adbf6ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nSprite: {fileID: 0}
-  anima: {fileID: 6562310968071692190}
 --- !u!4 &6562310969284452326
 Transform:
   m_ObjectHideFlags: 0
