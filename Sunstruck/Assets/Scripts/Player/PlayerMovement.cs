@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<CheckpointRespawn>().enabled = false;
             return;
         }
-        else if(!HidingMechanism.isHiding)
+        else if(!(HidingMechanism.isHiding || StunGun.hit))
         {
             playerRb.bodyType = RigidbodyType2D.Dynamic;
             interactionSystem.enabled = true;

@@ -101,4 +101,12 @@ public class CheckpointRespawn : MonoBehaviour
             respawnPoint = transform.position;
         }  
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("ChaseEnemy"))
+        {
+            transform.position = respawnPoint;
+        }
+    }
 }

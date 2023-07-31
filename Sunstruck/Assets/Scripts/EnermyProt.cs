@@ -50,7 +50,7 @@ public class EnermyProt : MonoBehaviour
             endPos = Enemy.position + (Vector3.right * agroRange);
         }
 
-        if (player.GetComponent<StunGun>().hit && hitPlayer)
+        if (StunGun.hit && hitPlayer)
         {
             anima.SetBool("Run", false);
             if (player.GetComponent<StunGun>().stunEnemy)

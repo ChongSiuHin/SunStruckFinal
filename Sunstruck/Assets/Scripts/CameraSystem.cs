@@ -55,7 +55,7 @@ public class CameraSystem : MonoBehaviour
 
     private void CaptureByEnemy()
     {
-        if (FindObjectOfType<StunGun>().hit)
+        if (StunGun.hit)
         {
             hitZoomIn -= 1f;
             ShakeCamera();
