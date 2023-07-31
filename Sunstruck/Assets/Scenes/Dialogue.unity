@@ -1512,15 +1512,8 @@ MonoBehaviour:
   background: {fileID: 0}
   nameText: {fileID: 380855877}
   dialogueText: {fileID: 1874295449}
-  textSpeed: 0.1
-  isTalking: 0
-  anim: {fileID: 1128920245}
-  dialogue:
-    name: Theoby
-    sentences:
-    - Hello, Im Theoby, ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-    - Blahahahahahhahahahahahahahahajskdfhkadsjhfkjaehrlkjf
-    - agjkahdgkjqhuyadfgbqgfuiahdfjhfhquiahfjdfklasdfqadhwfjndfgha
+  DialogueOn: 0
+  actorImage: {fileID: 0}
 --- !u!4 &2058624586
 Transform:
   m_ObjectHideFlags: 0

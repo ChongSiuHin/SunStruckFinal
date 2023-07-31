@@ -44,7 +44,6 @@ public class EnermyProt : MonoBehaviour
         if (isFacingLeft)
         {
             endPos = Enemy.position + (Vector3.left * agroRange);
-            Debug.Log("is left");
         }
         else
         {
@@ -152,7 +151,6 @@ public class EnermyProt : MonoBehaviour
                 if (playSound)
                 {
                     AudioManager.Instance.RobotMoving();
-                    Debug.Log("Stuning");
                 }
             }
             else if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f & currentPoint == pointA.transform)
@@ -163,7 +161,6 @@ public class EnermyProt : MonoBehaviour
                 if (playSound)
                 {
                     AudioManager.Instance.RobotMoving();
-                    Debug.Log("walking");
                 }
             }
     }

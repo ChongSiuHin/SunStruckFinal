@@ -11,14 +11,9 @@ public class CutsceneController : MonoBehaviour
         StartCoroutine(EndCutScene());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator EndCutScene()
     {
+
         yield return new WaitForSeconds(10);
         SceneManager.UnloadSceneAsync("Cutscene2");
     }

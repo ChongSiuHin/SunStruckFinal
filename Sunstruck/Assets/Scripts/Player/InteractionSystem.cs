@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Rendering.Universal;
 
 public class InteractionSystem : MonoBehaviour
 {
@@ -10,33 +9,30 @@ public class InteractionSystem : MonoBehaviour
     [SerializeField] private LayerMask movableObj;
     [SerializeField] private LayerMask interactableObj;
     [SerializeField] private GameObject stunGun;
-    public bool pickUpStunGun;
-    public bool pickUpSuit;
+    [SerializeField] private GameObject castPoint;
+    
+    public bool pickUpStunGun = false;
+    public bool pickUpSuit = false;
     private GameObject box;
     private BoxCollider2D playerBox;
     private UIController uiController;
+    private StunGun stunGunScript;
     public bool PKJump = true;
-    public Light2D playerLight;
-    public HealthBar healthBar;
+
+    private bool switchAllow;
+    private bool isSwitchedOn;
+    private Animator currentObjAnim;
+    private CameraSystem cameraSystemScript;
+
+    public bool offset;
 
     // Start is called before the first frame update
-
-    void Awake()
-    {
-        playerLight = GetComponentInChildren<Light2D>();
-        if (playerLight != null)
-        {
-            playerLight.enabled = false;
-        }
-        else
-        {
-            Debug.LogError("No Light2D component found on the game object.");
-        }
-    }
     void Start()
     {
         PKJump = true;
         playerBox = GetComponent<BoxCollider2D>();
+        stunGunScript = GetComponent<StunGun>();
+        cameraSystemScript = FindObjectOfType<CameraSystem>();
         GameObject uiManagerObj = GameObject.Find("UIManager");
         if (uiManagerObj != null)
         {
@@ -44,14 +40,14 @@ public class InteractionSystem : MonoBehaviour
         }
         else
         {
-            Debug.LogError("UIManager object not found in the scene!");
+            Debug.Log("UIManager object not found in the scene!");
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hitbox = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance, movableObj);
+        RaycastHit2D hitbox = Physics2D.Raycast(castPoint.transform.position, Vector2.right * castPoint.transform.localScale.x, distance, movableObj);
         RaycastHit2D hititem = Physics2D.BoxCast(playerBox.bounds.center, playerBox.size, 0, Vector2.zero, 0, interactableObj);
         
         if(hitbox.collider != null)
@@ -59,60 +55,67 @@ public class InteractionSystem : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.J))
             {
                 PKJump = false;
-                AudioManager.Instance.PushBox();
+                
                 box = hitbox.collider.gameObject;
 
                 box.GetComponent<FixedJoint2D>().enabled = true;
                 box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
                 box.GetComponent<StaticBox>().beingMove = true;
                 this.GetComponent<PlayerMovement>().speed /= 2f;
+
+                AudioManager.Instance.PushBox();
             }
-            else if (Input.GetKeyUp(KeyCode.J))
+            if (Input.GetKeyUp(KeyCode.J))
             {
                 PKJump = true;
                 box.GetComponent<FixedJoint2D>().enabled = false;
                 box.GetComponent<StaticBox>().beingMove = false;
                 this.GetComponent<PlayerMovement>().speed = 3f;
             }
-;
         }
         
 
-        if (hititem.collider != null && Input.GetKeyDown(KeyCode.F))
+        if (hititem.collider != null && Input.GetKeyDown(KeyCode.J))
         {
-            pickUp(hititem.collider.gameObject);
+            PickUp(hititem.collider.gameObject);
         }
 
         if(pickUpStunGun)
         {
             uiController.ShowUI();
         }
+
+        if(switchAllow && Input.GetKeyDown(KeyCode.J))
+        {
+            if (!isSwitchedOn)
+            {
+                stunGunScript.UpdateAmmoUI(--stunGunScript.ammo);
+                cameraSystemScript.SwitchOnCargo();
+                currentObjAnim.enabled = true;
+                isSwitchedOn = true;
+            }
+        }
     }
     
-    public void pickUp(GameObject obj)
+    public void PickUp(GameObject obj)
     {
         if (obj.tag == "StunGun")
         {
-            print("StunGun Picked Up");
+            if (!pickUpStunGun)
+            {
+                SceneController.instance.Cutscene();
+                StartCoroutine(StunGunDialogue(obj));
+                AudioManager.Instance.StunGunP();
+            }
             pickUpStunGun = true;
-            stunGun.GetComponent<Animator>().SetBool("stunGunPickUp", true);
-            AudioManager.Instance.StunGunP();
-            SceneController.instance.Cutscene(); 
+            stunGun.GetComponent<Animator>().SetBool("stunGunPickUp", true); 
         }
-        else if(obj.tag == "Suit")
+        
+        if(obj.tag == "Suit")
         {
             print("Suit Picked Up");
             pickUpSuit = true;
             Destroy(obj);
-            Debug.Log("its work");
-            healthBar.gameObject.SetActive(true);
-            playerLight.enabled = true;
-            //AudioManager.Instance.suit();
-        }
-        else
-        {
-            pickUpStunGun = false;
-            pickUpSuit = false;
         }
 
         if (obj.tag == "NextScene")
@@ -122,9 +125,41 @@ public class InteractionSystem : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Switches"))
+        {
+            switchAllow = true;
+            currentObjAnim = collision.gameObject.GetComponent<Animator>();
+        }
+
+        if (collision.CompareTag("Offset"))
+        {
+            offset = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Switches"))
+        {
+            switchAllow = false;
+        }
+
+        if (collision.CompareTag("Offset"))
+        {
+            offset = false;
+        }
+    }
+
+    IEnumerator StunGunDialogue(GameObject obj)
+    {
+        yield return new WaitForSeconds(10.5f);
+        obj.GetComponent<DialogueTrigger>().StartDialogue();
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position,(Vector2)transform.position + Vector2.right * transform.localScale.x * distance);
+        Gizmos.DrawLine(castPoint.transform.position, (Vector2)castPoint.transform.position + Vector2.right * castPoint.transform.localScale.x * distance);
     }
 }

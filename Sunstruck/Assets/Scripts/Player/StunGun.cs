@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class StunGun : MonoBehaviour
 {
-    [SerializeField] private int ammo;
+    public int ammo;
     [SerializeField] private float stunDuration;
     [SerializeField] private float useDuration;
+    [SerializeField] private GameObject popUpKey;
 
     public bool stunEnemy;
     public bool hit;
@@ -28,6 +29,7 @@ public class StunGun : MonoBehaviour
         stunTimer = stunDuration;
         useTimer = useDuration;
         isFire = false;
+        stunEnemy = false;
     }
 
     // Update is called once per frame
@@ -36,23 +38,22 @@ public class StunGun : MonoBehaviour
         if (hit)
         {
             useTimer -= 1 * Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.F) && useTimer > 0 && !isFire)
+            if (Input.GetKeyDown(KeyCode.J) && useTimer > 0 && !isFire)
             {
                 hitsCount++;
                 isFire = true;
-                Debug.Log("Stun Enemy");
                 stunEnemy = true;
                 if (stunEnemy)
                 {
                     AudioManager.Instance.StunGunF();
                     AudioManager.Instance.RobotStuning();
-                    Debug.Log("stunning");
                     Physics2D.IgnoreCollision(enemyCollider, playerCollider, true);
                     GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 }
                 ammo--;
                 useTimer = useDuration;
                 UpdateAmmoUI(ammo);
+                popUpKey.SetActive(false);
             }
             else if (useTimer <= 0)
             {
@@ -63,6 +64,7 @@ public class StunGun : MonoBehaviour
                 }
                 useTimer = useDuration;
                 hit = false;
+                popUpKey.SetActive(false);
             }
         }
 
@@ -91,7 +93,8 @@ public class StunGun : MonoBehaviour
             if (GetComponent<InteractionSystem>().pickUpStunGun && ammo > 0)
             {
                 hit = true;
-                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;                
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                popUpKey.SetActive(true);
             }
             else
                 transform.position = this.GetComponent<CheckpointRespawn>().respawnPoint;
@@ -136,7 +139,7 @@ public class StunGun : MonoBehaviour
         isCharging = false;
     }
 
-    void UpdateAmmoUI(int ammo)
+    public void UpdateAmmoUI(int ammo)
     {
         for (int i = 0; i < circles.Length; i++)
         {
