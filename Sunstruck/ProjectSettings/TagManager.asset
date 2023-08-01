@@ -75,3 +75,6 @@ TagManager:
   - name: UI
     uniqueID: 2377352201
     locked: 0
+  - name: LightEffects
+    uniqueID: 379718245
+    locked: 0

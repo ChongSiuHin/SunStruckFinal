@@ -81,7 +81,6 @@ public class StunGun : MonoBehaviour
             Physics2D.IgnoreCollision(enemyCollider, playerCollider, false);
             isFire = false;
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -106,6 +105,7 @@ public class StunGun : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ChargingStation"))
         {
+            collision.gameObject.GetComponent<Animator>().SetBool("Activated", true);
             shouldStopCharging = false;
             StartCoroutine(ChargeStunGun());
         }
@@ -152,6 +152,7 @@ public class StunGun : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ChargingStation"))
         {
+            collision.gameObject.GetComponent<Animator>().SetBool("Activated", false);
             shouldStopCharging = true;
         }
     }

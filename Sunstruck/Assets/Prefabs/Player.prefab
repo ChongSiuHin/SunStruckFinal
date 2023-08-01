@@ -298,10 +298,12 @@ MonoBehaviour:
     m_Bits: 128
   stunGun: {fileID: 0}
   castPoint: {fileID: 6094136711210062220}
+  chaseEnemy: {fileID: 0}
+  enemySpawnPoint: {fileID: 0}
+  enemySpawnPoint2: {fileID: 0}
   pickUpStunGun: 0
   pickUpSuit: 0
   PKJump: 1
-  offset: 0
 --- !u!114 &6094136711215164045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,7 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1fb4f46739eb340999613b5bfba0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHiding: 0
 --- !u!114 &3226677040076340680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,14 +346,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e685d8d917c8ad44d8605b7ff134ffce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 3
+  ammo: 6
   stunDuration: 3
   useDuration: 2
   popUpKey: {fileID: 925624810}
   stunEnemy: 0
-  hit: 0
-  maxHits: 3
+  maxHits: 6
   circles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

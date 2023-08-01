@@ -20,6 +20,7 @@ public class InteractionSystem : MonoBehaviour
     private BoxCollider2D playerBox;
     private UIController uiController;
     private StunGun stunGunScript;
+    private HealthBar healthBar;
     public bool PKJump = true;
     private Animator anima;
 
@@ -38,6 +39,8 @@ public class InteractionSystem : MonoBehaviour
         stunGunScript = GetComponent<StunGun>();
         cameraSystemScript = FindObjectOfType<CameraSystem>();
         anima = GetComponent<Animator>();
+        healthBar = FindObjectOfType<HealthBar>();
+
         GameObject uiManagerObj = GameObject.Find("UIManager");
         if (uiManagerObj != null)
         {
@@ -124,7 +127,7 @@ public class InteractionSystem : MonoBehaviour
         {
             print("Suit Picked Up");
             pickUpSuit = true;
-            Destroy(obj);
+            healthBar.gameObject.SetActive(true);
         }
 
         if (obj.CompareTag("NextScene"))

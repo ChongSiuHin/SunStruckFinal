@@ -51,6 +51,7 @@ public class CameraSystem : MonoBehaviour
         }
 
         ViewEnemyBelow();
+
         if(SceneManager.GetActiveScene().name == "SurfaceWorld")
         {
             FollowPlayerOnTrigger();
