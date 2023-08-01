@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource runSoundSource;
     public AudioSource robotSoundSource;
 
-    public AudioSource audioSource;
+    //public AudioSource audioSource;
     public AudioClip backgroundMusic;
     public AudioClip jumpSound;
     public AudioClip runSound;
@@ -22,6 +22,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip Checkpoint;
     public AudioClip PushingBox;
     public AudioClip Climbing;
+    public AudioClip Exposed;
+    public AudioClip Drop;
+    public AudioClip Charging;
 
 
     public void Start()
@@ -108,8 +111,22 @@ public class AudioManager : MonoBehaviour
 
     public void PushBox()
     {
-        runSoundSource.clip = PushingBox;
-        runSoundSource.Play();
+        runSoundSource.PlayOneShot(PushingBox);
+    }
+
+    public void exposed()
+    {
+        runSoundSource.PlayOneShot(PushingBox);
+    }
+
+    public void drop()
+    {
+        runSoundSource.PlayOneShot(Drop);
+    }
+
+    public void OnBeforeTransformParentChanged()
+    {
+        runSoundSource.PlayOneShot(Charging);
     }
 }
 

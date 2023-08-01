@@ -52,7 +52,8 @@ public class EnermyProt : MonoBehaviour
 
         if (StunGun.hit && hitPlayer)
         {
-            anima.SetBool("Run", false);
+            //anima.SetBool("Run", false);
+            anima.SetBool("Hit", true);           
             if (player.GetComponent<StunGun>().stunEnemy)
             {
                 playSound = false;

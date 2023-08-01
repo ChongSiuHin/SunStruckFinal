@@ -70,13 +70,14 @@ public class InteractionSystem : MonoBehaviour
 
                 AudioManager.Instance.PushBox();
             }
-            if (Input.GetKeyUp(KeyCode.J))
+            else if (Input.GetKeyUp(KeyCode.J))
             {
                 PKJump = true;
                 anima.SetBool("Push", false);
                 box.GetComponent<FixedJoint2D>().enabled = false;
                 box.GetComponent<StaticBox>().beingMove = false;
                 this.GetComponent<PlayerMovement>().speed = 3f;
+                AudioManager.Instance.StopCurrentSound();
             }
         }
         
@@ -95,6 +96,7 @@ public class InteractionSystem : MonoBehaviour
         {
             if (!isSwitchedOn)
             {
+                AudioManager.Instance.drop();
                 stunGunScript.UpdateAmmoUI(--stunGunScript.ammo);
                 cameraSystemScript.SwitchOnCargo();
                 currentObjAnim.enabled = true;
@@ -109,7 +111,7 @@ public class InteractionSystem : MonoBehaviour
         {
             if (!pickUpStunGun)
             {
-                SceneController.instance.Cutscene();
+                //SceneController.instance.Cutscene();
                 StartCoroutine(StunGunDialogue(obj));
                 AudioManager.Instance.StunGunP();
             }
@@ -162,7 +164,7 @@ public class InteractionSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(10.5f);
         CheckpointRespawn.currentTriggerObj = obj;
-        obj.GetComponent<DialogueTrigger>().StartDialogue();
+        //obj.GetComponent<DialogueTrigger>().StartDialogue();
     }
     private void OnDrawGizmos()
     {
