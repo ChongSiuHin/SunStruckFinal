@@ -20,6 +20,7 @@ public class CameraSystem : MonoBehaviour
     private float shakeIntensity = 3f;
     private float shakeTime = 1f;
     private float timer;
+    public static bool onCam = false;
 
     private CinemachineBasicMultiChannelPerlin _cbmcp;
 
@@ -27,6 +28,7 @@ public class CameraSystem : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "AbandonedCargoArea")
         {
+            CheckpointRespawn.currentTriggerObj = OldMan;
             OldMan.GetComponent<DialogueTrigger>().StartDialogue();
             StartCoroutine(PreviewLevelACA());
         }
@@ -49,8 +51,10 @@ public class CameraSystem : MonoBehaviour
         }
 
         ViewEnemyBelow();
-
-        FollowPlayerOnTrigger();
+        if(SceneManager.GetActiveScene().name == "SurfaceWorld")
+        {
+            FollowPlayerOnTrigger();
+        }
     }
 
     private void CaptureByEnemy()
@@ -108,7 +112,7 @@ public class CameraSystem : MonoBehaviour
 
     IEnumerator PreviewLevelACA()
     {
-        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        onCam = true;
         while (DialogueManager.isActive)
         {
             yield return null;
@@ -119,7 +123,7 @@ public class CameraSystem : MonoBehaviour
         cutsceneCam.GetComponent<PlayableDirector>().enabled = true;
         
         yield return new WaitForSeconds(20);
-        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        onCam = false;
         cinemachineVirtualCamera.enabled = true;
         cutsceneCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
     }

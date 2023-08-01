@@ -28,7 +28,7 @@ public class InteractionSystem : MonoBehaviour
     private Animator currentObjAnim;
     private CameraSystem cameraSystemScript;
 
-    
+    public static bool isBox;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +52,7 @@ public class InteractionSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hitbox = Physics2D.Raycast(castPoint.transform.position, Vector2.right * castPoint.transform.localScale.x, distance, movableObj);
+        RaycastHit2D hitbox = Physics2D.Raycast(castPoint.transform.position, Vector2.right * transform.localScale.x, distance, movableObj);
         RaycastHit2D hititem = Physics2D.BoxCast(playerBox.bounds.center, playerBox.size, 0, Vector2.zero, 0, interactableObj);
         
         if(hitbox.collider != null)
@@ -67,6 +67,7 @@ public class InteractionSystem : MonoBehaviour
                 box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
                 box.GetComponent<StaticBox>().beingMove = true;
                 this.GetComponent<PlayerMovement>().speed /= 2f;
+                isBox = true;
 
                 AudioManager.Instance.PushBox();
             }
@@ -77,6 +78,8 @@ public class InteractionSystem : MonoBehaviour
                 box.GetComponent<FixedJoint2D>().enabled = false;
                 box.GetComponent<StaticBox>().beingMove = false;
                 this.GetComponent<PlayerMovement>().speed = 3f;
+
+                isBox = false;
             }
         }
         
@@ -167,6 +170,6 @@ public class InteractionSystem : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(castPoint.transform.position, (Vector2)castPoint.transform.position + Vector2.right * castPoint.transform.localScale.x * distance);
+        Gizmos.DrawLine(castPoint.transform.position, (Vector2)castPoint.transform.position + Vector2.right * transform.localScale.x * distance);
     }
 }
