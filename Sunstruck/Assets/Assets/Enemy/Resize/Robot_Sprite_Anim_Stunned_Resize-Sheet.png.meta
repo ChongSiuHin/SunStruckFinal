@@ -115,7 +115,595 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 85
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa33ae74875cc1d46a726cc8506efd76
+      internalID: 1795915936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 85
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 801d7608da6c6ff489164eb99ae16c7c
+      internalID: 686999916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 0
+        width: 85
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9049f786b6bca1b43aca03628b522dc4
+      internalID: -1301050535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 0
+        width: 85
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57148eb1973f38d41949a9a5665762eb
+      internalID: -850571709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 0
+        width: 86
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8afad5a02b5b26a4cb231cb4a4757e42
+      internalID: -753458500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 0
+        width: 84
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95381e474f87d7d48a3d0bddb14a95a6
+      internalID: -497163894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 0
+        width: 86
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e26125d66927648a0045eedc7d0043
+      internalID: -140265677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 0
+        width: 84
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f1807b2dfb67d4c87412fa6bcc6321
+      internalID: 954690036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 0
+        width: 86
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 077b1b79120d45049bcbc8d2ef2013ad
+      internalID: -730702358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 0
+        width: 84
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b2dfef5a239e340932954af7b4e268
+      internalID: 216483882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 0
+        width: 85
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6ece052a3043234997fcd7512165209
+      internalID: 2010678476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 0
+        width: 58
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64387ced88676b54dbb63a6f217f4843
+      internalID: 1005761221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 0
+        width: 48
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d42c24431f31f774f8a32081a7d39624
+      internalID: -1082690255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 79
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e08afb39fff86644aa85091793fe8b5
+      internalID: -1572120454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1996
+        y: 0
+        width: 58
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0368b6d5ab7c6d5458f8286b1a47b0ed
+      internalID: 182267706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 2150
+        y: 0
+        width: 48
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de0a55587a5ebd54c9c24769eea4058c
+      internalID: 386937004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 2195
+        y: 79
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7812a4d318d68458c3dfde3bb43ada
+      internalID: 1172633158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 2296
+        y: 0
+        width: 58
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f58b5f04cb7b3864fae9bdbb364fac28
+      internalID: -1903532289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 2450
+        y: 0
+        width: 48
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee7f59d3bfe568141870be96f184c17c
+      internalID: -690673033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 2495
+        y: 79
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ce6b96b37ca4a46875c5c6f11e5490
+      internalID: -886352909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 2600
+        y: 0
+        width: 48
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8856650fd4ec15b4abe58964fd5390f1
+      internalID: 460598976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 65
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc733ab98ee2a24ebe98e8686d02045
+      internalID: 1144032557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1846
+        y: 45
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a6030377f6f2e648abc03c2df3f1368
+      internalID: 1327608837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 43
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8126355d6073224ebcdb7e7bde9fc91
+      internalID: -1085908830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 2146
+        y: 45
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 788dfff688578364d80cb6ad22a32f50
+      internalID: -909791920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 2201
+        y: 43
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8661fcab39b504846b1251fe8df3fe27
+      internalID: -541167027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 2446
+        y: 45
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d9e5b9f92fe2014f93c09088f3a870c
+      internalID: -2093740598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Sprite_Anim_Stunned_Resize-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 2501
+        y: 43
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 717a7fd9d01d35445973c8c220825242
+      internalID: 1769911357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +714,35 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_22: 1327608837
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_21: 1144032557
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_3: -850571709
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_23: -1085908830
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_1: 686999916
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_4: -753458500
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_9: 216483882
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_14: 182267706
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_17: -1903532289
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_12: -1082690255
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_16: 1172633158
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_8: -730702358
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_11: 1005761221
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_24: -909791920
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_5: -497163894
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_25: -541167027
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_15: 386937004
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_27: 1769911357
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_6: -140265677
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_10: 2010678476
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_19: -886352909
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_0: 1795915936
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_13: -1572120454
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_18: -690673033
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_2: -1301050535
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_20: 460598976
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_7: 954690036
+      Robot_Sprite_Anim_Stunned_Resize-Sheet_26: -2093740598
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

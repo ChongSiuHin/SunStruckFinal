@@ -50,7 +50,10 @@ public class CameraSystem : MonoBehaviour
 
         ViewEnemyBelow();
 
-        FollowPlayerOnTrigger();
+        if (SceneManager.GetActiveScene().name == "SurfaceWorld")
+        {
+            FollowPlayerOnTrigger();
+        }
     }
 
     private void CaptureByEnemy()
