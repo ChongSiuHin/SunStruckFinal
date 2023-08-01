@@ -10,7 +10,7 @@ public class StunGun : MonoBehaviour
     [SerializeField] private GameObject popUpKey;
 
     public bool stunEnemy;
-    public bool hit;
+    public static bool hit;
     public int maxHits = 3;
     public GameObject[] circles;
 

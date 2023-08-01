@@ -10,7 +10,10 @@ public class InteractionSystem : MonoBehaviour
     [SerializeField] private LayerMask interactableObj;
     [SerializeField] private GameObject stunGun;
     [SerializeField] private GameObject castPoint;
-    
+    [SerializeField] private GameObject chaseEnemy;
+    [SerializeField] private GameObject enemySpawnPoint;
+    [SerializeField] private GameObject enemySpawnPoint2;
+
     public bool pickUpStunGun = false;
     public bool pickUpSuit = false;
     private GameObject box;
@@ -25,7 +28,7 @@ public class InteractionSystem : MonoBehaviour
     private Animator currentObjAnim;
     private CameraSystem cameraSystemScript;
 
-    public bool offset;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -102,7 +105,7 @@ public class InteractionSystem : MonoBehaviour
     
     public void PickUp(GameObject obj)
     {
-        if (obj.tag == "StunGun")
+        if (obj.CompareTag("StunGun"))
         {
             if (!pickUpStunGun)
             {
@@ -114,17 +117,22 @@ public class InteractionSystem : MonoBehaviour
             stunGun.GetComponent<Animator>().SetBool("stunGunPickUp", true); 
         }
         
-        if(obj.tag == "Suit")
+        if(obj.CompareTag("Suit"))
         {
             print("Suit Picked Up");
             pickUpSuit = true;
             Destroy(obj);
         }
 
-        if (obj.tag == "NextScene")
+        if (obj.CompareTag("NextScene"))
         {
             SceneController.instance.NextLevel();
             GetComponent<CheckpointRespawn>().respawnPoint = transform.position;
+        }
+
+        if (obj.CompareTag("Pistol"))
+        {
+            Instantiate(chaseEnemy, enemySpawnPoint.transform.position, Quaternion.identity);
         }
     }
 
@@ -136,9 +144,9 @@ public class InteractionSystem : MonoBehaviour
             currentObjAnim = collision.gameObject.GetComponent<Animator>();
         }
 
-        if (collision.CompareTag("Offset"))
+        if (collision.CompareTag("SpawnChaseEnemy"))
         {
-            offset = true;
+            Instantiate(chaseEnemy, enemySpawnPoint2.transform.position, Quaternion.identity);
         }
     }
 
@@ -147,11 +155,6 @@ public class InteractionSystem : MonoBehaviour
         if (collision.CompareTag("Switches"))
         {
             switchAllow = false;
-        }
-
-        if (collision.CompareTag("Offset"))
-        {
-            offset = false;
         }
     }
 
