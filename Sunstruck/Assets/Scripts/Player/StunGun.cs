@@ -89,7 +89,6 @@ public class StunGun : MonoBehaviour
 
         if (stunTimer <= 0)
         {
-            Debug.Log("Hello World");
             enemyAnimator.SetBool("StunGunHit", false);
             stunEnemy = false;
             hit = false;
@@ -128,6 +127,7 @@ public class StunGun : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ChargingStation"))
         {
+            collision.gameObject.GetComponent<Animator>().SetBool("Activated", true);
             shouldStopCharging = false;
             StartCoroutine(ChargeStunGun());
         }
@@ -174,6 +174,7 @@ public class StunGun : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ChargingStation"))
         {
+            collision.gameObject.GetComponent<Animator>().SetBool("Activated", false);
             shouldStopCharging = true;
         }
     }

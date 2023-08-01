@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip PlatformRun;
     public AudioClip TrashCan;
     public AudioClip StunGunPickUp;
+    public AudioClip SuitPickUp;
     public AudioClip StunGunFire;
     public AudioClip RobotRun;
     public AudioClip RobotStun;
@@ -43,7 +44,6 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void PlayJumpSound()
@@ -116,7 +116,8 @@ public class AudioManager : MonoBehaviour
 
     public void exposed()
     {
-        runSoundSource.PlayOneShot(PushingBox);
+        runSoundSource.clip = Exposed;
+        runSoundSource.Play();
     }
 
     public void drop()
@@ -127,6 +128,11 @@ public class AudioManager : MonoBehaviour
     public void OnBeforeTransformParentChanged()
     {
         runSoundSource.PlayOneShot(Charging);
+    }
+
+    public void Suit()
+    {
+        runSoundSource.PlayOneShot(SuitPickUp);
     }
 }
 

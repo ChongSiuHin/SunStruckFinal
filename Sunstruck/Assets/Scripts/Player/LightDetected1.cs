@@ -35,10 +35,10 @@ public class LightDetected1 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && healthBar != null)
         {
-            AudioManager.Instance.exposed();
             //healthBar.TakeDamage();
             //healthBar.SetActive(true);
             isPlayerInside = true;
+            AudioManager.Instance.exposed();
         }
     }
 

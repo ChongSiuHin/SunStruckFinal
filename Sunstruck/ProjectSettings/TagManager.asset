@@ -23,6 +23,11 @@ TagManager:
   - ChaseEnemy
   - SpawnChaseEnemy
   - Box
+  - PauseScreen
+  - SettingScreen
+  - PauseMenu
+  - PauseAnimator
+  - ExposeArea
   layers:
   - Default
   - TransparentFX

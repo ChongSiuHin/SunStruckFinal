@@ -6,6 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class HealthBar : MonoBehaviour
 {
+    public GameObject player;
     public Slider healthSlider;
     public float maxHealth = 100f;
     public float damageRate = 10f;
@@ -40,6 +41,7 @@ public class HealthBar : MonoBehaviour
             fill.color = gradient.Evaluate(healthSlider.normalizedValue);
             UpdateLightIntensity();
         }
+
     }
 
     public void TakeDamage()
@@ -52,6 +54,10 @@ public class HealthBar : MonoBehaviour
             lastDamageTime = Time.time;
             fill.color = gradient.Evaluate(healthSlider.normalizedValue);
             UpdateLightIntensity();
+        }
+        else if (currentHealth == 0)
+        {
+            player.transform.position = player.GetComponent<CheckpointRespawn>().respawnPoint;
         }
     }
 

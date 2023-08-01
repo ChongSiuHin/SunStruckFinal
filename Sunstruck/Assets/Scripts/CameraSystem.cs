@@ -23,6 +23,8 @@ public class CameraSystem : MonoBehaviour
 
     private CinemachineBasicMultiChannelPerlin _cbmcp;
 
+    public static bool onCam;
+
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "AbandonedCargoArea")
@@ -111,7 +113,7 @@ public class CameraSystem : MonoBehaviour
 
     IEnumerator PreviewLevelACA()
     {
-        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        onCam = true;
         while (DialogueManager.isActive)
         {
             yield return null;
@@ -122,7 +124,7 @@ public class CameraSystem : MonoBehaviour
         cutsceneCam.GetComponent<PlayableDirector>().enabled = true;
         
         yield return new WaitForSeconds(20);
-        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        onCam = false;
         cinemachineVirtualCamera.enabled = true;
         cutsceneCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
     }

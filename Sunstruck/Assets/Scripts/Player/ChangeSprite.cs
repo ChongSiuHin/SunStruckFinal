@@ -20,14 +20,15 @@ public class ChangeSprite : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("StunGun") || interactionSystem.pickUpStunGun == true)
+        if (other.gameObject.CompareTag("StunGun") || interactionSystem.pickUpStunGun)
         {
             spriteRenderer.sprite = StunGunSprite;
             animator.runtimeAnimatorController = newAnimatorController;
         }
 
-        if (other.gameObject.CompareTag("Suit") || interactionSystem.pickUpSuit == true)
+        if (other.gameObject.CompareTag("Suit") || InteractionSystem.pickUpSuit)
         {
+            Debug.Log("SuitUP");
             spriteRenderer.sprite = SuitSprite;
             animator.runtimeAnimatorController = secondAnimator;
         }

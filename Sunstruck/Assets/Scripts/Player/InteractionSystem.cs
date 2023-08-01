@@ -13,9 +13,10 @@ public class InteractionSystem : MonoBehaviour
     [SerializeField] private GameObject chaseEnemy;
     [SerializeField] private GameObject enemySpawnPoint;
     [SerializeField] private GameObject enemySpawnPoint2;
+    [SerializeField] private GameObject popUpKey;
 
     public bool pickUpStunGun = false;
-    public bool pickUpSuit = false;
+    public static bool pickUpSuit = false;
     private GameObject box;
     private BoxCollider2D playerBox;
     private UIController uiController;
@@ -27,8 +28,10 @@ public class InteractionSystem : MonoBehaviour
     private bool isSwitchedOn;
     private Animator currentObjAnim;
     private CameraSystem cameraSystemScript;
+    private HealthBar healthBar;
 
-    
+    public static bool isBox;
+    public GameObject light2d;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,8 @@ public class InteractionSystem : MonoBehaviour
         stunGunScript = GetComponent<StunGun>();
         cameraSystemScript = FindObjectOfType<CameraSystem>();
         anima = GetComponent<Animator>();
+        healthBar = FindObjectOfType<HealthBar>();
+
         GameObject uiManagerObj = GameObject.Find("UIManager");
         if (uiManagerObj != null)
         {
@@ -52,7 +57,7 @@ public class InteractionSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hitbox = Physics2D.Raycast(castPoint.transform.position, Vector2.right * castPoint.transform.localScale.x, distance, movableObj);
+        RaycastHit2D hitbox = Physics2D.Raycast(castPoint.transform.position, Vector2.right * transform.localScale.x, distance, movableObj);
         RaycastHit2D hititem = Physics2D.BoxCast(playerBox.bounds.center, playerBox.size, 0, Vector2.zero, 0, interactableObj);
         
         if(hitbox.collider != null)
@@ -68,23 +73,31 @@ public class InteractionSystem : MonoBehaviour
                 box.GetComponent<StaticBox>().beingMove = true;
                 this.GetComponent<PlayerMovement>().speed /= 2f;
 
+                isBox = true;
+
                 AudioManager.Instance.PushBox();
             }
             else if (Input.GetKeyUp(KeyCode.J))
             {
                 PKJump = true;
+
                 anima.SetBool("Push", false);
                 box.GetComponent<FixedJoint2D>().enabled = false;
                 box.GetComponent<StaticBox>().beingMove = false;
                 this.GetComponent<PlayerMovement>().speed = 3f;
+
+                isBox = false;
+
                 AudioManager.Instance.StopCurrentSound();
             }
-        }
-        
+        }  
 
-        if (hititem.collider != null && Input.GetKeyDown(KeyCode.J))
+        if (hititem.collider != null)
         {
-            PickUp(hititem.collider.gameObject);
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                PickUp(hititem.collider.gameObject);
+            }
         }
 
         if(pickUpStunGun)
@@ -111,7 +124,7 @@ public class InteractionSystem : MonoBehaviour
         {
             if (!pickUpStunGun)
             {
-                //SceneController.instance.Cutscene();
+                SceneController.instance.Cutscene();
                 StartCoroutine(StunGunDialogue(obj));
                 AudioManager.Instance.StunGunP();
             }
@@ -121,9 +134,10 @@ public class InteractionSystem : MonoBehaviour
         
         if(obj.CompareTag("Suit"))
         {
-            print("Suit Picked Up");
             pickUpSuit = true;
-            Destroy(obj);
+            light2d.SetActive(true);
+            healthBar.gameObject.SetActive(true);
+            AudioManager.Instance.Suit();
         }
 
         if (obj.CompareTag("NextScene"))
@@ -144,11 +158,17 @@ public class InteractionSystem : MonoBehaviour
         {
             switchAllow = true;
             currentObjAnim = collision.gameObject.GetComponent<Animator>();
+            popUpKey.SetActive(true);
         }
 
         if (collision.CompareTag("SpawnChaseEnemy"))
         {
             Instantiate(chaseEnemy, enemySpawnPoint2.transform.position, Quaternion.identity);
+        }
+
+        if(collision.CompareTag("StunGun") || collision.CompareTag("Suit") || collision.CompareTag("NextScene"))
+        {
+            popUpKey.SetActive(true);
         }
     }
 
@@ -157,6 +177,12 @@ public class InteractionSystem : MonoBehaviour
         if (collision.CompareTag("Switches"))
         {
             switchAllow = false;
+            popUpKey.SetActive(false);
+        }
+
+        if (collision.CompareTag("StunGun") || collision.CompareTag("Suit") || collision.CompareTag("NextScene"))
+        {
+            popUpKey.SetActive(false);
         }
     }
 
@@ -164,11 +190,11 @@ public class InteractionSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(10.5f);
         CheckpointRespawn.currentTriggerObj = obj;
-        //obj.GetComponent<DialogueTrigger>().StartDialogue();
+        obj.GetComponent<DialogueTrigger>().StartDialogue();
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(castPoint.transform.position, (Vector2)castPoint.transform.position + Vector2.right * castPoint.transform.localScale.x * distance);
+        Gizmos.DrawLine(castPoint.transform.position, (Vector2)castPoint.transform.position + Vector2.right * transform.localScale.x * distance);
     }
 }

@@ -77,9 +77,11 @@ GameObject:
   - component: {fileID: 7087640958699132507}
   - component: {fileID: 1974100572949434121}
   - component: {fileID: 686841505321832017}
+  - component: {fileID: 5582813972144571473}
+  - component: {fileID: 2446094944880596303}
   m_Layer: 0
   m_Name: Mutant
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,10 +140,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2063951269
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 1801892891, guid: 34d8f0fdeb2da7c48bdc780810e30c73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -269,6 +271,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mutant
       objectReference: {fileID: 0}
+    - target: {fileID: 5328982666298046430, guid: 8e1b9a6114ad71045bb7806754b66783, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505281690555022826, guid: 8e1b9a6114ad71045bb7806754b66783, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505281690555022826, guid: 8e1b9a6114ad71045bb7806754b66783, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2063951269
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e1b9a6114ad71045bb7806754b66783, type: 3}
 --- !u!114 &1974100572949434121
@@ -285,14 +299,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 8108250660844863793}
   pointB: {fileID: 623534737091711014}
-  anima: {fileID: 0}
-  castPoint: {fileID: 0}
-  speed: 0
-  player: {fileID: 0}
-  Enemy: {fileID: 0}
+  anima: {fileID: 686841505321832017}
+  castPoint: {fileID: 7667339707436324492}
+  speed: 3
+  player: {fileID: 6094136711215164032, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+  Enemy: {fileID: 5329593914371193404}
   playerTransform: {fileID: 0}
   currentState: 
-  agroRange: 0
+  agroRange: 2
   isPlayerSeek: 0
   isFacingLeft: 0
   hitPlayer: 0
@@ -306,7 +320,7 @@ Animator:
   m_GameObject: {fileID: 6213114524992457834}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f71f1ba0fc6685d448a0e9287213075f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -316,3 +330,50 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &5582813972144571473
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6213114524992457834}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.7917986}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.453125, y: 2.328125}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.453125, y: 0.7445278}
+  m_EdgeRadius: 0
+--- !u!50 &2446094944880596303
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6213114524992457834}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
