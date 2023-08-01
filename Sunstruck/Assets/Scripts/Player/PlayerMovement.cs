@@ -79,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
                 anima.SetBool("Climbing", true);
                 playerRb.gravityScale = 0f;
                 playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
+                //AudioManager.Instance.StopCurrentSound();
             }
         }
         else

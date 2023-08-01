@@ -20,7 +20,6 @@ public class InteractionSystem : MonoBehaviour
     private BoxCollider2D playerBox;
     private UIController uiController;
     private StunGun stunGunScript;
-    private HealthBar healthBar;
     public bool PKJump = true;
     private Animator anima;
 
@@ -29,7 +28,7 @@ public class InteractionSystem : MonoBehaviour
     private Animator currentObjAnim;
     private CameraSystem cameraSystemScript;
 
-    public static bool isBox;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +38,6 @@ public class InteractionSystem : MonoBehaviour
         stunGunScript = GetComponent<StunGun>();
         cameraSystemScript = FindObjectOfType<CameraSystem>();
         anima = GetComponent<Animator>();
-        healthBar = FindObjectOfType<HealthBar>();
-
         GameObject uiManagerObj = GameObject.Find("UIManager");
         if (uiManagerObj != null)
         {
@@ -55,7 +52,7 @@ public class InteractionSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hitbox = Physics2D.Raycast(castPoint.transform.position, Vector2.right * transform.localScale.x, distance, movableObj);
+        RaycastHit2D hitbox = Physics2D.Raycast(castPoint.transform.position, Vector2.right * castPoint.transform.localScale.x, distance, movableObj);
         RaycastHit2D hititem = Physics2D.BoxCast(playerBox.bounds.center, playerBox.size, 0, Vector2.zero, 0, interactableObj);
         
         if(hitbox.collider != null)
@@ -70,19 +67,17 @@ public class InteractionSystem : MonoBehaviour
                 box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
                 box.GetComponent<StaticBox>().beingMove = true;
                 this.GetComponent<PlayerMovement>().speed /= 2f;
-                isBox = true;
 
                 AudioManager.Instance.PushBox();
             }
-            if (Input.GetKeyUp(KeyCode.J))
+            else if (Input.GetKeyUp(KeyCode.J))
             {
                 PKJump = true;
                 anima.SetBool("Push", false);
                 box.GetComponent<FixedJoint2D>().enabled = false;
                 box.GetComponent<StaticBox>().beingMove = false;
                 this.GetComponent<PlayerMovement>().speed = 3f;
-
-                isBox = false;
+                AudioManager.Instance.StopCurrentSound();
             }
         }
         
@@ -101,6 +96,7 @@ public class InteractionSystem : MonoBehaviour
         {
             if (!isSwitchedOn)
             {
+                AudioManager.Instance.drop();
                 stunGunScript.UpdateAmmoUI(--stunGunScript.ammo);
                 cameraSystemScript.SwitchOnCargo();
                 currentObjAnim.enabled = true;
@@ -115,7 +111,7 @@ public class InteractionSystem : MonoBehaviour
         {
             if (!pickUpStunGun)
             {
-                SceneController.instance.Cutscene();
+                //SceneController.instance.Cutscene();
                 StartCoroutine(StunGunDialogue(obj));
                 AudioManager.Instance.StunGunP();
             }
@@ -127,7 +123,7 @@ public class InteractionSystem : MonoBehaviour
         {
             print("Suit Picked Up");
             pickUpSuit = true;
-            healthBar.gameObject.SetActive(true);
+            Destroy(obj);
         }
 
         if (obj.CompareTag("NextScene"))
@@ -168,11 +164,11 @@ public class InteractionSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(10.5f);
         CheckpointRespawn.currentTriggerObj = obj;
-        obj.GetComponent<DialogueTrigger>().StartDialogue();
+        //obj.GetComponent<DialogueTrigger>().StartDialogue();
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(castPoint.transform.position, (Vector2)castPoint.transform.position + Vector2.right * transform.localScale.x * distance);
+        Gizmos.DrawLine(castPoint.transform.position, (Vector2)castPoint.transform.position + Vector2.right * castPoint.transform.localScale.x * distance);
     }
 }
