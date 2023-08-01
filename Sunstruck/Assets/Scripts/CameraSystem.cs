@@ -9,6 +9,7 @@ public class CameraSystem : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] private GameObject cutsceneCam;
+    [SerializeField] private CinemachineVirtualCamera roomCam;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject OldMan;
     [SerializeField] private Animator cargoAnim;
@@ -19,6 +20,7 @@ public class CameraSystem : MonoBehaviour
     private float shakeIntensity = 3f;
     private float shakeTime = 1f;
     private float timer;
+    public static bool onCam = false;
 
     private CinemachineBasicMultiChannelPerlin _cbmcp;
 
@@ -26,6 +28,7 @@ public class CameraSystem : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "AbandonedCargoArea")
         {
+            CheckpointRespawn.currentTriggerObj = OldMan;
             OldMan.GetComponent<DialogueTrigger>().StartDialogue();
             StartCoroutine(PreviewLevelACA());
         }
@@ -48,11 +51,15 @@ public class CameraSystem : MonoBehaviour
         }
 
         ViewEnemyBelow();
+        if(SceneManager.GetActiveScene().name == "SurfaceWorld")
+        {
+            FollowPlayerOnTrigger();
+        }
     }
 
     private void CaptureByEnemy()
     {
-        if (FindObjectOfType<StunGun>().hit)
+        if (StunGun.hit)
         {
             hitZoomIn -= 1f;
             ShakeCamera();
@@ -105,7 +112,7 @@ public class CameraSystem : MonoBehaviour
 
     IEnumerator PreviewLevelACA()
     {
-        player.GetComponent<PlayerMovement>().enabled = false;
+        onCam = true;
         while (DialogueManager.isActive)
         {
             yield return null;
@@ -116,7 +123,7 @@ public class CameraSystem : MonoBehaviour
         cutsceneCam.GetComponent<PlayableDirector>().enabled = true;
         
         yield return new WaitForSeconds(20);
-        player.GetComponent<PlayerMovement>().enabled = true;
+        onCam = false;
         cinemachineVirtualCamera.enabled = true;
         cutsceneCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
     }
@@ -124,7 +131,7 @@ public class CameraSystem : MonoBehaviour
     public void ViewEnemyBelow()
     {
         CinemachineFramingTransposer offsetCam = cinemachineVirtualCamera.GetComponentInChildren<CinemachineFramingTransposer>();
-        if (FindObjectOfType<InteractionSystem>().offset)
+        if (PlayerMovement.offset)
         {
             offsetY -= 0.2f;
         }
@@ -137,5 +144,19 @@ public class CameraSystem : MonoBehaviour
 
         float offsetSpeed = 5f;
         offsetCam.m_TrackedObjectOffset.y = Mathf.Lerp(offsetCam.m_TrackedObjectOffset.y, offsetY, Time.deltaTime * offsetSpeed);
+    }
+
+    public void FollowPlayerOnTrigger()
+    {
+        if (PlayerMovement.inRoom)
+        {
+            roomCam.enabled = true;
+            cinemachineVirtualCamera .enabled = false;
+        }
+        else
+        {
+            cinemachineVirtualCamera.enabled = true;
+            roomCam.enabled = false;
+        }
     }
 }

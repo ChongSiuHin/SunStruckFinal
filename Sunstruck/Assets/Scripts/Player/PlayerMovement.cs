@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     private GameObject currentTriggerObj;
 
     private bool isJumping = false;
+    public static bool offset;
+    public static bool inRoom;
 
     private void Awake()
     {
@@ -36,18 +38,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (DialogueManager.isActive)
+        if (DialogueManager.isActive || CameraSystem.onCam)
         {
             playerRb.bodyType = RigidbodyType2D.Static;
-            interactionSystem.enabled = false;
-            GetComponent<CheckpointRespawn>().enabled = false;
             return;
         }
-        else if(!HidingMechanism.isHiding)
+        else if(!(HidingMechanism.isHiding || StunGun.hit))
         {
             playerRb.bodyType = RigidbodyType2D.Dynamic;
-            interactionSystem.enabled = true;
-            GetComponent<CheckpointRespawn>().enabled = true;
         }
 
         PKJump = interactionSystem.PKJump;
@@ -134,7 +132,17 @@ public class PlayerMovement : MonoBehaviour
             currentTriggerObj = collision.gameObject;
             isLadder = true;
             isClimbing = true;
-        }     
+        }
+
+        if (collision.CompareTag("Offset"))
+        {
+            offset = true;
+        }
+
+        if (collision.CompareTag("Room"))
+        {
+            inRoom = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -143,6 +151,16 @@ public class PlayerMovement : MonoBehaviour
         {
             isLadder = false;
             isClimbing = false;
+        }
+
+        if (collision.CompareTag("Offset"))
+        {
+            offset = false;
+        }
+
+        if (collision.CompareTag("Room"))
+        {
+            inRoom = false;
         }
     }
 
@@ -189,15 +207,19 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            if (horizontal > 0f)
+            if(!InteractionSystem.isBox)
             {
-                transform.localScale = new Vector2(1, 1);
+                if (horizontal > 0f)
+                {
+                    transform.localScale = new Vector2(1, 1);
+                }
+                else
+                {
+                    transform.localScale = new Vector2(-1, 1);
+                }
+                //AudioManager.Instance.StopCurrentSound();
             }
-            else
-            {
-                transform.localScale = new Vector2(-1, 1);
-            }
-            //AudioManager.Instance.StopCurrentSound();
+
         }
         else
         {

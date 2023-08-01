@@ -25,7 +25,7 @@ public class CheckpointRespawn : MonoBehaviour
     void Update()
     {
         deadSpace.transform.position = new Vector2(transform.position.x, deadSpace.transform.position.y);
-        if(isCheckPoint && Input.GetKeyDown(KeyCode.J))
+        if(isCheckPoint && Input.GetKeyDown(KeyCode.J) && !DialogueManager.isActive)
         {
             respawnPoint = transform.position;
             currentTriggerObj.GetComponent<Animator>().SetTrigger("Activate");
@@ -100,5 +100,13 @@ public class CheckpointRespawn : MonoBehaviour
             SceneController.instance.NextLevel();
             respawnPoint = transform.position;
         }  
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("ChaseEnemy"))
+        {
+            transform.position = respawnPoint;
+        }
     }
 }
