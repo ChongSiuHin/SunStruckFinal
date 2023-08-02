@@ -28,7 +28,7 @@ public class InteractionSystem : MonoBehaviour
     private bool isSwitchedOn;
     private Animator currentObjAnim;
     private CameraSystem cameraSystemScript;
-    private HealthBar healthBar;
+    public HealthBar healthBar;
 
     public static bool isBox;
     public GameObject light2d;
@@ -41,7 +41,6 @@ public class InteractionSystem : MonoBehaviour
         stunGunScript = GetComponent<StunGun>();
         cameraSystemScript = FindObjectOfType<CameraSystem>();
         anima = GetComponent<Animator>();
-        healthBar = FindObjectOfType<HealthBar>();
 
         GameObject uiManagerObj = GameObject.Find("UIManager");
         if (uiManagerObj != null)

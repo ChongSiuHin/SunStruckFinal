@@ -21,13 +21,15 @@ public class MenuScreen : MonoBehaviour
         Setting.SetActive(false);
 
         Start1();
-        chooseLevelButton.onClick.AddListener(OpenLevelMenu);
+       // chooseLevelButton.onClick.AddListener(OpenLevelMenu);
         settingButton.onClick.AddListener(OpenSettingMenu);
     }
 
     private void Update()
     {
-
+        Start1();
+        Time.timeScale = 1f;
+        settingButton.onClick.AddListener(OpenSettingMenu);
     }
 
     public void Start1()

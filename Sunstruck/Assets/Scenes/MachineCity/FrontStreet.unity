@@ -8362,6 +8362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6094136711215164036, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: pickUpStunGun
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_RootOrder
       value: 2
