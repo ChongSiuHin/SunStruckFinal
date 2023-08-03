@@ -64,31 +64,36 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isLadder)
         {
-            if (Mathf.Abs(verticle) > 0f)
+            if (Mathf.Abs(verticle) != 0f)
             {
+                isClimbing = true;
                 anima.SetBool("Climbing", false);
                 anima.SetBool("RopeToGround", true);
                 anima.SetBool("RopeJump", false);
                 anima.SetBool("ClimbMove", true);
                 playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
                 playerRb.gravityScale = 0f;
-                playerCollider.isTrigger = true;
+                Physics2D.IgnoreLayerCollision(10, 3, true);
                 AudioManager.Instance.CLimbingRope();
             }
             else
             {
-                anima.SetBool("Climbing", true);
-                playerRb.gravityScale = 0f;
-                playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
-                playerCollider.isTrigger = true;
-                //AudioManager.Instance.StopCurrentSound();
+                if (!isJumping)
+                {
+                    isClimbing = true;
+                    anima.SetBool("Climbing", true);
+                    playerRb.gravityScale = 0f;
+                    playerRb.velocity = new Vector2(horizontal * speed, verticle * climbSpeed);
+                    Physics2D.IgnoreLayerCollision(10, 3, true);
+                    //AudioManager.Instance.StopCurrentSound();
+                }
             }
         }
         else
         {
             playerRb.gravityScale = 3f;
             playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
-            playerCollider.isTrigger = false;
+            Physics2D.IgnoreLayerCollision(10, 3, false);
         }
 
         if (isGrounded())
@@ -154,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("Climable"))
         {
             isLadder = false;
-            isClimbing = false;
+            //isClimbing = false;
         }
 
         if (collision.CompareTag("Offset"))
@@ -182,8 +187,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (isClimbing)
+        if (isClimbing && isLadder && !isGrounded())
         {
+            isJumping = false;
             playerTrans.position = new Vector3(currentTriggerObj.transform.position.x, playerTrans.position.y, playerTrans.position.z);
         }
     }
