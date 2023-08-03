@@ -52,14 +52,15 @@ public class EnermyProt : MonoBehaviour
 
         if (StunGun.hit && hitPlayer)
         {
-            anima.SetBool("Run", false);
-            if (player.GetComponent<StunGun>().stunEnemy)
+            Debug.Log("hit parameter");
+            //anima.SetBool("Run", false);
+            anima.SetBool("Hit", true);         
+            if (StunGun.stunEnemy)
             {
                 playSound = false;
-                rb.velocity = new Vector2(0, 0);
+                //rb.velocity = new Vector2(0, 0);
                 //Animation
-            }
-            
+            }  
         }
         else
         {

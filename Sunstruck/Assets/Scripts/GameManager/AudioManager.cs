@@ -9,19 +9,23 @@ public class AudioManager : MonoBehaviour
     public AudioSource runSoundSource;
     public AudioSource robotSoundSource;
 
-    public AudioSource audioSource;
+    //public AudioSource audioSource;
     public AudioClip backgroundMusic;
     public AudioClip jumpSound;
     public AudioClip runSound;
     public AudioClip PlatformRun;
     public AudioClip TrashCan;
     public AudioClip StunGunPickUp;
+    public AudioClip SuitPickUp;
     public AudioClip StunGunFire;
     public AudioClip RobotRun;
     public AudioClip RobotStun;
     public AudioClip Checkpoint;
     public AudioClip PushingBox;
     public AudioClip Climbing;
+    public AudioClip Exposed;
+    public AudioClip Drop;
+    public AudioClip Charging;
 
 
     public void Start()
@@ -40,7 +44,6 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void PlayJumpSound()
@@ -108,8 +111,28 @@ public class AudioManager : MonoBehaviour
 
     public void PushBox()
     {
-        runSoundSource.clip = PushingBox;
+        runSoundSource.PlayOneShot(PushingBox);
+    }
+
+    public void exposed()
+    {
+        runSoundSource.clip = Exposed;
         runSoundSource.Play();
+    }
+
+    public void drop()
+    {
+        runSoundSource.PlayOneShot(Drop);
+    }
+
+    public void OnBeforeTransformParentChanged()
+    {
+        runSoundSource.PlayOneShot(Charging);
+    }
+
+    public void Suit()
+    {
+        runSoundSource.PlayOneShot(SuitPickUp);
     }
 }
 

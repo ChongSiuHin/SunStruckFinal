@@ -13,9 +13,10 @@ public class InteractionSystem : MonoBehaviour
     [SerializeField] private GameObject chaseEnemy;
     [SerializeField] private GameObject enemySpawnPoint;
     [SerializeField] private GameObject enemySpawnPoint2;
+    [SerializeField] private GameObject popUpKey;
 
     public bool pickUpStunGun = false;
-    public bool pickUpSuit = false;
+    public static bool pickUpSuit = false;
     private GameObject box;
     private BoxCollider2D playerBox;
     private UIController uiController;
@@ -27,8 +28,10 @@ public class InteractionSystem : MonoBehaviour
     private bool isSwitchedOn;
     private Animator currentObjAnim;
     private CameraSystem cameraSystemScript;
+    private HealthBar healthBar;
 
     public static bool isBox;
+    public GameObject light2d;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,8 @@ public class InteractionSystem : MonoBehaviour
         stunGunScript = GetComponent<StunGun>();
         cameraSystemScript = FindObjectOfType<CameraSystem>();
         anima = GetComponent<Animator>();
+        healthBar = FindObjectOfType<HealthBar>();
+
         GameObject uiManagerObj = GameObject.Find("UIManager");
         if (uiManagerObj != null)
         {
@@ -67,26 +72,32 @@ public class InteractionSystem : MonoBehaviour
                 box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
                 box.GetComponent<StaticBox>().beingMove = true;
                 this.GetComponent<PlayerMovement>().speed /= 2f;
+
                 isBox = true;
 
                 AudioManager.Instance.PushBox();
             }
-            if (Input.GetKeyUp(KeyCode.J))
+            else if (Input.GetKeyUp(KeyCode.J))
             {
                 PKJump = true;
+
                 anima.SetBool("Push", false);
                 box.GetComponent<FixedJoint2D>().enabled = false;
                 box.GetComponent<StaticBox>().beingMove = false;
                 this.GetComponent<PlayerMovement>().speed = 3f;
 
                 isBox = false;
-            }
-        }
-        
 
-        if (hititem.collider != null && Input.GetKeyDown(KeyCode.J))
+                AudioManager.Instance.StopCurrentSound();
+            }
+        }  
+
+        if (hititem.collider != null)
         {
-            PickUp(hititem.collider.gameObject);
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                PickUp(hititem.collider.gameObject);
+            }
         }
 
         if(pickUpStunGun)
@@ -98,6 +109,7 @@ public class InteractionSystem : MonoBehaviour
         {
             if (!isSwitchedOn)
             {
+                AudioManager.Instance.drop();
                 stunGunScript.UpdateAmmoUI(--stunGunScript.ammo);
                 cameraSystemScript.SwitchOnCargo();
                 currentObjAnim.enabled = true;
@@ -122,9 +134,10 @@ public class InteractionSystem : MonoBehaviour
         
         if(obj.CompareTag("Suit"))
         {
-            print("Suit Picked Up");
             pickUpSuit = true;
-            Destroy(obj);
+            light2d.SetActive(true);
+            healthBar.gameObject.SetActive(true);
+            AudioManager.Instance.Suit();
         }
 
         if (obj.CompareTag("NextScene"))
@@ -145,11 +158,17 @@ public class InteractionSystem : MonoBehaviour
         {
             switchAllow = true;
             currentObjAnim = collision.gameObject.GetComponent<Animator>();
+            popUpKey.SetActive(true);
         }
 
         if (collision.CompareTag("SpawnChaseEnemy"))
         {
             Instantiate(chaseEnemy, enemySpawnPoint2.transform.position, Quaternion.identity);
+        }
+
+        if(collision.CompareTag("StunGun") || collision.CompareTag("Suit") || collision.CompareTag("NextScene"))
+        {
+            popUpKey.SetActive(true);
         }
     }
 
@@ -158,6 +177,12 @@ public class InteractionSystem : MonoBehaviour
         if (collision.CompareTag("Switches"))
         {
             switchAllow = false;
+            popUpKey.SetActive(false);
+        }
+
+        if (collision.CompareTag("StunGun") || collision.CompareTag("Suit") || collision.CompareTag("NextScene"))
+        {
+            popUpKey.SetActive(false);
         }
     }
 

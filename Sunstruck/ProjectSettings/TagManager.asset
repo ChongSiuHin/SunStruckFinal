@@ -23,6 +23,11 @@ TagManager:
   - ChaseEnemy
   - SpawnChaseEnemy
   - Box
+  - PauseScreen
+  - SettingScreen
+  - PauseMenu
+  - PauseAnimator
+  - ExposeArea
   layers:
   - Default
   - TransparentFX
@@ -74,4 +79,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2377352201
+    locked: 0
+  - name: LightEffects
+    uniqueID: 379718245
     locked: 0

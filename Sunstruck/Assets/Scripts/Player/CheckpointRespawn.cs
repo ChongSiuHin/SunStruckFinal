@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CheckpointRespawn : MonoBehaviour
 {
+    [SerializeField] private GameObject popUpKey;
     [SerializeField] private GameObject deadSpace;
     [SerializeField] private GameObject[] checkpoint;
 
@@ -56,6 +57,7 @@ public class CheckpointRespawn : MonoBehaviour
 
         else if(collision.CompareTag("Checkpoint"))
         {
+            popUpKey.SetActive(true);
             isCheckPoint = true;
             dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
             currentTriggerObj = collision.gameObject;
@@ -63,21 +65,28 @@ public class CheckpointRespawn : MonoBehaviour
         
         else if(collision.CompareTag("OldMan") && GetComponent<InteractionSystem>().pickUpStunGun)
         {
+            popUpKey.SetActive(true);
             isOldMan = true;
             dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
             currentTriggerObj = collision.gameObject;
-        } 
+        }
+        else if(collision.CompareTag("ExposeArea") && !InteractionSystem.pickUpSuit)
+        {
+            transform.position = respawnPoint;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.CompareTag("Checkpoint"))
         {
+            popUpKey.SetActive(false);
             isCheckPoint = false;
         }
 
         if(collision.CompareTag("OldMan"))
         {
+            popUpKey.SetActive(false);
             isOldMan = false;
         }
     }

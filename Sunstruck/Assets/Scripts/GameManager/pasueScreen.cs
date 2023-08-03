@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class pasueScreen : MonoBehaviour
 {
+    public GameObject PauseScreen;
+
     public GameObject pauseMenu;
     public GameObject pauseAnimator;
     private static bool isPaused;
@@ -14,6 +16,12 @@ public class pasueScreen : MonoBehaviour
 
     private void Start()
     {
+        PauseScreen = GameObject.FindGameObjectWithTag("PauseScreen");
+        pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+        pauseAnimator = GameObject.FindGameObjectWithTag("PauseAnimator");
+
+        settingMenu = GameObject.FindGameObjectWithTag("SettingScreen");
+
         pauseMenu.SetActive(false);
         pauseAnimator.SetActive(false);
         settingMenu.SetActive(false);
@@ -56,7 +64,8 @@ public class pasueScreen : MonoBehaviour
     public void GoToMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("FrontStreet");
+        SceneManager.LoadScene("MenuScreen");
+        ResumeGame();
     }
 
     public void OpenSetting()

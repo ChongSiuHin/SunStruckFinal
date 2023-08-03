@@ -20,15 +20,15 @@ public class CameraSystem : MonoBehaviour
     private float shakeIntensity = 3f;
     private float shakeTime = 1f;
     private float timer;
-    public static bool onCam = false;
 
     private CinemachineBasicMultiChannelPerlin _cbmcp;
+
+    public static bool onCam;
 
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "AbandonedCargoArea")
         {
-            CheckpointRespawn.currentTriggerObj = OldMan;
             OldMan.GetComponent<DialogueTrigger>().StartDialogue();
             StartCoroutine(PreviewLevelACA());
         }
@@ -51,7 +51,8 @@ public class CameraSystem : MonoBehaviour
         }
 
         ViewEnemyBelow();
-        if(SceneManager.GetActiveScene().name == "SurfaceWorld")
+
+        if (SceneManager.GetActiveScene().name == "SurfaceWorld")
         {
             FollowPlayerOnTrigger();
         }

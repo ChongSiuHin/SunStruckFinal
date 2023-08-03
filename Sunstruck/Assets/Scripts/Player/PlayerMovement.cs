@@ -72,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
                 anima.SetBool("ClimbMove", true);
                 playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
                 playerRb.gravityScale = 0f;
+                playerCollider.isTrigger = true;
                 AudioManager.Instance.CLimbingRope();
             }
             else
@@ -79,12 +80,15 @@ public class PlayerMovement : MonoBehaviour
                 anima.SetBool("Climbing", true);
                 playerRb.gravityScale = 0f;
                 playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
+                playerCollider.isTrigger = true;
+                //AudioManager.Instance.StopCurrentSound();
             }
         }
         else
         {
             playerRb.gravityScale = 3f;
             playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
+            playerCollider.isTrigger = false;
         }
 
         if (isGrounded())

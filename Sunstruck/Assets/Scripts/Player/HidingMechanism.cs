@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HidingMechanism : MonoBehaviour
 {
+    [SerializeField] private GameObject popUpKey;
     public static bool isHiding = false;
 
     private bool hideAllow;
@@ -53,6 +54,7 @@ public class HidingMechanism : MonoBehaviour
     {
         if (collision.CompareTag("Hidepoint"))
         {
+            popUpKey.SetActive(true);
             hideAllow = true;
             currentHidePointAnim = collision.gameObject.GetComponent<Animator>();
         }
@@ -62,6 +64,7 @@ public class HidingMechanism : MonoBehaviour
     {
         if (collision.CompareTag("Hidepoint"))
         {
+            popUpKey.SetActive(false);
             hideAllow = false;
         }
     }
