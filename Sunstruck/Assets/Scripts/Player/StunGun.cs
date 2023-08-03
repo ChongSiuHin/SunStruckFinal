@@ -9,108 +9,92 @@ public class StunGun : MonoBehaviour
     [SerializeField] private float useDuration;
     [SerializeField] private GameObject popUpKey;
 
-    public bool stunEnemy;
+    public static bool stunEnemy;
     public static bool hit;
     public int maxHits = 6;
     public GameObject[] circles;
-    public GameObject objectToHide;
+    //public GameObject objectToHide;
+    private SpriteRenderer playerSpriteRenderer;
 
     private int hitsCount = 0;
-    private float stunTimer;
-    private float useTimer;
     private Collider2D enemyCollider;
     private Collider2D playerCollider;
     private bool isCharging = false;
     public bool isFire;
     private bool shouldStopCharging = false;
 
-    private Animator enemyAnimator;
+    private GameObject Enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        stunTimer = stunDuration;
-        useTimer = useDuration;
         isFire = false;
         stunEnemy = false;
+
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        SpriteRenderer spriteRenderer = objectToHide.GetComponent<SpriteRenderer>();
+        //SpriteRenderer spriteRenderer = objectToHide.GetComponent<SpriteRenderer>();
         if (hit)
         {
+            StartCoroutine(UseStunGunTimer());
+
             //animator.SetBool("Hit", true);
-            if (spriteRenderer != null)
+            //if (playerSpriteRenderer != null)//(spriteRenderer != null)
+            //{
+            //    playerSpriteRenderer.enabled = false;
+            //    //spriteRenderer.enabled = false;
+            //    StartCoroutine(ReEnableSprite(2f));
+            //}
+
+            if (Input.GetKeyDown(KeyCode.J) && !isFire)
             {
-                spriteRenderer.enabled = false;
-                StartCoroutine(ReEnableSprite(2f));
-            }
-            useTimer -= 1 * Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.J) && useTimer > 0 && !isFire)
-            {
-                enemyAnimator.SetBool("StunGunHit", true);
+                playerSpriteRenderer.enabled = true;
+                popUpKey.SetActive(false);
+
+                Enemy.GetComponent<Animator>().SetBool("StunGunHit", true);
+                Enemy.GetComponent<Animator>().SetBool("Hit", false);
+
                 hitsCount++;
                 isFire = true;
                 stunEnemy = true;
+
                 if (stunEnemy)
                 {
-                    AudioManager.Instance.StunGunF();
-                    AudioManager.Instance.RobotStuning();
+                    StartCoroutine(StunEnemyTimer());
                     Physics2D.IgnoreCollision(enemyCollider, playerCollider, true);
                     GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+                    AudioManager.Instance.StunGunF();
+                    AudioManager.Instance.RobotStuning();
+
                     //delayTimer = 1;
                 }
+
                 ammo--;
-                useTimer = useDuration;
                 UpdateAmmoUI(ammo);
-                popUpKey.SetActive(false);
-            }
-            else if (useTimer <= 0)
-            {
-                enemyAnimator.SetBool("Hit", false);
-                if (!stunEnemy)
-                {
-                    spriteRenderer.enabled = true;
-                    transform.position = this.GetComponent<CheckpointRespawn>().respawnPoint;
-                    GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                }
-                useTimer = useDuration;
-                hit = false;
-                popUpKey.SetActive(false);
+                
             }
         }
 
-        if (stunEnemy)
-        {
-            stunTimer -= 1 * Time.deltaTime;
-        }
-
-        if (stunTimer <= 0)
-        {
-            enemyAnimator.SetBool("StunGunHit", false);
-            stunEnemy = false;
-            hit = false;
-            stunTimer = stunDuration;
-            Physics2D.IgnoreCollision(enemyCollider, playerCollider, false);
-            isFire = false;
-        }
-
-        IEnumerator ReEnableSprite(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            spriteRenderer.enabled = true;
-        }
+        //IEnumerator ReEnableSprite(float delay)
+        //{
+        //    yield return new WaitForSeconds(delay);
+        //    playerSpriteRenderer.enabled = true;
+        //    //spriteRenderer.enabled = true;
+        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Enemy") && !HidingMechanism.isHiding)
         {
-            enemyCollider = collision.otherCollider;
-            playerCollider = collision.collider;
-            enemyAnimator = collision.gameObject.GetComponent<Animator>();
+            playerCollider = collision.otherCollider;
+            enemyCollider = collision.collider;
+            Enemy = collision.gameObject;
             if (GetComponent<InteractionSystem>().pickUpStunGun && ammo > 0)
             {
                 hit = true;
@@ -177,5 +161,42 @@ public class StunGun : MonoBehaviour
             collision.gameObject.GetComponent<Animator>().SetBool("Activated", false);
             shouldStopCharging = true;
         }
+    }
+
+    IEnumerator UseStunGunTimer()
+    {
+        Enemy.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        playerSpriteRenderer.enabled = false;
+
+        yield return new WaitForSeconds(useDuration);
+        
+        if (!stunEnemy && hit)
+        {   
+            transform.position = GetComponent<CheckpointRespawn>().respawnPoint;
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+            Enemy.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        }
+
+        Enemy.GetComponent<Animator>().SetBool("Hit", false);
+        playerSpriteRenderer.enabled = true;
+
+        hit = false;
+        popUpKey.SetActive(false);
+    }
+
+    IEnumerator StunEnemyTimer()
+    {  
+        isFire = false;
+
+        yield return new WaitForSeconds(stunDuration);
+
+        Enemy.GetComponent<Animator>().SetBool("StunGunHit", false);
+        Enemy.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+        hit = false;
+        stunEnemy = false;
+
+        Physics2D.IgnoreCollision(enemyCollider, playerCollider, false);
     }
 }
