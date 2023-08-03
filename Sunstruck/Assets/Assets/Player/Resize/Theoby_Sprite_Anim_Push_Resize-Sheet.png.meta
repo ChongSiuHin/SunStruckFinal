@@ -120,12 +120,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Push_Resize-Sheet_0
       rect:
         serializedVersion: 2
-        x: 48
+        x: 0
         y: 0
-        width: 75
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -141,12 +141,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Push_Resize-Sheet_1
       rect:
         serializedVersion: 2
-        x: 198
+        x: 150
         y: 0
-        width: 75
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Push_Resize-Sheet_2
       rect:
         serializedVersion: 2
-        x: 348
+        x: 300
         y: 0
-        width: 75
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Push_Resize-Sheet_3
       rect:
         serializedVersion: 2
-        x: 498
-        y: 1
-        width: 75
-        height: 149
+        x: 450
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,12 +204,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Push_Resize-Sheet_4
       rect:
         serializedVersion: 2
-        x: 648
+        x: 600
         y: 0
-        width: 75
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,12 +225,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Push_Resize-Sheet_5
       rect:
         serializedVersion: 2
-        x: 798
+        x: 750
         y: 0
-        width: 75
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
