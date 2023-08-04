@@ -58,7 +58,7 @@ public class CameraSystem : MonoBehaviour
         }
     }
 
-    private void CaptureByEnemy()
+    public void CaptureByEnemy()
     {
         if (StunGun.hit)
         {
@@ -68,6 +68,7 @@ public class CameraSystem : MonoBehaviour
         else
         {
             hitZoomIn += 1f;
+            StopShake();
         }
 
         hitZoomIn = Mathf.Clamp(hitZoomIn, 1.5f, 3f);
