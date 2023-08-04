@@ -189,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4703885}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.392227, y: -0.68886864, z: -162.57538}
+  m_LocalPosition: {x: -14.202227, y: -0.7288686, z: -162.57538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -680,11 +680,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.92
+      value: -7.73
       objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.65
+      value: -2.69
       objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -722,6 +722,10 @@ PrefabInstance:
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
       objectReference: {fileID: 519420032}
+    - target: {fileID: 8238007421831168283, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: stunDuration
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8238007421831168283, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: circles.Array.data[0]
       value: 
@@ -2359,7 +2363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.784937, y: -1.6599964, z: -10}
+  m_LocalPosition: {x: -6.73, y: -1.69, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12950,7 +12954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1570395084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18070,10 +18074,6 @@ PrefabInstance:
     - target: {fileID: 407241704339011374, guid: abb538d5f8af85546927da657f544141, type: 3}
       propertyPath: m_Name
       value: Robot
-      objectReference: {fileID: 0}
-    - target: {fileID: 3874513203639035527, guid: abb538d5f8af85546927da657f544141, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5332793870654625352, guid: abb538d5f8af85546927da657f544141, type: 3}
       propertyPath: player

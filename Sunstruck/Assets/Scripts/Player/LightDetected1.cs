@@ -28,6 +28,7 @@ public class LightDetected1 : MonoBehaviour
             healthBar = FindObjectOfType<HealthBar>();
             healthBar.TakeDamage();
             healthBar.SetActive(true);
+            AudioManager.Instance.exposed();
         }
     }
 
@@ -38,7 +39,6 @@ public class LightDetected1 : MonoBehaviour
             //healthBar.TakeDamage();
             //healthBar.SetActive(true);
             isPlayerInside = true;
-            AudioManager.Instance.exposed();
         }
     }
 
@@ -46,8 +46,8 @@ public class LightDetected1 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            AudioManager.Instance.StopCurrentSound();
+            AudioManager.Instance.StopExposedSound();
             isPlayerInside = false;
-        }
+            Debug.Log("You was out area");        }
     }
 }

@@ -431,13 +431,13 @@ MonoBehaviour:
     m_Bits: 128
   stunGun: {fileID: 0}
   castPoint: {fileID: 6094136711210062220}
-  chaseEnemy: {fileID: 0}
+  chaseEnemy: {fileID: 7707457248986833659, guid: 7ead52cefac4a04439df8ba6c5542b47, type: 3}
   enemySpawnPoint: {fileID: 0}
   enemySpawnPoint2: {fileID: 0}
   popUpKey: {fileID: 925624810}
   pickUpStunGun: 1
   PKJump: 1
-  light2d: {fileID: 0}
+  light2d: {fileID: 373036198}
 --- !u!114 &6094136711215164045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,6 +466,10 @@ MonoBehaviour:
   popUpKey: {fileID: 925624810}
   deadSpace: {fileID: 0}
   checkpoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   respawnPoint: {x: 0, y: 0, z: 0}
   isCheckPoint: 0
