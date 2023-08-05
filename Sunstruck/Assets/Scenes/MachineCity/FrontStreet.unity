@@ -4685,10 +4685,11 @@ MonoBehaviour:
   backgroundMusicSource: {fileID: 918150771}
   runSoundSource: {fileID: 918150769}
   robotSoundSource: {fileID: 918150773}
+  ExposedSoundSource: {fileID: 0}
   backgroundMusic: {fileID: 8300000, guid: 4ed3db78d3d39b540a166740404df560, type: 3}
   jumpSound: {fileID: 8300000, guid: b0b4cdb11e374b541934b80ee81ee8c9, type: 3}
-  runSound: {fileID: 8300000, guid: 9b76e53fd5cc9584280d4df855b318a1, type: 3}
-  PlatformRun: {fileID: 8300000, guid: 2465c426307d18a4f93c8cd78dbb872f, type: 3}
+  runSound: {fileID: 0}
+  PlatformRun: {fileID: 0}
   TrashCan: {fileID: 8300000, guid: 5cb8cbc72361e774c8a154c4e61b8def, type: 3}
   StunGunPickUp: {fileID: 8300000, guid: 322a343cc6739cf428be2967beb4e2d2, type: 3}
   SuitPickUp: {fileID: 0}
@@ -4701,6 +4702,7 @@ MonoBehaviour:
   Exposed: {fileID: 8300000, guid: 055063f6621ae5142a28bc6885ec0611, type: 3}
   Drop: {fileID: 8300000, guid: 235496f4810624d4ab8abda8fd274f66, type: 3}
   Charging: {fileID: 8300000, guid: 79c57891bbd37f848a5e970bf15b39a4, type: 3}
+  Player: {fileID: 6094136710685944066}
 --- !u!82 &918150771
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8412,3 +8414,14 @@ PrefabInstance:
       objectReference: {fileID: 1575985618}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+--- !u!114 &6094136710685944066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1771898148, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+  m_PrefabInstance: {fileID: 6094136710685944065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c73f2582d73c34abd06afd2d65a323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
