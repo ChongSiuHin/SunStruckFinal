@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip Exposed;
     public AudioClip Drop;
     public AudioClip Charging;
+    public PlayerAudio Player;
 
 
     public void Start()
@@ -57,6 +58,12 @@ public class AudioManager : MonoBehaviour
         runSoundSource.clip = runSound;
         runSoundSource.Play();
         //audioSource.PlayOneShot(runSound);
+    }
+
+    public void StopPlayerSound()
+    {
+        Debug.Log("Sound was stop");
+        Player.Stop();
     }
 
     public void StopCurrentSound()

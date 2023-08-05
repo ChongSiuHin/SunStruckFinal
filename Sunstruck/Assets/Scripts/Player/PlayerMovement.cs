@@ -236,12 +236,13 @@ public class PlayerMovement : MonoBehaviour
             if (isRunning)
             {
                 isRunning = false;
-                AudioManager.Instance.StopCurrentSound();
+                AudioManager.Instance.StopPlayerSound();
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded() && PKJump)
         {
+            AudioManager.Instance.StopPlayerSound();
             isJumping = true;
             isClimbing = false;
             anima.SetBool("Jump", true);
@@ -250,6 +251,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Space) && isLadder)
         {
+            AudioManager.Instance.StopPlayerSound();
             isJumping = true;
             isClimbing = false;
             anima.SetBool("RopeJump", true);

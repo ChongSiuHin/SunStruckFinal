@@ -637,6 +637,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8102983652341285125, guid: d1977b4ca96cb764dadfedf1d8392ea6, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8102983652341285242, guid: d1977b4ca96cb764dadfedf1d8392ea6, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -670,10 +674,6 @@ PrefabInstance:
       propertyPath: stunGun
       value: 
       objectReference: {fileID: 2107275155}
-    - target: {fileID: 6094136711215164036, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
-      propertyPath: pickUpStunGun
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -722,10 +722,6 @@ PrefabInstance:
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
       objectReference: {fileID: 519420032}
-    - target: {fileID: 8238007421831168283, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
-      propertyPath: stunDuration
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8238007421831168283, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: circles.Array.data[0]
       value: 
@@ -3206,6 +3202,10 @@ PrefabInstance:
     - target: {fileID: 2414837321326832196, guid: 5e2249027f13b3041a5e18baccf2521e, type: 3}
       propertyPath: m_Name
       value: Box_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2414837321326832196, guid: 5e2249027f13b3041a5e18baccf2521e, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 2414837321326832197, guid: 5e2249027f13b3041a5e18baccf2521e, type: 3}
       propertyPath: m_RootOrder
@@ -7538,7 +7538,7 @@ GameObject:
   - component: {fileID: 1492246119}
   m_Layer: 3
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12954,7 +12954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1570395084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13706,16 +13706,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aecd6275d5f843488383305724e1357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundMusicSource: {fileID: 1670666331}
+  backgroundMusicSource: {fileID: 1670666328}
   runSoundSource: {fileID: 1670666326}
   robotSoundSource: {fileID: 1670666330}
+  ExposedSoundSource: {fileID: 1670666331}
   backgroundMusic: {fileID: 8300000, guid: 5a494868bbf3b534a946e1b3e4f73e51, type: 3}
   jumpSound: {fileID: 8300000, guid: b0b4cdb11e374b541934b80ee81ee8c9, type: 3}
-  runSound: {fileID: 8300000, guid: 9b76e53fd5cc9584280d4df855b318a1, type: 3}
-  PlatformRun: {fileID: 8300000, guid: 2465c426307d18a4f93c8cd78dbb872f, type: 3}
+  runSound: {fileID: 0}
+  PlatformRun: {fileID: 0}
   TrashCan: {fileID: 8300000, guid: 5cb8cbc72361e774c8a154c4e61b8def, type: 3}
   StunGunPickUp: {fileID: 8300000, guid: 322a343cc6739cf428be2967beb4e2d2, type: 3}
-  SuitPickUp: {fileID: 0}
+  SuitPickUp: {fileID: 8300000, guid: 322a343cc6739cf428be2967beb4e2d2, type: 3}
   StunGunFire: {fileID: 0}
   RobotRun: {fileID: 8300000, guid: 0891e5b1ad351284f8841e58334cf872, type: 3}
   RobotStun: {fileID: 8300000, guid: b168ec0ea201af34dbff6c26e25d9b61, type: 3}
@@ -13725,6 +13726,7 @@ MonoBehaviour:
   Exposed: {fileID: 8300000, guid: 055063f6621ae5142a28bc6885ec0611, type: 3}
   Drop: {fileID: 8300000, guid: 235496f4810624d4ab8abda8fd274f66, type: 3}
   Charging: {fileID: 8300000, guid: 79c57891bbd37f848a5e970bf15b39a4, type: 3}
+  Player: {fileID: 1771898148}
 --- !u!82 &1670666328
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14599,6 +14601,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6094136711215164032, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
   m_PrefabInstance: {fileID: 135193883}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1771898148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1771898148, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+  m_PrefabInstance: {fileID: 135193883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771898136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c73f2582d73c34abd06afd2d65a323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1782982238
 GameObject:
   m_ObjectHideFlags: 0

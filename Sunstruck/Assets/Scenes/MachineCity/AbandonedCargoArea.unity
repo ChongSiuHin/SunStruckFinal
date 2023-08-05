@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 47639607}
   m_Layer: 3
   m_Name: abandonedcargo_cargo_1_1 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1007,7 +1007,7 @@ GameObject:
   - component: {fileID: 182179028}
   m_Layer: 3
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6012,7 +6012,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287135708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.778062, y: -1.8775122, z: -10}
+  m_LocalPosition: {x: -6.7780623, y: -1.8775122, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6658,7 +6658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385475383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.44, y: -0.6199999, z: -10.017796}
+  m_LocalPosition: {x: -1.46, y: -0.5799999, z: -10.017796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6853,6 +6853,10 @@ PrefabInstance:
     - target: {fileID: 6248041599446934305, guid: d96a3db6e6978934d922fe49c440f9ce, type: 3}
       propertyPath: m_Name
       value: Platform_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248041599446934305, guid: d96a3db6e6978934d922fe49c440f9ce, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 6248041599446934316, guid: d96a3db6e6978934d922fe49c440f9ce, type: 3}
       propertyPath: m_Size.x
@@ -8072,7 +8076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &592709745
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8204,6 +8208,10 @@ PrefabInstance:
     - target: {fileID: 3312752760873120832, guid: 47e3f42c9f1d7ad4fb2b2c20950a50f8, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312752760873120832, guid: 47e3f42c9f1d7ad4fb2b2c20950a50f8, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 4465442905674927810, guid: 47e3f42c9f1d7ad4fb2b2c20950a50f8, type: 3}
       propertyPath: m_RootOrder
@@ -9900,6 +9908,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
   m_PrefabInstance: {fileID: 5010443441225555126}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &985219787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1771898148, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+  m_PrefabInstance: {fileID: 5010443441225555126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985219776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c73f2582d73c34abd06afd2d65a323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1004493873 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2222367668373962074, guid: 9ef17dd12eb28df40b2b351e4f16ec68, type: 3}
@@ -10142,7 +10161,7 @@ GameObject:
   - component: {fileID: 1057325187}
   m_Layer: 3
   m_Name: abandonedcargo_cargo_1_0
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10424,6 +10443,10 @@ PrefabInstance:
     - target: {fileID: 3312752760873120832, guid: 47e3f42c9f1d7ad4fb2b2c20950a50f8, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312752760873120832, guid: 47e3f42c9f1d7ad4fb2b2c20950a50f8, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 4465442905674927810, guid: 47e3f42c9f1d7ad4fb2b2c20950a50f8, type: 3}
       propertyPath: m_RootOrder
@@ -12709,7 +12732,7 @@ GameObject:
   - component: {fileID: 1218903321}
   m_Layer: 3
   m_Name: DropCrago
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15213,6 +15236,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3312752760873120832, guid: 47e3f42c9f1d7ad4fb2b2c20950a50f8, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 4465442905674927810, guid: 47e3f42c9f1d7ad4fb2b2c20950a50f8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -15299,10 +15326,11 @@ MonoBehaviour:
   backgroundMusicSource: {fileID: 1719826868}
   runSoundSource: {fileID: 1719826870}
   robotSoundSource: {fileID: 1719826871}
+  ExposedSoundSource: {fileID: 0}
   backgroundMusic: {fileID: 8300000, guid: 22ce231a1b59b884e81b53e24cef65b7, type: 3}
   jumpSound: {fileID: 8300000, guid: b0b4cdb11e374b541934b80ee81ee8c9, type: 3}
-  runSound: {fileID: 8300000, guid: 9b76e53fd5cc9584280d4df855b318a1, type: 3}
-  PlatformRun: {fileID: 8300000, guid: 2465c426307d18a4f93c8cd78dbb872f, type: 3}
+  runSound: {fileID: 0}
+  PlatformRun: {fileID: 0}
   TrashCan: {fileID: 8300000, guid: 5cb8cbc72361e774c8a154c4e61b8def, type: 3}
   StunGunPickUp: {fileID: 8300000, guid: 322a343cc6739cf428be2967beb4e2d2, type: 3}
   SuitPickUp: {fileID: 0}
@@ -15315,6 +15343,7 @@ MonoBehaviour:
   Exposed: {fileID: 8300000, guid: 055063f6621ae5142a28bc6885ec0611, type: 3}
   Drop: {fileID: 8300000, guid: 235496f4810624d4ab8abda8fd274f66, type: 3}
   Charging: {fileID: 8300000, guid: 79c57891bbd37f848a5e970bf15b39a4, type: 3}
+  Player: {fileID: 985219787}
 --- !u!82 &1719826868
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17029,7 +17058,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011230335}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.44, y: -0.6199999, z: -10.017796}
+  m_LocalPosition: {x: -1.46, y: -0.5799999, z: -10.017796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17767,10 +17796,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 925624811, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3226677040076340680, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: deadSpace
       value: 
@@ -17783,21 +17808,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6094136711215164032, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.83
+      value: -7.85
       objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.78
+      value: -2.74
       objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_LocalPosition.z
