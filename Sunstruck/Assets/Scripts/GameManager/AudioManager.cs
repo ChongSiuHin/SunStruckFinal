@@ -144,7 +144,6 @@ public class AudioManager : MonoBehaviour
     public void Suit()
     {
         runSoundSource.PlayOneShot(SuitPickUp);
-        Debug.Log("Suit PickUp")
 ;    }
 
     public void StopExposedSound()

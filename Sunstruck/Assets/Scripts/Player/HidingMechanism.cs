@@ -36,7 +36,7 @@ public class HidingMechanism : MonoBehaviour
             Hide.SetBool("IsHiding",true);
             AudioManager.Instance.Hiding();
         }
-        else if (Input.GetKeyUp(KeyCode.J))
+        else if (isHiding && Input.GetKeyUp(KeyCode.J))
         {
             CancelHiding();
         }
