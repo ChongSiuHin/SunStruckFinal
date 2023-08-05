@@ -13980,6 +13980,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 519420038}
+    - target: {fileID: 2002494657998475021, guid: 87d822489b206ba4b90498a5f7425813, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.84002686
+      objectReference: {fileID: 0}
     - target: {fileID: 2002494658075456748, guid: 87d822489b206ba4b90498a5f7425813, type: 3}
       propertyPath: m_Name
       value: PauseScreen
@@ -14068,14 +14072,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2002494658453023768, guid: 87d822489b206ba4b90498a5f7425813, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0059814453
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002494658453023771, guid: 87d822489b206ba4b90498a5f7425813, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2002494658486339619, guid: 87d822489b206ba4b90498a5f7425813, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 519420038}
+    - target: {fileID: 2002494659243974976, guid: 87d822489b206ba4b90498a5f7425813, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.91000366
+      objectReference: {fileID: 0}
     - target: {fileID: 2002494659243974977, guid: 87d822489b206ba4b90498a5f7425813, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 519420038}
+    - target: {fileID: 2002494659406331392, guid: 87d822489b206ba4b90498a5f7425813, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.8300171
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87d822489b206ba4b90498a5f7425813, type: 3}
 --- !u!1001 &2222367669042579131
@@ -14846,13 +14866,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8614031360753010011, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614031360753010015, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614031360876155911, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614031360876155911, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -39.662964
+      objectReference: {fileID: 0}
     - target: {fileID: 8614031361411300064, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8614031361528599643, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.41003418
+      objectReference: {fileID: 0}
     - target: {fileID: 8614031361702487959, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614031362052703993, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
