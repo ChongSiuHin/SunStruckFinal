@@ -120,12 +120,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_0
       rect:
         serializedVersion: 2
-        x: 57
+        x: 0
         y: 0
-        width: 32
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -141,12 +141,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_2
       rect:
         serializedVersion: 2
-        x: 207
+        x: 300
         y: 0
-        width: 35
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,43 +159,43 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_4
+      name: Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_1
       rect:
         serializedVersion: 2
-        x: 357
+        x: 150
         y: 0
-        width: 33
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c91bf3715ebdf141bed1d6364e8a660
-      internalID: 1688433466
+      spriteID: 54d203713b7e89345939343b442d0d60
+      internalID: -1965157304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_5
+      name: Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_3
       rect:
         serializedVersion: 2
-        x: 505
+        x: 450
         y: 0
-        width: 35
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61cae6e3dc4dbae47ab686ef5def4925
-      internalID: 420734853
+      spriteID: 99d874044e77577489e6e9ed1f8e362f
+      internalID: 1695953157
       vertices: []
       indices: 
       edges: []
@@ -212,12 +212,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_1: -1965157304
-      Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_4: 1688433466
       Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_0: 1191073470
-      Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_6: -2085574338
       Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_3: 1695953157
       Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_2: -1576222123
-      Theoby_Sprite_Anim_climbRopeStungun_Resized-Sheet_5: 420734853
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

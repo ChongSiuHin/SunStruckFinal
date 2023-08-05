@@ -120,12 +120,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Jump_Suit_Stungun-Sheet_0
       rect:
         serializedVersion: 2
-        x: 61
+        x: 0
         y: 0
-        width: 35
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -141,12 +141,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Jump_Suit_Stungun-Sheet_1
       rect:
         serializedVersion: 2
-        x: 215
+        x: 150
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Jump_Suit_Stungun-Sheet_2
       rect:
         serializedVersion: 2
-        x: 365
-        y: 1
-        width: 28
-        height: 149
+        x: 300
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Jump_Suit_Stungun-Sheet_3
       rect:
         serializedVersion: 2
-        x: 500
+        x: 450
         y: 0
-        width: 46
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,12 +204,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Jump_Suit_Stungun-Sheet_4
       rect:
         serializedVersion: 2
-        x: 653
+        x: 600
         y: 0
-        width: 39
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,12 +225,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Jump_Suit_Stungun-Sheet_5
       rect:
         serializedVersion: 2
-        x: 807
+        x: 750
         y: 0
-        width: 42
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -246,12 +246,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Jump_Suit_Stungun-Sheet_6
       rect:
         serializedVersion: 2
-        x: 957
+        x: 900
         y: 0
-        width: 42
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -267,12 +267,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Jump_Suit_Stungun-Sheet_7
       rect:
         serializedVersion: 2
-        x: 1109
+        x: 1050
         y: 0
-        width: 37
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -288,12 +288,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_Jump_Suit_Stungun-Sheet_8
       rect:
         serializedVersion: 2
-        x: 1261
+        x: 1200
         y: 0
-        width: 35
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

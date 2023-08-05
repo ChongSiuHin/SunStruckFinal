@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource backgroundMusicSource;
     public AudioSource runSoundSource;
     public AudioSource robotSoundSource;
+    public AudioSource ExposedSoundSource;
 
     //public AudioSource audioSource;
     public AudioClip backgroundMusic;
@@ -26,6 +27,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip Exposed;
     public AudioClip Drop;
     public AudioClip Charging;
+    public PlayerAudio Player;
 
 
     public void Start()
@@ -56,6 +58,12 @@ public class AudioManager : MonoBehaviour
         runSoundSource.clip = runSound;
         runSoundSource.Play();
         //audioSource.PlayOneShot(runSound);
+    }
+
+    public void StopPlayerSound()
+    {
+        Debug.Log("Sound was stop");
+        Player.Stop();
     }
 
     public void StopCurrentSound()
@@ -101,6 +109,7 @@ public class AudioManager : MonoBehaviour
     public void RespawnPoint()
     {
         backgroundMusicSource.PlayOneShot(Checkpoint);
+        Debug.Log("Checkpoint");
     }
 
     public void CLimbingRope()
@@ -116,8 +125,10 @@ public class AudioManager : MonoBehaviour
 
     public void exposed()
     {
-        runSoundSource.clip = Exposed;
-        runSoundSource.Play();
+        //runSoundSource.PlayOneShot(Exposed);
+        ExposedSoundSource.clip = Exposed;
+        ExposedSoundSource.Play();
+        Debug.Log("Exposed");
     }
 
     public void drop()
@@ -133,6 +144,12 @@ public class AudioManager : MonoBehaviour
     public void Suit()
     {
         runSoundSource.PlayOneShot(SuitPickUp);
+        Debug.Log("Suit PickUp")
+;    }
+
+    public void StopExposedSound()
+    {
+        ExposedSoundSource.Stop();
     }
 }
 

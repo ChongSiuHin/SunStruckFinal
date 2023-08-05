@@ -120,12 +120,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_0
       rect:
         serializedVersion: 2
-        x: 64
+        x: 0
         y: 0
-        width: 25
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -141,12 +141,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_1
       rect:
         serializedVersion: 2
-        x: 213
+        x: 150
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_2
       rect:
         serializedVersion: 2
-        x: 363
+        x: 300
         y: 0
-        width: 25
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_3
       rect:
         serializedVersion: 2
-        x: 514
+        x: 450
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,12 +204,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_4
       rect:
         serializedVersion: 2
-        x: 664
+        x: 600
         y: 0
-        width: 26
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,12 +225,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_5
       rect:
         serializedVersion: 2
-        x: 813
+        x: 750
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -246,12 +246,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_6
       rect:
         serializedVersion: 2
-        x: 963
+        x: 900
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -267,12 +267,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_7
       rect:
         serializedVersion: 2
-        x: 1113
+        x: 1050
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -288,12 +288,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_8
       rect:
         serializedVersion: 2
-        x: 1264
+        x: 1200
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -309,12 +309,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_9
       rect:
         serializedVersion: 2
-        x: 1414
+        x: 1350
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -330,12 +330,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_10
       rect:
         serializedVersion: 2
-        x: 1563
+        x: 1500
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -351,12 +351,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_11
       rect:
         serializedVersion: 2
-        x: 1713
+        x: 1650
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -372,12 +372,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_12
       rect:
         serializedVersion: 2
-        x: 1864
+        x: 1800
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -393,12 +393,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_13
       rect:
         serializedVersion: 2
-        x: 2014
+        x: 1950
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -414,12 +414,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_14
       rect:
         serializedVersion: 2
-        x: 2162
+        x: 2100
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -435,12 +435,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_15
       rect:
         serializedVersion: 2
-        x: 2314
+        x: 2250
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -456,12 +456,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_16
       rect:
         serializedVersion: 2
-        x: 2463
+        x: 2400
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -477,12 +477,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_BreatheStungun_Resized-Sheet_17
       rect:
         serializedVersion: 2
-        x: 2614
+        x: 2550
         y: 0
-        width: 28
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -120,12 +120,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_0
       rect:
         serializedVersion: 2
-        x: 57
+        x: 0
         y: 0
-        width: 44
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -141,12 +141,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_3
       rect:
         serializedVersion: 2
-        x: 213
+        x: 450
         y: 0
-        width: 36
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_5
       rect:
         serializedVersion: 2
-        x: 362
+        x: 750
         y: 0
-        width: 32
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_7
       rect:
         serializedVersion: 2
-        x: 502
+        x: 1050
         y: 0
-        width: 45
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -201,106 +201,106 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_10
+      name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_1
       rect:
         serializedVersion: 2
-        x: 655
+        x: 150
         y: 0
-        width: 42
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1093a48cb05bbc346ac2d2a5c1612139
-      internalID: -1174678188
+      spriteID: 002f05c2f1fa43c459f8258e1093d24c
+      internalID: 57065567
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_12
+      name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_2
       rect:
         serializedVersion: 2
-        x: 808
+        x: 300
         y: 0
-        width: 42
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3785009a8236ce46a6c97b0249c21fe
-      internalID: -1016651995
+      spriteID: f6cbc522a6e4b5641842da09cdc3d3ad
+      internalID: 2123741537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_13
+      name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_4
       rect:
         serializedVersion: 2
-        x: 953
+        x: 600
         y: 0
-        width: 46
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 178dcb69f1b1d614ea52bb5ccc34264c
-      internalID: 1779893192
+      spriteID: f2acd6eccfae6f748ad29bb3b9e2ba3a
+      internalID: -686416201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_16
+      name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_6
       rect:
         serializedVersion: 2
-        x: 1107
+        x: 900
         y: 0
-        width: 41
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ac1193676884c74b925249b36ab02ef
-      internalID: -1718451585
+      spriteID: cf966ca3c379f28438bec31f9706e706
+      internalID: -1228970065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_19
+      name: Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_8
       rect:
         serializedVersion: 2
-        x: 1258
+        x: 1200
         y: 0
-        width: 40
+        width: 150
         height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc17c1ed37fce4f45ae6f1ffaa62ca5b
-      internalID: 1452257851
+      spriteID: d974ccfd829da0047b1b40fe411d1016
+      internalID: 1462975729
       vertices: []
       indices: 
       edges: []
@@ -316,26 +316,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_10: -1174678188
       Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_5: 891370846
-      Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_13: 1779893192
-      Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_12: -1016651995
       Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_0: -1664213061
       Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_7: 820711858
       Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_1: 57065567
-      Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_11: -40416945
       Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_6: -1228970065
-      Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_9: 461660553
       Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_8: 1462975729
-      Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_18: -1634116251
       Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_2: 2123741537
-      Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_19: 1452257851
-      Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_15: 1734820473
       Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_4: -686416201
       Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_3: -874080072
-      Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_16: -1718451585
-      Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_17: 1113303842
-      Theoby_Sprite_Anim_JumpStungun_Resized-Sheet_14: -676627151
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
