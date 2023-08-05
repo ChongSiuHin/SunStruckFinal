@@ -24,6 +24,7 @@ public class StunGun : MonoBehaviour
     private bool shouldStopCharging = false;
 
     private GameObject Enemy;
+    private CameraSystem cameraSystemScript;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class StunGun : MonoBehaviour
         stunEnemy = false;
 
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        cameraSystemScript = FindObjectOfType<CameraSystem>();
     }
 
     // Update is called once per frame
@@ -41,7 +43,7 @@ public class StunGun : MonoBehaviour
         if (hit)
         {
             StartCoroutine(UseStunGunTimer());
-
+            cameraSystemScript.CaptureByEnemy();
             //animator.SetBool("Hit", true);
             //if (playerSpriteRenderer != null)//(spriteRenderer != null)
             //{
@@ -176,6 +178,7 @@ public class StunGun : MonoBehaviour
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
             Enemy.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            
         }
 
         Enemy.GetComponent<Animator>().SetBool("Hit", false);
@@ -186,7 +189,8 @@ public class StunGun : MonoBehaviour
     }
 
     IEnumerator StunEnemyTimer()
-    {  
+    {
+        hit = false;
         isFire = false;
 
         yield return new WaitForSeconds(stunDuration);
@@ -194,7 +198,6 @@ public class StunGun : MonoBehaviour
         Enemy.GetComponent<Animator>().SetBool("StunGunHit", false);
         Enemy.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
-        hit = false;
         stunEnemy = false;
 
         Physics2D.IgnoreCollision(enemyCollider, playerCollider, false);

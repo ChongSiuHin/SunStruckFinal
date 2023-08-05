@@ -7,7 +7,7 @@ public class CheckpointRespawn : MonoBehaviour
 {
     [SerializeField] private GameObject popUpKey;
     [SerializeField] private GameObject deadSpace;
-    [SerializeField] private GameObject[] checkpoint;
+    public GameObject[] checkpoint;
 
     public Vector3 respawnPoint;
     public bool isCheckPoint;
