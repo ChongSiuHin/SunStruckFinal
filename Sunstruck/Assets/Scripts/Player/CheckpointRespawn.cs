@@ -13,6 +13,7 @@ public class CheckpointRespawn : MonoBehaviour
     public bool isCheckPoint;
     public bool isOldMan;
     private bool activable = true;
+    public static bool isDead;
 
     public DialogueTrigger dTrigger;
     public static GameObject currentTriggerObj;
@@ -21,8 +22,11 @@ public class CheckpointRespawn : MonoBehaviour
     void Start()
     {
         respawnPoint = transform.position;
-        TutorialStunGun = GameObject.Find("Tutorial Stun Gun");
-        TutorialStunGun.SetActive(false);
+        if(SceneManager.GetActiveScene().name == "BackStreet")
+        {
+            TutorialStunGun = GameObject.Find("Tutorial Stun Gun");
+            TutorialStunGun.SetActive(false);
+        } 
     }
 
     // Update is called once per frame
@@ -32,9 +36,10 @@ public class CheckpointRespawn : MonoBehaviour
         if(isCheckPoint && Input.GetKeyDown(KeyCode.J) && !DialogueManager.isActive)
         {
             respawnPoint = transform.position;
-            currentTriggerObj.GetComponent<Animator>().SetTrigger("Activate");
+            
             if (activable)
             {
+                currentTriggerObj.GetComponent<Animator>().SetTrigger("Activate");
                 StartCoroutine(SmolRobot());
                 activable = false;
                 AudioManager.Instance.RespawnPoint();
@@ -49,6 +54,18 @@ public class CheckpointRespawn : MonoBehaviour
         {
             StartCoroutine(OldMan());
         }
+
+        if (SceneManager.GetActiveScene().name == "SurfaceWorld")
+        {
+            if (currentTriggerObj == checkpoint[0])
+            {
+                //start cutscene
+            }
+            if(currentTriggerObj == checkpoint[4])
+            {
+                currentTriggerObj.GetComponent<Animator>().SetTrigger("Deactivate");
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -56,6 +73,7 @@ public class CheckpointRespawn : MonoBehaviour
         if(collision.CompareTag("Void"))
         {
             transform.position = respawnPoint;
+            StartCoroutine(DeadBool());
         }
 
         else if(collision.CompareTag("Checkpoint"))
@@ -126,6 +144,14 @@ public class CheckpointRespawn : MonoBehaviour
         if (collision.collider.CompareTag("ChaseEnemy"))
         {
             transform.position = respawnPoint;
+            StartCoroutine(DeadBool());
         }
+    }
+
+    IEnumerator DeadBool()
+    {
+        isDead = true;
+        yield return null;
+        isDead = false;
     }
 }

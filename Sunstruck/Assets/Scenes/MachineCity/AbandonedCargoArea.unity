@@ -11770,8 +11770,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentences:
   - actorId: 0
-    sentence: ' This is an old abandoned cargo area where they used to transport
-      resources from the surface.'
+    sentence: This is an old abandoned cargo area where they used to transport resources
+      from the surface.
   - actorId: 0
     sentence: "There should be a lift somewhere that would directly take you to the
       surface. You will see the laboratory once you exit the lift. You can\u2019t
@@ -12015,16 +12015,10 @@ MonoBehaviour:
     sentence: Woah, look at all those cargos, it seems like they moved a lot of things
       back when this place was active.
   - actorId: 0
-    sentence: "And now once its purpose is served, all of it is left here to rust\u2026....
-      forgotten. *( \u25DE\u2038\u25DF`)*"
-  - actorId: 0
-    sentence: "Anyway, there is a BIG HUMONGOUS HOLE in FRONT!!!!! HOW ARE WE SUPPOSED
-      TO GET OVER THAT. *(\xB0\u0434\xB0)*"
+    sentence: There is a big hole in front of us, how can we get across? :/
   - actorId: 1
     sentence: "Hmmm\u2026..maybe we can do something about the hanging cargo. There's
       probably a switch somewhere."
-  - actorId: 0
-    sentence: "Alright, you get this, buddy. *d(\uFF65\u2200\uFF65\u25CB)*"
   actors:
   - name: Smol
     sprite: {fileID: 21300000, guid: 325444b8255485e42b8eb2afdb5b05dd, type: 3}
