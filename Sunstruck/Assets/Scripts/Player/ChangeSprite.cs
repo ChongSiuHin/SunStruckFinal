@@ -28,7 +28,6 @@ public class ChangeSprite : MonoBehaviour
 
         if (other.gameObject.CompareTag("Suit") || InteractionSystem.pickUpSuit)
         {
-            Debug.Log("SuitUP");
             spriteRenderer.sprite = SuitSprite;
             animator.runtimeAnimatorController = secondAnimator;
         }

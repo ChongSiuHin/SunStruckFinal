@@ -59,16 +59,18 @@ public class CheckpointRespawn : MonoBehaviour
         {
             popUpKey.SetActive(true);
             isCheckPoint = true;
-            dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
+            
             currentTriggerObj = collision.gameObject;
+            dTrigger = currentTriggerObj.GetComponent<DialogueTrigger>();
         }
         
         else if(collision.CompareTag("OldMan") && GetComponent<InteractionSystem>().pickUpStunGun)
         {
             popUpKey.SetActive(true);
             isOldMan = true;
-            dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
+            
             currentTriggerObj = collision.gameObject;
+            dTrigger = currentTriggerObj.GetComponent<DialogueTrigger>();
         }
         else if(collision.CompareTag("ExposeArea") && !InteractionSystem.pickUpSuit)
         {

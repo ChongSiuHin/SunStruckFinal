@@ -12,6 +12,7 @@ public class HidingMechanism : MonoBehaviour
     private BoxCollider2D playerBox;
     private SpriteRenderer playerSprite;
     private Animator currentHidePointAnim;
+    public Animator Hide;
 
     private Vector2 originalVelocity;
 
@@ -28,14 +29,18 @@ public class HidingMechanism : MonoBehaviour
         {
             isHiding = true;
             HideVelocity();
+
+            transform.position = new Vector3(currentHidePointAnim.transform.position.x, transform.position.y, transform.position.z);
             playerRb.bodyType = RigidbodyType2D.Static;
             playerBox.enabled = false;
             playerSprite.enabled = false;
+
             currentHidePointAnim.SetBool("IsHiding", true);
+            Hide.SetBool("IsHiding",true);
+
             AudioManager.Instance.Hiding();
-            AudioManager.Instance.StopCurrentSound();
         }
-        else if (Input.GetKeyUp(KeyCode.J))
+        else if (isHiding && Input.GetKeyUp(KeyCode.J))
         {
             CancelHiding();
         }
@@ -48,6 +53,7 @@ public class HidingMechanism : MonoBehaviour
         playerRb.bodyType = RigidbodyType2D.Dynamic;
         playerSprite.enabled = true;
         currentHidePointAnim.SetBool("IsHiding", false);
+        Hide.SetBool("IsHiding", false);
         ShowVelocity();
     }
     private void OnTriggerEnter2D(Collider2D collision)
