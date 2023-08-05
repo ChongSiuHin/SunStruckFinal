@@ -16,10 +16,13 @@ public class CheckpointRespawn : MonoBehaviour
 
     public DialogueTrigger dTrigger;
     public static GameObject currentTriggerObj;
+    private GameObject TutorialStunGun;
 
     void Start()
     {
         respawnPoint = transform.position;
+        TutorialStunGun = GameObject.Find("Tutorial Stun Gun");
+        TutorialStunGun.SetActive(false);
     }
 
     // Update is called once per frame
@@ -97,6 +100,11 @@ public class CheckpointRespawn : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         dTrigger.StartDialogue();
+        while (DialogueManager.isActive)
+        {
+            yield return null;
+        }
+        TutorialStunGun.SetActive(true);
     }
 
     IEnumerator OldMan()
