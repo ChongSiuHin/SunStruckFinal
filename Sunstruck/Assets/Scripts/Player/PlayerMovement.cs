@@ -250,7 +250,7 @@ public class PlayerMovement : MonoBehaviour
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
             AudioManager.Instance.PlayJumpSound();
         }
-        else if(Input.GetKeyDown(KeyCode.Space) && isLadder)
+        else if(Input.GetKeyDown(KeyCode.Space) && isLadder && (Input.GetAxis("Horizontal") != 0))
         {
             AudioManager.Instance.StopPlayerSound();
             isJumping = true;

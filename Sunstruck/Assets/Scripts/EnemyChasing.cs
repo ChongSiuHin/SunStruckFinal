@@ -23,7 +23,8 @@ public class EnemyChasing : MonoBehaviour
         {
             Destroy(gameObject);
             InteractionSystem.EnemyCrate.SetActive(true);
-            InteractionSystem.EnemyCrate1.SetActive(true);
+            InteractionSystem.Door.SetActive(true);
+            //InteractionSystem.EnemyCrate1.SetActive(true);
         }
 
     }
@@ -34,7 +35,8 @@ public class EnemyChasing : MonoBehaviour
         {
             Destroy(gameObject);
             InteractionSystem.EnemyCrate.SetActive(true);
-            InteractionSystem.EnemyCrate1.SetActive(true);
+            InteractionSystem.Door.SetActive(true);
+            //InteractionSystem.EnemyCrate1.SetActive(true);
         }
 
         if (collision.collider.CompareTag("Box"))

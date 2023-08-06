@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  jumpForce: 9
+  jumpForce: 8.015
   climbSpeed: 3
   groundLayer:
     serializedVersion: 2

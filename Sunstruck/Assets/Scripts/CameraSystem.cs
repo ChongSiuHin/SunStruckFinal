@@ -212,6 +212,9 @@ public class CameraSystem : MonoBehaviour
 
         cinemachineVirtualCamera.enabled = true;
         switchCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
+
+        yield return new WaitForSeconds(2);
+
         onCam = false;
     }
 }

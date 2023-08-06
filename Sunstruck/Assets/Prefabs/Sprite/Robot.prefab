@@ -279,7 +279,7 @@ MonoBehaviour:
   pointB: {fileID: 646388124169383585}
   anima: {fileID: 6381450948570419878}
   castPoint: {fileID: 3874513203639035527}
-  speed: 3
+  speed: 5
   player: {fileID: 0}
   Enemy: {fileID: 407241705471142164}
   playerTransform: {fileID: 0}

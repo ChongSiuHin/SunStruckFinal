@@ -34,6 +34,7 @@ public class InteractionSystem : MonoBehaviour
     public GameObject light2d;
     public static GameObject EnemyCrate;
     public static GameObject EnemyCrate1;
+    public static GameObject Door;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +58,8 @@ public class InteractionSystem : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "SurfaceWorld")
         {
             EnemyCrate = GameObject.Find("EnemyCrate");
-            EnemyCrate1 = GameObject.Find("EnemyCrate (1)");
+            //EnemyCrate1 = GameObject.Find("EnemyCrate (1)");
+            Door = GameObject.Find("Door");
         }
     }
 
@@ -163,6 +165,7 @@ public class InteractionSystem : MonoBehaviour
         if (obj.CompareTag("Pistol"))
         {
             EnemyCrate.SetActive(false);
+            Door.SetActive(false);
             Instantiate(chaseEnemy, enemySpawnPoint.transform.position, Quaternion.identity);
         }
     }

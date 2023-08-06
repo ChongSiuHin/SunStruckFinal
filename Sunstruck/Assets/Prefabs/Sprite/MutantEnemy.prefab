@@ -170,7 +170,7 @@ MonoBehaviour:
   pointB: {fileID: 623534737091711014}
   anima: {fileID: 686841505321832017}
   castPoint: {fileID: 7667339707436324492}
-  speed: 3
+  speed: 5
   player: {fileID: 6094136711215164032, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
   Enemy: {fileID: 5329593914371193404}
   playerTransform: {fileID: 0}

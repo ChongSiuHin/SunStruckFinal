@@ -36,10 +36,9 @@ public class CheckpointRespawn : MonoBehaviour
         if(isCheckPoint && Input.GetKeyDown(KeyCode.J) && !DialogueManager.isActive)
         {
             respawnPoint = transform.position;
-            
+            currentTriggerObj.GetComponent<Animator>().SetTrigger("Activate");
             if (activable)
             {
-                currentTriggerObj.GetComponent<Animator>().SetTrigger("Activate");
                 StartCoroutine(SmolRobot());
                 activable = false;
                 AudioManager.Instance.RespawnPoint();
@@ -96,6 +95,7 @@ public class CheckpointRespawn : MonoBehaviour
         else if(collision.CompareTag("ExposeArea") && !InteractionSystem.pickUpSuit)
         {
             transform.position = respawnPoint;
+            StartCoroutine(DeadBool());
         }
     }
 
