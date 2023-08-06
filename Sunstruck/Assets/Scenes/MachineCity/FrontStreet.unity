@@ -3466,6 +3466,7 @@ MonoBehaviour:
   runSoundSource: {fileID: 918150769}
   robotSoundSource: {fileID: 918150773}
   ExposedSoundSource: {fileID: 918150774}
+  Player: {fileID: 6094136710685944066}
   backgroundMusic: {fileID: 8300000, guid: 4ed3db78d3d39b540a166740404df560, type: 3}
   jumpSound: {fileID: 8300000, guid: b0b4cdb11e374b541934b80ee81ee8c9, type: 3}
   runSound: {fileID: 0}
@@ -3482,7 +3483,10 @@ MonoBehaviour:
   Exposed: {fileID: 8300000, guid: 055063f6621ae5142a28bc6885ec0611, type: 3}
   Drop: {fileID: 8300000, guid: 235496f4810624d4ab8abda8fd274f66, type: 3}
   Charging: {fileID: 8300000, guid: 79c57891bbd37f848a5e970bf15b39a4, type: 3}
-  Player: {fileID: 6094136710685944066}
+  Scanning: {fileID: 0}
+  MyEnemy: {fileID: 0}
+  MyEnemy2: {fileID: 0}
+  MyEnemy3: {fileID: 0}
 --- !u!82 &918150771
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5692,6 +5696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6094136711215164034, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1b216432b3e41c94cb4198563ec1821c, type: 2}
     - target: {fileID: 6094136711215164036, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: healthBar
       value: 
