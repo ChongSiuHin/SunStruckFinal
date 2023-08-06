@@ -172,4 +172,9 @@ public class DialogueManager : MonoBehaviour
             CheckpointRespawn.currentTriggerObj.GetComponent<DialogueTrigger>().isRepeat = true;
         }
     } 
+
+    public void SkipDialogue()
+    {
+        EndDialogue();
+    }
 }
