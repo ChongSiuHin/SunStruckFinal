@@ -21,7 +21,7 @@ public class HealthBar : MonoBehaviour
     public float damageCooldown = 2f;
 
     public float minHealthPercentageForFlashing = 0.2f;
-    public Color normalLightColor = Color.white;
+    public Color normalLightColor = Color.blue;
     public Color dangerLightColor = Color.red;
     public float flashDuration = 0.5f;
 
@@ -113,7 +113,7 @@ public class HealthBar : MonoBehaviour
     {
         if (playerLight != null)
         {
-            playerLight.intensity = currentHealth / maxHealth;
+            //playerLight.intensity = currentHealth / maxHealth;
             UpdateLightColor();
         }
     }
