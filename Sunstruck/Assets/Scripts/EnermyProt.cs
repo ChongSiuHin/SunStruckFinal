@@ -206,6 +206,7 @@ public class EnermyProt : MonoBehaviour
         isPausing = true;
         rb.velocity = new Vector2(0, 0);
         //anima.SetBool("Scanning", true);
+        AudioManager.Instance.Scan();
         yield return new WaitForSeconds(4f);
         isPausing = false;
         flip();

@@ -20,6 +20,13 @@ public class HealthBar : MonoBehaviour
     public Light2D playerLight;
     public float damageCooldown = 2f;
 
+    public float minHealthPercentageForFlashing = 0.2f;
+    public Color normalLightColor = Color.blue;
+    public Color dangerLightColor = Color.red;
+    public float flashDuration = 0.5f;
+
+    private Coroutine flashCoroutine;
+
     private void Start()
     {
 
@@ -42,6 +49,42 @@ public class HealthBar : MonoBehaviour
             UpdateLightIntensity();
         }
 
+    }
+
+    private void UpdateLightColor()
+    {
+        if (currentHealth / maxHealth <= minHealthPercentageForFlashing)
+        {
+            if (flashCoroutine == null)
+            {
+                flashCoroutine = StartCoroutine(FlashLight());
+            }
+        }
+        else
+        {
+            StopFlashing();
+            playerLight.color = normalLightColor;
+        }
+    }
+
+    private IEnumerator FlashLight()
+    {
+        while (true)
+        {
+            playerLight.color = dangerLightColor;
+            yield return new WaitForSeconds(flashDuration);
+            playerLight.color = normalLightColor;
+            yield return new WaitForSeconds(flashDuration);
+        }
+    }
+
+    private void StopFlashing()
+    {
+        if (flashCoroutine != null)
+        {
+            StopCoroutine(flashCoroutine);
+            flashCoroutine = null;
+        }
     }
 
     public void TakeDamage()
@@ -70,7 +113,8 @@ public class HealthBar : MonoBehaviour
     {
         if (playerLight != null)
         {
-            playerLight.intensity = currentHealth / maxHealth;
+            //playerLight.intensity = currentHealth / maxHealth;
+            UpdateLightColor();
         }
     }
 }

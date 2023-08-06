@@ -44,19 +44,11 @@ public class StunGun : MonoBehaviour
         {
             StartCoroutine(UseStunGunTimer());
             cameraSystemScript.CaptureByEnemy();
-            //animator.SetBool("Hit", true);
-            //if (playerSpriteRenderer != null)//(spriteRenderer != null)
-            //{
-            //    playerSpriteRenderer.enabled = false;
-            //    //spriteRenderer.enabled = false;
-            //    StartCoroutine(ReEnableSprite(2f));
-            //}
 
             if (Input.GetKeyDown(KeyCode.J) && !isFire)
             {
-                playerSpriteRenderer.enabled = true;
+                StartCoroutine(ReEnableSprite(1f));
                 popUpKey.SetActive(false);
-
                 Enemy.GetComponent<Animator>().SetBool("StunGunHit", true);
                 Enemy.GetComponent<Animator>().SetBool("Hit", false);
 
@@ -75,19 +67,17 @@ public class StunGun : MonoBehaviour
 
                     //delayTimer = 1;
                 }
-
                 ammo--;
                 UpdateAmmoUI(ammo);
                 
             }
         }
 
-        //IEnumerator ReEnableSprite(float delay)
-        //{
-        //    yield return new WaitForSeconds(delay);
-        //    playerSpriteRenderer.enabled = true;
-        //    //spriteRenderer.enabled = true;
-        //}
+        IEnumerator ReEnableSprite(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            playerSpriteRenderer.enabled = true;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

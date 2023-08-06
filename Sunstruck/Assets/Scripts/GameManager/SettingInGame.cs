@@ -9,15 +9,15 @@ public class SettingInGame : MonoBehaviour
     public GameObject SettingMenu;
 
     public Slider BackGroundSlider;
-    public Slider WalkingSlider;
-    public Slider RobotSlider;
+    public Slider masterVolumeSlider;
     public Button Return;
     // Start is called before the first frame update
     void Start()
     {
+        float volume = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
         BackGroundSlider.value = AudioManager.Instance.backgroundMusicSource.volume;
-        WalkingSlider.value = AudioManager.Instance.runSoundSource.volume;
-        RobotSlider.value = AudioManager.Instance.robotSoundSource.volume;
+
+        masterVolumeSlider.value = volume;
         Return.onClick.AddListener(ReturnToStartMenu);
     }
 
@@ -25,11 +25,16 @@ public class SettingInGame : MonoBehaviour
     void Update()
     {
         AudioManager.Instance.backgroundMusicSource.volume = BackGroundSlider.value;
-        AudioManager.Instance.runSoundSource.volume = WalkingSlider.value;
-        AudioManager.Instance.robotSoundSource.volume = RobotSlider.value;
-        // add other AudioSource references as needed
+        SetMasterVolume(masterVolumeSlider.value);
     }
 
+    void SetMasterVolume(float volume)
+    {
+        AudioManager.Instance.runSoundSource.volume = volume;
+        AudioManager.Instance.robotSoundSource.volume = volume;
+        AudioManager.Instance.Player.audioSource.volume = volume;
+        AudioManager.Instance.ExposedSoundSource.volume = volume;
+    }
     void ReturnToStartMenu()
     {
         PauseMenu.SetActive(true);

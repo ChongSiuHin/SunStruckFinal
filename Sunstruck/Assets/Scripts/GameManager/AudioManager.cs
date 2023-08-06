@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource runSoundSource;
     public AudioSource robotSoundSource;
     public AudioSource ExposedSoundSource;
+    public PlayerAudio Player;
 
     //public AudioSource audioSource;
     public AudioClip backgroundMusic;
@@ -27,16 +28,34 @@ public class AudioManager : MonoBehaviour
     public AudioClip Exposed;
     public AudioClip Drop;
     public AudioClip Charging;
-    public PlayerAudio Player;
+    public AudioClip Scanning;
 
+    public GameObject MyEnemy;
+    public GameObject MyEnemy2;
+    public GameObject MyEnemy3;
+    public GameObject MyEnemy4;
+    public GameObject MyEnemy5;
+    public GameObject MyEnemy6;
 
+    private Dictionary<string, AudioSource> audioSources;
+    private Dictionary<GameObject, AudioSource> objectAudioSources;
     public void Start()
     {
         backgroundMusicSource = GetComponent<AudioSource>();
         backgroundMusicSource.clip = backgroundMusic;
         backgroundMusicSource.loop = true;
         backgroundMusicSource.Play();
+
+        audioSources.Add("robotSoundSource", robotSoundSource);
+
+        LinkAudioSourceToObject(MyEnemy, "robotSoundSource");
+        LinkAudioSourceToObject(MyEnemy2, "robotSoundSource");
+        LinkAudioSourceToObject(MyEnemy3, "robotSoundSource");
+        LinkAudioSourceToObject(MyEnemy4, "robotSoundSource");
+        LinkAudioSourceToObject(MyEnemy5, "robotSoundSource");
+        LinkAudioSourceToObject(MyEnemy6, "robotSoundSource");
     }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -46,6 +65,9 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
+
+        audioSources = new Dictionary<string, AudioSource>();
+        objectAudioSources = new Dictionary<GameObject, AudioSource>();
     }
 
     public void PlayJumpSound()
@@ -149,6 +171,28 @@ public class AudioManager : MonoBehaviour
     public void StopExposedSound()
     {
         ExposedSoundSource.Stop();
+    }
+
+    public void Scan()
+    {
+        robotSoundSource.PlayOneShot(Scanning);
+    }
+
+    public void LinkAudioSourceToObject(GameObject obj, string audioSourceName)
+    {
+        if (audioSources.ContainsKey(audioSourceName))
+        {
+            objectAudioSources[obj] = audioSources[audioSourceName];
+        }
+        else
+        {
+            Debug.LogError("Audio source " + audioSourceName + " does not exist!");
+        }
+    }
+
+    public Dictionary<GameObject, AudioSource> GetAllAudioSourcesWithObjects()
+    {
+        return objectAudioSources;
     }
 }
 

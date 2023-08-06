@@ -439,6 +439,7 @@ MonoBehaviour:
   popUpKey: {fileID: 925624810}
   pickUpStunGun: 0
   PKJump: 1
+  healthBar: {fileID: 0}
   light2d: {fileID: 373036198}
 --- !u!114 &6094136711215164045
 MonoBehaviour:
@@ -461,7 +462,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6094136711215164032}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa5a5b090c25c9e43b470321affa585d, type: 3}
   m_Name: 
@@ -491,7 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: 6
-  stunDuration: 2.5
+  stunDuration: 3
   useDuration: 2
   popUpKey: {fileID: 925624810}
   maxHits: 6
@@ -513,7 +514,7 @@ Animator:
   m_GameObject: {fileID: 6094136711215164032}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b216432b3e41c94cb4198563ec1821c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 05018e46c09bafa4d9f480e062258ed3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -648,5 +649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c73f2582d73c34abd06afd2d65a323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepClip: {fileID: 8300000, guid: e1a12eccf1b03074ab6efb9753d58ed4, type: 3}
-  PlatformClip: {fileID: 8300000, guid: 2a824ff253825a9408ccce09689332ca, type: 3}
+  footstepClip: {fileID: 8300000, guid: aa56beafa6d741546834b256ca5a4f58, type: 3}
+  PlatformClip: {fileID: 8300000, guid: 2a7a4f3f01348d44cbc4b5117efe6f12, type: 3}
+  audioSource: {fileID: 1771898149}

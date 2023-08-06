@@ -27,7 +27,9 @@ public class MenuScreen : MonoBehaviour
 
     private void Update()
     {
-
+        //Start1();
+        //chooseLevelButton.onClick.AddListener(OpenLevelMenu);
+        //settingButton.onClick.AddListener(OpenSettingMenu);
     }
 
     public void Start1()
