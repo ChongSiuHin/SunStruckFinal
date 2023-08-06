@@ -6,11 +6,13 @@ public class StaticBox : MonoBehaviour
 {
     public bool beingMove;
     float xPos;
+    public Vector3 respawnPos;
     
     // Start is called before the first frame update
     void Start()
     {
         xPos = transform.position.x;
+        respawnPos = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -24,5 +26,13 @@ public class StaticBox : MonoBehaviour
         {
             xPos = transform.position.x;
         }       
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Void"))
+        {
+            transform.localPosition = respawnPos;
+        }
     }
 }

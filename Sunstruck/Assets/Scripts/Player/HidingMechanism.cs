@@ -29,14 +29,18 @@ public class HidingMechanism : MonoBehaviour
         {
             isHiding = true;
             HideVelocity();
+
+            transform.position = new Vector3(currentHidePointAnim.transform.position.x, transform.position.y, transform.position.z);
             playerRb.bodyType = RigidbodyType2D.Static;
             playerBox.enabled = false;
             playerSprite.enabled = false;
+
             currentHidePointAnim.SetBool("IsHiding", true);
             Hide.SetBool("IsHiding",true);
+
             AudioManager.Instance.Hiding();
         }
-        else if (Input.GetKeyUp(KeyCode.J))
+        else if (isHiding && Input.GetKeyUp(KeyCode.J))
         {
             CancelHiding();
         }

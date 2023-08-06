@@ -7,19 +7,26 @@ public class CheckpointRespawn : MonoBehaviour
 {
     [SerializeField] private GameObject popUpKey;
     [SerializeField] private GameObject deadSpace;
-    [SerializeField] private GameObject[] checkpoint;
+    public GameObject[] checkpoint;
 
     public Vector3 respawnPoint;
     public bool isCheckPoint;
     public bool isOldMan;
     private bool activable = true;
+    public static bool isDead;
 
     public DialogueTrigger dTrigger;
     public static GameObject currentTriggerObj;
+    private GameObject TutorialStunGun;
 
     void Start()
     {
         respawnPoint = transform.position;
+        if(SceneManager.GetActiveScene().name == "BackStreet")
+        {
+            TutorialStunGun = GameObject.Find("Tutorial Stun Gun");
+            TutorialStunGun.SetActive(false);
+        } 
     }
 
     // Update is called once per frame
@@ -29,9 +36,10 @@ public class CheckpointRespawn : MonoBehaviour
         if(isCheckPoint && Input.GetKeyDown(KeyCode.J) && !DialogueManager.isActive)
         {
             respawnPoint = transform.position;
-            currentTriggerObj.GetComponent<Animator>().SetTrigger("Activate");
+            
             if (activable)
             {
+                currentTriggerObj.GetComponent<Animator>().SetTrigger("Activate");
                 StartCoroutine(SmolRobot());
                 activable = false;
                 AudioManager.Instance.RespawnPoint();
@@ -46,6 +54,18 @@ public class CheckpointRespawn : MonoBehaviour
         {
             StartCoroutine(OldMan());
         }
+
+        if (SceneManager.GetActiveScene().name == "SurfaceWorld")
+        {
+            if (currentTriggerObj == checkpoint[0])
+            {
+                //start cutscene
+            }
+            if(currentTriggerObj == checkpoint[4])
+            {
+                currentTriggerObj.GetComponent<Animator>().SetTrigger("Deactivate");
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -53,22 +73,25 @@ public class CheckpointRespawn : MonoBehaviour
         if(collision.CompareTag("Void"))
         {
             transform.position = respawnPoint;
+            StartCoroutine(DeadBool());
         }
 
         else if(collision.CompareTag("Checkpoint"))
         {
             popUpKey.SetActive(true);
             isCheckPoint = true;
-            dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
+            
             currentTriggerObj = collision.gameObject;
+            dTrigger = currentTriggerObj.GetComponent<DialogueTrigger>();
         }
         
         else if(collision.CompareTag("OldMan") && GetComponent<InteractionSystem>().pickUpStunGun)
         {
             popUpKey.SetActive(true);
             isOldMan = true;
-            dTrigger = collision.gameObject.GetComponent<DialogueTrigger>();
+            
             currentTriggerObj = collision.gameObject;
+            dTrigger = currentTriggerObj.GetComponent<DialogueTrigger>();
         }
         else if(collision.CompareTag("ExposeArea") && !InteractionSystem.pickUpSuit)
         {
@@ -95,6 +118,11 @@ public class CheckpointRespawn : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         dTrigger.StartDialogue();
+        while (DialogueManager.isActive)
+        {
+            yield return null;
+        }
+        TutorialStunGun.SetActive(true);
     }
 
     IEnumerator OldMan()
@@ -116,6 +144,14 @@ public class CheckpointRespawn : MonoBehaviour
         if (collision.collider.CompareTag("ChaseEnemy"))
         {
             transform.position = respawnPoint;
+            StartCoroutine(DeadBool());
         }
+    }
+
+    IEnumerator DeadBool()
+    {
+        isDead = true;
+        yield return null;
+        isDead = false;
     }
 }

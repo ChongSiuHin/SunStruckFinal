@@ -10,8 +10,10 @@ public class CameraSystem : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] private GameObject cutsceneCam;
     [SerializeField] private CinemachineVirtualCamera roomCam;
+    private GameObject switchCam;
+    private GameObject cargoCam;
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject OldMan;
+    private GameObject OldMan;
     [SerializeField] private Animator cargoAnim;
     [SerializeField] private Animator craneAnim;
     private float hitZoomIn;
@@ -20,6 +22,7 @@ public class CameraSystem : MonoBehaviour
     private float shakeIntensity = 3f;
     private float shakeTime = 1f;
     private float timer;
+    private bool isClue;
 
     private CinemachineBasicMultiChannelPerlin _cbmcp;
 
@@ -27,12 +30,23 @@ public class CameraSystem : MonoBehaviour
 
     private void Start()
     {
+        isClue = false;
+
         if (SceneManager.GetActiveScene().name == "AbandonedCargoArea")
         {
+            switchCam = GameObject.Find("SwitchCam");
+            cargoCam = GameObject.Find("CargoCam");
+            OldMan = GameObject.Find("OldMan");
             OldMan.GetComponent<DialogueTrigger>().StartDialogue();
             StartCoroutine(PreviewLevelACA());
         }
-        
+
+        if (SceneManager.GetActiveScene().name == "SurfaceWorld")
+        {
+            switchCam = GameObject.Find("SwitchCam");
+            cargoCam = GameObject.Find("CargoCam");
+        }
+
         StopShake();
     }
 
@@ -52,13 +66,26 @@ public class CameraSystem : MonoBehaviour
 
         ViewEnemyBelow();
 
+        if (SceneManager.GetActiveScene().name == "AbandonedCargoArea")
+        {
+            if (CheckpointRespawn.currentTriggerObj.CompareTag("Checkpoint") && Input.GetKeyDown(KeyCode.J) && !isClue)
+            {
+                StartCoroutine(viewCargoAfterCheckpoint());
+            }
+        }
+
         if (SceneManager.GetActiveScene().name == "SurfaceWorld")
         {
             FollowPlayerOnTrigger();
+
+            if (CheckpointRespawn.currentTriggerObj == player.GetComponent<CheckpointRespawn>().checkpoint[3] && Input.GetKeyDown(KeyCode.J) && !isClue)
+            {
+                StartCoroutine(viewCargoAfterCheckpoint());
+            }
         }
     }
 
-    private void CaptureByEnemy()
+    public void CaptureByEnemy()
     {
         if (StunGun.hit)
         {
@@ -68,6 +95,7 @@ public class CameraSystem : MonoBehaviour
         else
         {
             hitZoomIn += 1f;
+            StopShake();
         }
 
         hitZoomIn = Mathf.Clamp(hitZoomIn, 1.5f, 3f);
@@ -159,5 +187,31 @@ public class CameraSystem : MonoBehaviour
             cinemachineVirtualCamera.enabled = true;
             roomCam.enabled = false;
         }
+    }
+
+    IEnumerator viewCargoAfterCheckpoint()
+    {
+        yield return new WaitForSeconds(1.5f);
+        while (DialogueManager.isActive)
+        {
+            yield return null;
+        }
+
+        onCam = true;
+        isClue = true;
+
+        cargoCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
+        cinemachineVirtualCamera.enabled = false;
+
+        yield return new WaitForSeconds(3);
+
+        switchCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
+        cargoCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
+
+        yield return new WaitForSeconds(3);
+
+        cinemachineVirtualCamera.enabled = true;
+        switchCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
+        onCam = false;
     }
 }

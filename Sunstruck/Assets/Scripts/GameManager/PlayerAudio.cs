@@ -6,7 +6,7 @@ public class PlayerAudio : MonoBehaviour
 {
     public AudioClip footstepClip;
     public AudioClip PlatformClip;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     private bool platform;
     private PlayerMovement playerMovement;

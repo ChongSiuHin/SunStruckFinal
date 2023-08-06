@@ -28,10 +28,12 @@ public class InteractionSystem : MonoBehaviour
     private bool isSwitchedOn;
     private Animator currentObjAnim;
     private CameraSystem cameraSystemScript;
-    private HealthBar healthBar;
+    public HealthBar healthBar;
 
     public static bool isBox;
     public GameObject light2d;
+    public static GameObject EnemyCrate;
+    public static GameObject EnemyCrate1;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +43,6 @@ public class InteractionSystem : MonoBehaviour
         stunGunScript = GetComponent<StunGun>();
         cameraSystemScript = FindObjectOfType<CameraSystem>();
         anima = GetComponent<Animator>();
-        healthBar = FindObjectOfType<HealthBar>();
 
         GameObject uiManagerObj = GameObject.Find("UIManager");
         if (uiManagerObj != null)
@@ -51,6 +52,12 @@ public class InteractionSystem : MonoBehaviour
         else
         {
             Debug.Log("UIManager object not found in the scene!");
+        }
+
+        if(SceneManager.GetActiveScene().name == "SurfaceWorld")
+        {
+            EnemyCrate = GameObject.Find("EnemyCrate");
+            EnemyCrate1 = GameObject.Find("EnemyCrate (1)");
         }
     }
 
@@ -134,10 +141,8 @@ public class InteractionSystem : MonoBehaviour
         
         if(obj.CompareTag("Suit"))
         {
-            pickUpSuit = true;
-            light2d.SetActive(true);
-            healthBar.gameObject.SetActive(true);
-            AudioManager.Instance.Suit();
+            CheckpointRespawn.currentTriggerObj = obj;
+            StartCoroutine(SuitDialogue(obj));
         }
 
         if (obj.CompareTag("NextScene"))
@@ -148,6 +153,7 @@ public class InteractionSystem : MonoBehaviour
 
         if (obj.CompareTag("Pistol"))
         {
+            EnemyCrate.SetActive(false);
             Instantiate(chaseEnemy, enemySpawnPoint.transform.position, Quaternion.identity);
         }
     }
@@ -163,10 +169,11 @@ public class InteractionSystem : MonoBehaviour
 
         if (collision.CompareTag("SpawnChaseEnemy"))
         {
+            EnemyCrate1.SetActive(false);
             Instantiate(chaseEnemy, enemySpawnPoint2.transform.position, Quaternion.identity);
         }
 
-        if(collision.CompareTag("StunGun") || collision.CompareTag("Suit") || collision.CompareTag("NextScene"))
+        if(collision.CompareTag("StunGun") || collision.CompareTag("Suit") || collision.CompareTag("NextScene") || collision.CompareTag("Pistol"))
         {
             popUpKey.SetActive(true);
         }
@@ -180,7 +187,7 @@ public class InteractionSystem : MonoBehaviour
             popUpKey.SetActive(false);
         }
 
-        if (collision.CompareTag("StunGun") || collision.CompareTag("Suit") || collision.CompareTag("NextScene"))
+        if (collision.CompareTag("StunGun") || collision.CompareTag("Suit") || collision.CompareTag("NextScene") || collision.CompareTag("Pistol"))
         {
             popUpKey.SetActive(false);
         }
@@ -196,5 +203,18 @@ public class InteractionSystem : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(castPoint.transform.position, (Vector2)castPoint.transform.position + Vector2.right * transform.localScale.x * distance);
+    }
+
+    IEnumerator SuitDialogue(GameObject obj)
+    {
+        obj.GetComponent<DialogueTrigger>().StartDialogue();
+        while (DialogueManager.isActive)
+        {
+            yield return null;
+        }
+        pickUpSuit = true;
+        light2d.SetActive(true);
+        healthBar.gameObject.SetActive(true);
+        AudioManager.Instance.Suit();
     }
 }

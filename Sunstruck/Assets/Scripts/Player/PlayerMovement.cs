@@ -138,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("Climable"))
         {
+            anima.SetBool("RopeJump", false);
             currentTriggerObj = collision.gameObject;
             isLadder = true;
             isClimbing = true;
@@ -209,11 +210,11 @@ public class PlayerMovement : MonoBehaviour
                 isRunning = true;
                 if (Platform)
                 {
-                    AudioManager.Instance.WalkInPlatform();
+                    //AudioManager.Instance.WalkInPlatform();
                 }
                 else
                 {
-                    AudioManager.Instance.PlayRunSound();
+                    //AudioManager.Instance.PlayRunSound();
                 }
             }
 

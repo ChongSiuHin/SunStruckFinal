@@ -19,6 +19,13 @@ public class EnemyChasing : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPlayer.transform.position, moveSpeed * Time.deltaTime);
 
+        if (CheckpointRespawn.isDead)
+        {
+            Destroy(gameObject);
+            InteractionSystem.EnemyCrate.SetActive(true);
+            InteractionSystem.EnemyCrate1.SetActive(true);
+        }
+
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,6 +33,8 @@ public class EnemyChasing : MonoBehaviour
         if(collision.collider.gameObject == targetPlayer)
         {
             Destroy(gameObject);
+            InteractionSystem.EnemyCrate.SetActive(true);
+            InteractionSystem.EnemyCrate1.SetActive(true);
         }
 
         if (collision.collider.CompareTag("Box"))
