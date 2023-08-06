@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 77088676}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2093751405}
+        m_TargetAssemblyTypeName: MenuScreen, Assembly-CSharp
+        m_MethodName: Start1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &77088676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,7 +1015,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 550619784}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2093751405}
+        m_TargetAssemblyTypeName: MenuScreen, Assembly-CSharp
+        m_MethodName: OpenSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &550619784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1939,7 +1963,7 @@ MonoBehaviour:
   backgroundMusicSource: {fileID: 1322468564}
   runSoundSource: {fileID: 1322468566}
   robotSoundSource: {fileID: 1322468565}
-  ExposedSoundSource: {fileID: 0}
+  ExposedSoundSource: {fileID: 1322468564}
   backgroundMusic: {fileID: 8300000, guid: 5a494868bbf3b534a946e1b3e4f73e51, type: 3}
   jumpSound: {fileID: 8300000, guid: 8fe3c3f9cec829446a735d9a980325c9, type: 3}
   runSound: {fileID: 8300000, guid: 9b76e53fd5cc9584280d4df855b318a1, type: 3}
@@ -3197,7 +3221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartMenu: {fileID: 910380566}
   Level: {fileID: 92377726}
-  Setting: {fileID: 2137137667}
+  Setting: {fileID: 2137137672}
   StartButton: {fileID: 77088675}
   chooseLevelButton: {fileID: 1774529375}
   settingButton: {fileID: 550619783}
@@ -3217,8 +3241,7 @@ MonoBehaviour:
   Level: {fileID: 92377726}
   Setting: {fileID: 2137137672}
   BackGroundSlider: {fileID: 2137137671}
-  WalkingSlider: {fileID: 2137137670}
-  RobotSlider: {fileID: 2137137669}
+  masterVolumeSlider: {fileID: 2137137670}
   Return: {fileID: 2137137668}
 --- !u!114 &2093751407
 MonoBehaviour:
@@ -3246,19 +3269,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8614031360110300583, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8614031360125001252, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8614031360138805960, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614031360689461407, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -3350,10 +3365,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingScreen
       objectReference: {fileID: 0}
-    - target: {fileID: 8614031360753010015, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 8614031361411300064, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3364,11 +3375,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
---- !u!1 &2137137667 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8614031360753010011, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
-  m_PrefabInstance: {fileID: 2137137666}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2137137668 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8614031360335314689, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
@@ -3378,17 +3384,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2137137669 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8614031360828503997, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
-  m_PrefabInstance: {fileID: 2137137666}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2137137670 stripped

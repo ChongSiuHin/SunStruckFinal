@@ -404,17 +404,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &25732726 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8614031360828503997, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
-  m_PrefabInstance: {fileID: 8614031360854151627}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &114312651 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8614031360876155904, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
@@ -505,6 +494,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 876062816}
     - target: {fileID: 3226677040076340680, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226677040076340680, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: checkpoint.Array.data[0]
       value: 
       objectReference: {fileID: 1540315723}
@@ -516,6 +509,14 @@ PrefabInstance:
       propertyPath: stunGun
       value: 
       objectReference: {fileID: 2107275155}
+    - target: {fileID: 6094136711215164036, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 704325339}
+    - target: {fileID: 6094136711215164036, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: pickUpStunGun
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164042, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1681,8 +1682,7 @@ MonoBehaviour:
   PauseMenu: {fileID: 1769759975}
   SettingMenu: {fileID: 114312651}
   BackGroundSlider: {fileID: 1834930931}
-  WalkingSlider: {fileID: 354910400}
-  RobotSlider: {fileID: 25732726}
+  masterVolumeSlider: {fileID: 354910400}
   Return: {fileID: 655699658}
 --- !u!114 &519420038
 MonoBehaviour:
