@@ -14524,6 +14524,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2031674846}
     - target: {fileID: 3226677040076340680, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226677040076340680, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: checkpoint.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226677040076340680, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: checkpoint.Array.data[0]
       value: 
       objectReference: {fileID: 1609378404}

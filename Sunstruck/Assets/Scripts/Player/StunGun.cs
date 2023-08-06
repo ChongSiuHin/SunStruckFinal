@@ -40,7 +40,7 @@ public class StunGun : MonoBehaviour
     void Update()
     {
         //SpriteRenderer spriteRenderer = objectToHide.GetComponent<SpriteRenderer>();
-        if (hit)
+        if (hit && !CameraSystem.onCam)
         {
             StartCoroutine(UseStunGunTimer());
             cameraSystemScript.CaptureByEnemy();

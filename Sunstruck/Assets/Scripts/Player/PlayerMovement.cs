@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (DialogueManager.isActive || CameraSystem.onCam)
+        if (DialogueManager.isActive || CameraSystem.onCam || CutsceneTrigger.onCutscene)
         {
             playerRb.bodyType = RigidbodyType2D.Static;
             return;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
@@ -28,11 +29,6 @@ public class SceneController : MonoBehaviour
         StartCoroutine(LoadLevel());
     }
 
-    public void Cutscene()
-    {
-        StartCoroutine(LoadCutscene());
-    }
-
     IEnumerator LoadLevel()
     {
         transitionAnim.SetTrigger("End");
@@ -42,14 +38,6 @@ public class SceneController : MonoBehaviour
         GameObject.FindGameObjectWithTag("PauseMenu").SetActive(true);
         GameObject.FindGameObjectWithTag("PauseAnimator").SetActive(true);
         GameObject.FindGameObjectWithTag("SettingScreen").SetActive(true);
-    }
-
-    IEnumerator LoadCutscene()
-    {
-        transitionAnim.SetTrigger("End");
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("Cutscene2", LoadSceneMode.Additive);
-        transitionAnim.SetTrigger("Start");
     }
 
 }

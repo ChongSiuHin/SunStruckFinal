@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 360975798}
   - component: {fileID: 360975799}
   m_Layer: 0
-  m_Name: CM vcam1
+  m_Name: PlayerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -537,6 +537,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 360975797}
+  - {fileID: 2126752607}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3487,6 +3488,9 @@ MonoBehaviour:
   MyEnemy: {fileID: 0}
   MyEnemy2: {fileID: 0}
   MyEnemy3: {fileID: 0}
+  MyEnemy4: {fileID: 0}
+  MyEnemy5: {fileID: 0}
+  MyEnemy6: {fileID: 0}
 --- !u!82 &918150771
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4626,7 +4630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theoby: {fileID: 1513475708}
-  followSpeed: 2
+  followSpeed: 0.5
 --- !u!50 &1660354703
 Rigidbody2D:
   serializedVersion: 4
@@ -4964,6 +4968,7 @@ GameObject:
   - component: {fileID: 1805946328}
   - component: {fileID: 1805946332}
   - component: {fileID: 1805946333}
+  - component: {fileID: 1805946334}
   m_Layer: 7
   m_Name: CutSceneRobot
   m_TagString: NextScene
@@ -5005,7 +5010,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05525565, y: 0}
+  m_Offset: {x: -0.05525565, y: -0.4103254}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5016,7 +5021,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.058228, y: 1.46875}
+  m_Size: {x: 2.058228, y: 1.5287979}
   m_EdgeRadius: 0
 --- !u!212 &1805946330
 SpriteRenderer:
@@ -5119,6 +5124,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popsUpAnim: {fileID: 1951111411}
+--- !u!114 &1805946334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805946327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a441e3d7013a843a7b874aed818a3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutsceneVideo: {fileID: 2126752606}
 --- !u!1 &1907168492
 GameObject:
   m_ObjectHideFlags: 0
@@ -5677,6 +5695,73 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &2126752605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2126752607}
+  - component: {fileID: 2126752606}
+  m_Layer: 0
+  m_Name: Cutscene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!328 &2126752606
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126752605}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 2a993a2992a100940b42b40b4d3f49e6, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 1575985617}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 1
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!4 &2126752607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126752605}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.7282467, y: -3.9161673, z: 4.3845243}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 586271071}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6094136710685944065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5692,6 +5777,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3226677040076340680, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: checkpoint.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6094136711215164032, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5704,6 +5793,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6094136711215164036, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: cutsceneVideo
+      value: 
+      objectReference: {fileID: 2126752605}
     - target: {fileID: 6094136711215164036, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: pickUpStunGun
       value: 0

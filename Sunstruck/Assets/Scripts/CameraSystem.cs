@@ -36,7 +36,7 @@ public class CameraSystem : MonoBehaviour
         {
             switchCam = GameObject.Find("SwitchCam");
             cargoCam = GameObject.Find("CargoCam");
-            OldMan = GameObject.Find("OldMan");
+            OldMan = GameObject.FindGameObjectWithTag("OldMan");
             OldMan.GetComponent<DialogueTrigger>().StartDialogue();
             StartCoroutine(PreviewLevelACA());
         }
@@ -112,16 +112,16 @@ public class CameraSystem : MonoBehaviour
     IEnumerator DropCargo()
     {
         yield return new WaitForSeconds(1);
-        cinemachineVirtualCamera.LookAt = cargoAnim.transform;
-        cinemachineVirtualCamera.Follow = cargoAnim.transform;
-        yield return new WaitForSeconds(1);
+        cargoCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
+        cinemachineVirtualCamera.enabled = false;
+        yield return new WaitForSeconds(2);
         craneAnim.enabled = true;
         yield return new WaitForSeconds(0.83f);
         cargoAnim.enabled = true;
         ShakeCamera();
         yield return new WaitForSeconds(1.5f);
-        cinemachineVirtualCamera.LookAt = player.transform;
-        cinemachineVirtualCamera.Follow = player.transform;
+        cinemachineVirtualCamera.enabled = true;
+        cargoCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
     }
 
     public void ShakeCamera()

@@ -131,7 +131,7 @@ public class InteractionSystem : MonoBehaviour
         {
             if (!pickUpStunGun)
             {
-                SceneController.instance.Cutscene();
+                obj.GetComponent<CutsceneTrigger>().PlayCutscene();
                 StartCoroutine(StunGunDialogue(obj));
                 AudioManager.Instance.StunGunP();
             }
@@ -147,8 +147,17 @@ public class InteractionSystem : MonoBehaviour
 
         if (obj.CompareTag("NextScene"))
         {
-            SceneController.instance.NextLevel();
-            GetComponent<CheckpointRespawn>().respawnPoint = transform.position;
+            if(SceneManager.GetActiveScene().name == "FrontStreet")
+            {
+                obj.GetComponent<CutsceneTrigger>().PlayCutscene();
+                StartCoroutine(StartingCutscene());
+            }
+            else
+            {
+                SceneController.instance.NextLevel();
+                GetComponent<CheckpointRespawn>().respawnPoint = transform.position;
+            }
+
         }
 
         if (obj.CompareTag("Pistol"))
@@ -195,7 +204,10 @@ public class InteractionSystem : MonoBehaviour
 
     IEnumerator StunGunDialogue(GameObject obj)
     {
-        yield return new WaitForSeconds(10.5f);
+        while (CutsceneTrigger.onCutscene)
+        {
+            yield return null;
+        }
         CheckpointRespawn.currentTriggerObj = obj;
         obj.GetComponent<DialogueTrigger>().StartDialogue();
     }
@@ -216,5 +228,15 @@ public class InteractionSystem : MonoBehaviour
         light2d.SetActive(true);
         healthBar.gameObject.SetActive(true);
         AudioManager.Instance.Suit();
+    }
+
+    IEnumerator StartingCutscene()
+    {
+        while (CutsceneTrigger.onCutscene)
+        {
+            yield return null;
+        }
+        SceneController.instance.NextLevel();
+        GetComponent<CheckpointRespawn>().respawnPoint = transform.position;
     }
 }
