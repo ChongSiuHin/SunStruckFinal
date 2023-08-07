@@ -16,7 +16,9 @@ public class SettingScreen : MonoBehaviour
 
     void Start()
     {
+        float volume = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
         BackGroundSlider.value = AudioManager.Instance.backgroundMusicSource.volume;
+        masterVolumeSlider.value = 1f;
         Return.onClick.AddListener(ReturnToStartMenu);
     }
 

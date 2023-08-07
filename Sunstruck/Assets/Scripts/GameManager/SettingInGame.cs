@@ -34,6 +34,8 @@ public class SettingInGame : MonoBehaviour
         AudioManager.Instance.robotSoundSource.volume = volume;
         AudioManager.Instance.Player.audioSource.volume = volume;
         AudioManager.Instance.ExposedSoundSource.volume = volume;
+
+        PlayerPrefs.SetFloat("MasterVolume", volume);
     }
     void ReturnToStartMenu()
     {
