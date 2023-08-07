@@ -26,7 +26,7 @@ public class SceneController : MonoBehaviour
     public void NextLevel()
     {
         blackScreen.SetActive(true);
-        StartCoroutine(LoadLevel());
+        StartCoroutine(LoadLevel());     
     }
 
     IEnumerator LoadLevel()
@@ -35,9 +35,8 @@ public class SceneController : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         transitionAnim.SetTrigger("Start");
-        GameObject.FindGameObjectWithTag("PauseMenu").SetActive(true);
-        GameObject.FindGameObjectWithTag("PauseAnimator").SetActive(true);
-        GameObject.FindGameObjectWithTag("SettingScreen").SetActive(true);
+        yield return new WaitForSeconds(1);
+        blackScreen.SetActive(false);
     }
 
 }
