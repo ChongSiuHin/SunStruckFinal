@@ -19,6 +19,7 @@ public class CheckpointRespawn : MonoBehaviour
     public static GameObject currentTriggerObj;
     private GameObject TutorialStunGun;
 
+    public HealthBar healthBar;
     void Start()
     {
         respawnPoint = transform.position;
@@ -73,6 +74,7 @@ public class CheckpointRespawn : MonoBehaviour
         {
             transform.position = respawnPoint;
             StartCoroutine(DeadBool());
+            healthBar.ResetHealth();
         }
 
         else if(collision.CompareTag("Checkpoint"))
@@ -96,6 +98,7 @@ public class CheckpointRespawn : MonoBehaviour
         {
             transform.position = respawnPoint;
             StartCoroutine(DeadBool());
+            healthBar.ResetHealth();
         }
     }
 
@@ -145,6 +148,7 @@ public class CheckpointRespawn : MonoBehaviour
         {
             transform.position = respawnPoint;
             StartCoroutine(DeadBool());
+            healthBar.ResetHealth();
         }
     }
 

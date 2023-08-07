@@ -117,4 +117,13 @@ public class HealthBar : MonoBehaviour
             UpdateLightColor();
         }
     }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+        healthSlider.value = currentHealth;
+        fill.color = gradient.Evaluate(1f);
+        UpdateLightIntensity();
+    }
+
 }
