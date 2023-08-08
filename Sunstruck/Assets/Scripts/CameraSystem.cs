@@ -9,7 +9,7 @@ public class CameraSystem : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] private GameObject cutsceneCam;
-    
+    private GameObject roomCam;
     private GameObject switchCam;
     private GameObject cargoCam;
     [SerializeField] private GameObject player;
@@ -45,6 +45,7 @@ public class CameraSystem : MonoBehaviour
         {
             switchCam = GameObject.Find("SwitchCam");
             cargoCam = GameObject.Find("CargoCam");
+            roomCam = GameObject.Find("RoomCam");
         }
 
         StopShake();
@@ -179,13 +180,13 @@ public class CameraSystem : MonoBehaviour
     {
         if (PlayerMovement.inRoom)
         {
-            //roomCam.enabled = true;
+            roomCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
             cinemachineVirtualCamera .enabled = false;
         }
         else
         {
             cinemachineVirtualCamera.enabled = true;
-            //roomCam.enabled = false;
+            roomCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
         }
     }
 
