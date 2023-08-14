@@ -14,6 +14,7 @@ public class CheckpointRespawn : MonoBehaviour
     public bool isOldMan;
     private bool activable = true;
     public static bool isDead;
+    private bool Die;
 
     public DialogueTrigger dTrigger;
     public static GameObject currentTriggerObj;
@@ -23,6 +24,7 @@ public class CheckpointRespawn : MonoBehaviour
     void Start()
     {
         respawnPoint = transform.position;
+        healthBar = GetComponent<HealthBar>();
         if(SceneManager.GetActiveScene().name == "BackStreet")
         {
             TutorialStunGun = GameObject.Find("Tutorial Stun Gun");
@@ -66,6 +68,11 @@ public class CheckpointRespawn : MonoBehaviour
                 currentTriggerObj.GetComponent<Animator>().SetTrigger("Deactivate");
             }
         }
+
+        if (Die == true && InteractionSystem.pickUpSuit)
+        {
+            healthBar.ResetHealth();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,8 +80,8 @@ public class CheckpointRespawn : MonoBehaviour
         if(collision.CompareTag("Void"))
         {
             transform.position = respawnPoint;
+            Die = true;
             StartCoroutine(DeadBool());
-            healthBar.ResetHealth();
         }
 
         else if(collision.CompareTag("Checkpoint"))
@@ -98,7 +105,7 @@ public class CheckpointRespawn : MonoBehaviour
         {
             transform.position = respawnPoint;
             StartCoroutine(DeadBool());
-            healthBar.ResetHealth();
+            
         }
     }
 

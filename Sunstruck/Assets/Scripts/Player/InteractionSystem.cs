@@ -146,6 +146,7 @@ public class InteractionSystem : MonoBehaviour
         if(obj.CompareTag("Suit"))
         {
             CheckpointRespawn.currentTriggerObj = obj;
+            StartCoroutine(ActiveSuit());
             StartCoroutine(SuitDialogue(obj));
         }
 
@@ -249,5 +250,12 @@ public class InteractionSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         anima.SetBool("Switch", false);
+    }
+
+    IEnumerator ActiveSuit()
+    {
+        anima.SetBool("SuitActivate", true);
+        yield return new WaitForSeconds(1f);
+        anima.SetBool("SuitActivate", false);
     }
 }
