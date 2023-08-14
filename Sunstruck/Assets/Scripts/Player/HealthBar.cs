@@ -71,6 +71,7 @@ public class HealthBar : MonoBehaviour
     {
         while (true)
         {
+            AudioManager.Instance.Hp();
             playerLight.color = dangerLightColor;
             yield return new WaitForSeconds(flashDuration);
             playerLight.color = normalLightColor;
@@ -101,6 +102,7 @@ public class HealthBar : MonoBehaviour
         else if (currentHealth == 0)
         {
             player.transform.position = player.GetComponent<CheckpointRespawn>().respawnPoint;
+            ResetHealth();
         }
     }
 
@@ -118,12 +120,13 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    //public void ResetHealth()
-    //{
-    //    currentHealth = maxHealth;
-    //    healthSlider.value = currentHealth;
-    //    fill.color = gradient.Evaluate(1f);
-    //    UpdateLightIntensity();
-    //}
+    public void ResetHealth()
+    {
+        Debug.Log("Hp was reset");
+        currentHealth = maxHealth;
+        healthSlider.value = currentHealth;
+        fill.color = gradient.Evaluate(1f);
+        UpdateLightIntensity();
+    }
 
 }

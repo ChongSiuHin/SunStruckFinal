@@ -1271,7 +1271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.82, y: 0.13000011}
+  m_AnchoredPosition: {x: -3.82, y: 0.13000107}
   m_SizeDelta: {x: -6.23, y: -8.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &470816698
@@ -2494,7 +2494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &841800293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2965,10 +2965,10 @@ RectTransform:
   m_Father: {fileID: 394844649}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 79, y: -75}
-  m_SizeDelta: {x: 7.040039, y: 8.650024}
+  m_AnchorMin: {x: 0, y: 0.021222223}
+  m_AnchorMax: {x: 0.12516667, y: 0.21937037}
+  m_AnchoredPosition: {x: 109, y: -81}
+  m_SizeDelta: {x: -233.95996, y: -205.34998}
   m_Pivot: {x: 0, y: 1}
 --- !u!212 &980188202
 SpriteRenderer:
@@ -3152,7 +3152,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 47, y: 1.9995117}
   m_SizeDelta: {x: -95.299805, y: 2.0004997}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10466,7 +10466,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.099858046, y: 1.1599689}
+  m_AnchoredPosition: {x: -0.099858284, y: 1.1599689}
   m_SizeDelta: {x: -6.23, y: -8.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1578428198
@@ -10872,6 +10872,7 @@ MonoBehaviour:
   Drop: {fileID: 8300000, guid: 235496f4810624d4ab8abda8fd274f66, type: 3}
   Charging: {fileID: 8300000, guid: 79c57891bbd37f848a5e970bf15b39a4, type: 3}
   Scanning: {fileID: 8300000, guid: 8098d0c79c4ba9f479b955adb62e134d, type: 3}
+  LowHp: {fileID: 0}
   MyEnemy: {fileID: 907307924}
   MyEnemy2: {fileID: 907307924}
   MyEnemy3: {fileID: 907307924}
@@ -11843,7 +11844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.023930311, y: 4.1700397}
+  m_AnchoredPosition: {x: -0.02393055, y: 4.1700397}
   m_SizeDelta: {x: -6.23, y: -8.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1927696369
@@ -13667,7 +13668,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cinemachineVirtualCamera: {fileID: 4703887}
   cutsceneCam: {fileID: 0}
-  roomCam: {fileID: 0}
   player: {fileID: 1771898136}
   cargoAnim: {fileID: 0}
   craneAnim: {fileID: 0}
