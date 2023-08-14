@@ -12035,20 +12035,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentences:
   - actorId: 0
-    sentence: This is an old abandoned cargo area where they used to transport resources
-      from the surface.
+    sentence: "This\u2026. This is an old abandoned cargo area where they used to
+      transport resources from the surface."
   - actorId: 0
-    sentence: "There should be a lift somewhere that would directly take you to the
-      surface. You will see the laboratory once you exit the lift. You can\u2019t
-      miss it."
+    sentence: "There should be a lift somewhere\u2026.. that would directly take
+      you to the surface. You\u2026.You will see the lab once you exit the lift.
+      You can\u2019t miss it"
   - actorId: 1
-    sentence: "You seem to know a lot for someone who wanders the streets, who are
-      you really\u2026.. and why are you helping me?"
+    sentence: ( He seems to know a lot for someone who wanders the streets, who is
+      he really?)
+  - actorId: 1
+    sentence: '......Why are you helping me? '
   - actorId: 0
-    sentence: "\u2026\u2026 Let\u2019s just say it is not important now, you should
-      hurry and save your sister."
+    sentence: "\u2026\u2026It\u2026.It\u2019s not important right now, you should
+      hurry and save the girl."
   - actorId: 1
-    sentence: "Alright then\u2026. Thank you."
+    sentence: ......
   actors:
   - name: Old Man
     sprite: {fileID: 21300000, guid: f1a9670a4b57d804d8f11443415bf5f4, type: 3}

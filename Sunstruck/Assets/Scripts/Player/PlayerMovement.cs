@@ -40,7 +40,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (DialogueManager.isActive || CameraSystem.onCam || CutsceneTrigger.onCutscene || StunGun.canMove == false)
         {
-            playerRb.bodyType = RigidbodyType2D.Kinematic;
+            playerRb.bodyType = RigidbodyType2D.Static;
+            anima.SetFloat("speed", 0);
             if (StunGun.canMove == false)
             {
                 anima.SetBool("Charge",true);

@@ -12,6 +12,7 @@ public class CameraSystem : MonoBehaviour
     private GameObject roomCam;
     private GameObject switchCam;
     private GameObject cargoCam;
+    private GameObject LaboCam;
     [SerializeField] private GameObject player;
     private GameObject OldMan;
     [SerializeField] private Animator cargoAnim;
@@ -28,6 +29,9 @@ public class CameraSystem : MonoBehaviour
 
     public static bool onCam;
 
+    private GameObject tutorialCharge;
+    private GameObject tutorialRopJump;
+
     private void Start()
     {
         isClue = false;
@@ -37,6 +41,8 @@ public class CameraSystem : MonoBehaviour
             switchCam = GameObject.Find("SwitchCam");
             cargoCam = GameObject.Find("CargoCam");
             OldMan = GameObject.FindGameObjectWithTag("OldMan");
+            tutorialCharge = GameObject.Find("Tutorial Charge");
+            tutorialRopJump = GameObject.Find("Tutorial Rope Jump");
             OldMan.GetComponent<DialogueTrigger>().StartDialogue();
             StartCoroutine(PreviewLevelACA());
         }
@@ -46,6 +52,7 @@ public class CameraSystem : MonoBehaviour
             switchCam = GameObject.Find("SwitchCam");
             cargoCam = GameObject.Find("CargoCam");
             roomCam = GameObject.Find("RoomCam");
+            LaboCam = GameObject.Find("LaboratoryCam");
         }
 
         StopShake();
@@ -148,6 +155,8 @@ public class CameraSystem : MonoBehaviour
             yield return null;
         }
 
+        tutorialCharge.SetActive(false);
+        tutorialRopJump.SetActive(false);
         cutsceneCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
         cinemachineVirtualCamera.enabled = false;
         cutsceneCam.GetComponent<PlayableDirector>().enabled = true;
@@ -156,6 +165,8 @@ public class CameraSystem : MonoBehaviour
         onCam = false;
         cinemachineVirtualCamera.enabled = true;
         cutsceneCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
+        tutorialCharge.SetActive(true);
+        tutorialRopJump.SetActive(true);
     }
 
     public void ViewEnemyBelow()
@@ -217,5 +228,13 @@ public class CameraSystem : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         onCam = false;
+    }
+
+    public void ZoomOutLaboratory()
+    {
+        onCam = true;
+
+        LaboCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
+        cinemachineVirtualCamera.enabled = false;
     }
 }

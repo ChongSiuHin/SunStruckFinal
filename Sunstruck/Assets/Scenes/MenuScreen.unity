@@ -1392,14 +1392,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6023adfa606115148ae70703f0356983, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e9a019cf57c7ec4297026fbd65bde8e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1983,6 +1983,7 @@ MonoBehaviour:
   Drop: {fileID: 0}
   Charging: {fileID: 0}
   Scanning: {fileID: 0}
+  LowHp: {fileID: 0}
   MyEnemy: {fileID: 0}
   MyEnemy2: {fileID: 0}
   MyEnemy3: {fileID: 0}
@@ -2891,10 +2892,10 @@ RectTransform:
   m_Father: {fileID: 910380567}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.70000005, y: 0.61025923}
-  m_AnchorMax: {x: 0.95252085, y: 0.92840743}
-  m_AnchoredPosition: {x: -4.5, y: 0}
-  m_SizeDelta: {x: 6.222229, y: 0.48135376}
+  m_AnchorMin: {x: 0.0684375, y: 0.35018522}
+  m_AnchorMax: {x: 0.57627094, y: 0.9801481}
+  m_AnchoredPosition: {x: -0.5, y: -1.5}
+  m_SizeDelta: {x: -0.555542, y: 7.9627075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1963293385
 MonoBehaviour:

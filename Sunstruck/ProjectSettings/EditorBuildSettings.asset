@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SurfaceWorld.unity
     guid: 49596f7e0e380744285f7fe8414d1edb
+  - enabled: 1
+    path: Assets/Scenes/EndCreditScene.unity
+    guid: c9850dba3d62b0a4695f7bd28eea2fa6
   m_configObjects: {}

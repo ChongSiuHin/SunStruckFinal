@@ -192,6 +192,12 @@ public class InteractionSystem : MonoBehaviour
         {
             popUpKey.SetActive(true);
         }
+
+        if (collision.CompareTag("Laboratory"))
+        {
+            cameraSystemScript.ZoomOutLaboratory();
+            StartCoroutine(EndingCutscene(collision.gameObject));
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -257,5 +263,19 @@ public class InteractionSystem : MonoBehaviour
         anima.SetBool("SuitActivate", true);
         yield return new WaitForSeconds(1f);
         anima.SetBool("SuitActivate", false);
+    }
+
+    IEnumerator EndingCutscene(GameObject labo)
+    {
+        yield return new WaitForSeconds(6);
+        labo.GetComponent<CutsceneTrigger>().PlayCutscene();
+
+        while (CutsceneTrigger.onCutscene)
+        {
+            yield return null;
+        }
+
+        CameraSystem.onCam = false;
+        SceneController.instance.NextLevel();
     }
 }

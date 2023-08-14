@@ -28,6 +28,7 @@ TagManager:
   - PauseMenu
   - PauseAnimator
   - ExposeArea
+  - Laboratory
   layers:
   - Default
   - TransparentFX

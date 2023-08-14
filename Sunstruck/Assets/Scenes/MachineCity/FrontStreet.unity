@@ -3490,6 +3490,7 @@ MonoBehaviour:
   Drop: {fileID: 8300000, guid: 235496f4810624d4ab8abda8fd274f66, type: 3}
   Charging: {fileID: 8300000, guid: 79c57891bbd37f848a5e970bf15b39a4, type: 3}
   Scanning: {fileID: 0}
+  LowHp: {fileID: 0}
   MyEnemy: {fileID: 0}
   MyEnemy2: {fileID: 0}
   MyEnemy3: {fileID: 0}
@@ -5544,6 +5545,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6450350972245587397, guid: fce11e0617a14404d842b94464434992, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 0049f84f6b92e4a48b28200c223d6d6b, type: 3}
     - target: {fileID: 6450350972245587397, guid: fce11e0617a14404d842b94464434992, type: 3}
       propertyPath: m_TargetCamera
       value: 
