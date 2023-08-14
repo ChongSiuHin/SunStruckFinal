@@ -284,7 +284,7 @@ MonoBehaviour:
   Enemy: {fileID: 407241705471142164}
   playerTransform: {fileID: 0}
   currentState: 
-  agroRange: 2
+  agroRange: 0
   isPlayerSeek: 0
   isFacingLeft: 0
   hitPlayer: 0

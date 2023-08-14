@@ -29,6 +29,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip Drop;
     public AudioClip Charging;
     public AudioClip Scanning;
+    public AudioClip LowHp;
 
     public GameObject MyEnemy;
     public GameObject MyEnemy2;
@@ -158,7 +159,7 @@ public class AudioManager : MonoBehaviour
         runSoundSource.PlayOneShot(Drop);
     }
 
-    public void OnBeforeTransformParentChanged()
+    public void ChargingStation()
     {
         runSoundSource.PlayOneShot(Charging);
     }
@@ -176,6 +177,11 @@ public class AudioManager : MonoBehaviour
     public void Scan()
     {
         robotSoundSource.PlayOneShot(Scanning);
+    }
+
+    public void Hp()
+    {
+        runSoundSource.PlayOneShot(LowHp);
     }
 
     public void LinkAudioSourceToObject(GameObject obj, string audioSourceName)

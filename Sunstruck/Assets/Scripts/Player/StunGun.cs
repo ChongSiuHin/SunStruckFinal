@@ -25,6 +25,7 @@ public class StunGun : MonoBehaviour
 
     private GameObject Enemy;
     private CameraSystem cameraSystemScript;
+    public static bool canMove;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class StunGun : MonoBehaviour
 
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         cameraSystemScript = FindObjectOfType<CameraSystem>();
+        canMove = true;
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class StunGun : MonoBehaviour
         //SpriteRenderer spriteRenderer = objectToHide.GetComponent<SpriteRenderer>();
         if (hit && !CameraSystem.onCam)
         {
+
             StartCoroutine(UseStunGunTimer());
             cameraSystemScript.CaptureByEnemy();
 
@@ -61,6 +64,7 @@ public class StunGun : MonoBehaviour
                     StartCoroutine(StunEnemyTimer());
                     Physics2D.IgnoreCollision(enemyCollider, playerCollider, true);
                     GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    GetComponent<Collider2D>().isTrigger = false;
 
                     AudioManager.Instance.StunGunF();
                     AudioManager.Instance.RobotStuning();
@@ -71,12 +75,6 @@ public class StunGun : MonoBehaviour
                 UpdateAmmoUI(ammo);
                 
             }
-        }
-
-        IEnumerator ReEnableSprite(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            playerSpriteRenderer.enabled = true;
         }
     }
 
@@ -104,8 +102,21 @@ public class StunGun : MonoBehaviour
         if (collision.gameObject.CompareTag("ChargingStation"))
         {
             collision.gameObject.GetComponent<Animator>().SetBool("Activated", true);
-            shouldStopCharging = false;
-            StartCoroutine(ChargeStunGun());
+            if (ammo != maxHits)
+            {
+                shouldStopCharging = false;
+                canMove = false;
+                playerSpriteRenderer.enabled = false;
+                StartCoroutine(ChargeStunGun());
+                if (ChangeSprite.changeSuit)
+                {
+                    collision.gameObject.GetComponent<Animator>().SetBool("Charging2", true);
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<Animator>().SetBool("Charging", true);
+                }
+            }
         }
     }
 
@@ -121,20 +132,21 @@ public class StunGun : MonoBehaviour
     IEnumerator ChargeStunGun()
     {
         isCharging = true;
-
-            while (ammo < maxHits && !shouldStopCharging)
+        AudioManager.Instance.ChargingStation();
+        while (ammo < maxHits && !shouldStopCharging)
         {
-            yield return new WaitForSeconds(2);
 
             ammo++;
             if (hitsCount > 0)
             {
                 hitsCount--;
             }
-
+            yield return new WaitForSeconds(2);
             UpdateAmmoUI(ammo);
         }
         isCharging = false;
+        StartCoroutine(ReEnableSprite(2f));
+        canMove = true;
     }
 
     public void UpdateAmmoUI(int ammo)
@@ -152,6 +164,17 @@ public class StunGun : MonoBehaviour
         {
             collision.gameObject.GetComponent<Animator>().SetBool("Activated", false);
             shouldStopCharging = true;
+            if (ammo >= maxHits)
+            {
+                if (ChangeSprite.changeSuit)
+                {
+                    collision.gameObject.GetComponent<Animator>().SetBool("Charging2", false);
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<Animator>().SetBool("Charging", false);
+                } 
+            }
         }
     }
 
@@ -159,6 +182,8 @@ public class StunGun : MonoBehaviour
     {
         Enemy.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         playerSpriteRenderer.enabled = false;
+        GetComponent<Collider2D>().isTrigger = true;
+
 
         yield return new WaitForSeconds(useDuration);
         
@@ -171,6 +196,7 @@ public class StunGun : MonoBehaviour
             
         }
 
+        GetComponent<Collider2D>().isTrigger = false;
         Enemy.GetComponent<Animator>().SetBool("Hit", false);
         playerSpriteRenderer.enabled = true;
 
@@ -191,5 +217,11 @@ public class StunGun : MonoBehaviour
         stunEnemy = false;
 
         Physics2D.IgnoreCollision(enemyCollider, playerCollider, false);
+    }
+
+    IEnumerator ReEnableSprite(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        playerSpriteRenderer.enabled = true;
     }
 }

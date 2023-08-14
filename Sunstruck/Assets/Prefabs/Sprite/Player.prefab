@@ -258,11 +258,11 @@ GameObject:
   - component: {fileID: 6094136711215164043}
   - component: {fileID: 6094136711215164040}
   - component: {fileID: 6094136711215164041}
-  - component: {fileID: 6094136711215164038}
   - component: {fileID: 6094136711215164036}
   - component: {fileID: 6094136711215164045}
   - component: {fileID: 3226677040076340680}
   - component: {fileID: 8238007421831168283}
+  - component: {fileID: 6094136711215164038}
   - component: {fileID: 6094136711215164034}
   - component: {fileID: 1771898145}
   - component: {fileID: 1771898149}
@@ -391,27 +391,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6094136711215164038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6094136711215164032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c2a447910507f47ab67a9ad3a8ccf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  jumpForce: 8.015
-  climbSpeed: 3
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 72
-  Platform: 0
-  playerRb: {fileID: 6094136711215164041}
-  anima: {fileID: 6094136711215164034}
 --- !u!114 &6094136711215164036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,7 +482,30 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  animator: {fileID: 0}
   isFire: 0
+--- !u!114 &6094136711215164038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094136711215164032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c2a447910507f47ab67a9ad3a8ccf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  jumpForce: 8.015
+  climbSpeed: 3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 72
+  Platform: 0
+  canMove: 0
+  playerRb: {fileID: 6094136711215164041}
+  anima: {fileID: 6094136711215164034}
 --- !u!95 &6094136711215164034
 Animator:
   serializedVersion: 4

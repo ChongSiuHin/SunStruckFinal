@@ -11,6 +11,7 @@ public class ChangeSprite : MonoBehaviour
     private Animator animator;
 
     public InteractionSystem interactionSystem;
+    public static bool changeSuit = false;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class ChangeSprite : MonoBehaviour
 
         if (other.gameObject.CompareTag("Suit") || InteractionSystem.pickUpSuit)
         {
+            changeSuit = true;
             spriteRenderer.sprite = SuitSprite;
             animator.runtimeAnimatorController = secondAnimator;
         }

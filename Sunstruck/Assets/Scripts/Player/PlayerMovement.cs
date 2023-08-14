@@ -38,19 +38,31 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (DialogueManager.isActive || CameraSystem.onCam || CutsceneTrigger.onCutscene)
+        if (DialogueManager.isActive || CameraSystem.onCam || CutsceneTrigger.onCutscene || StunGun.canMove == false)
         {
-            playerRb.bodyType = RigidbodyType2D.Static;
+            playerRb.bodyType = RigidbodyType2D.Kinematic;
+            if (StunGun.canMove == false)
+            {
+                anima.SetBool("Charge",true);
+                playerRb.constraints = RigidbodyConstraints2D.FreezePosition;
+
+            }
             return;
         }
-        else if(!(HidingMechanism.isHiding || StunGun.hit))
+        else if (!(HidingMechanism.isHiding || StunGun.hit || StunGun.canMove == false))
         {
             playerRb.bodyType = RigidbodyType2D.Dynamic;
+            if (StunGun.canMove == true)
+            {
+                playerRb.constraints = RigidbodyConstraints2D.None;
+                playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                anima.SetBool("Charge", false);
+            }
         }
 
         PKJump = interactionSystem.PKJump;
         horizontal = Input.GetAxis("Horizontal");
-        if(HidingMechanism.isHiding)
+        if (HidingMechanism.isHiding)
         {
 
         }
@@ -62,71 +74,48 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isLadder)
-        {
-            if (Mathf.Abs(verticle) != 0f)
+            if (isLadder)
             {
-                isClimbing = true;
-                anima.SetBool("Climbing", false);
-                anima.SetBool("RopeToGround", true);
-                anima.SetBool("RopeJump", false);
-                anima.SetBool("ClimbMove", true);
-                playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
-                playerRb.gravityScale = 0f;
-                Physics2D.IgnoreLayerCollision(10, 3, true);
-                AudioManager.Instance.CLimbingRope();
+                if (Mathf.Abs(verticle) != 0f)
+                {
+                    isClimbing = true;
+                    anima.SetBool("Climbing", false);
+                    anima.SetBool("RopeToGround", true);
+                    anima.SetBool("RopeJump", false);
+                    anima.SetBool("ClimbMove", true);
+                    playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
+                    playerRb.gravityScale = 0f;
+                    Physics2D.IgnoreLayerCollision(10, 3, true);
+                    AudioManager.Instance.CLimbingRope();
+                }
+                else
+                {
+                    if (!isJumping)
+                    {
+                        isClimbing = true;
+                        anima.SetBool("Climbing", true);
+                        playerRb.gravityScale = 0f;
+                        playerRb.velocity = new Vector2(horizontal * speed, verticle * climbSpeed);
+                        Physics2D.IgnoreLayerCollision(10, 3, true);
+                        //AudioManager.Instance.StopCurrentSound();
+                    }
+                }
             }
             else
             {
-                if (!isJumping)
-                {
-                    isClimbing = true;
-                    anima.SetBool("Climbing", true);
-                    playerRb.gravityScale = 0f;
-                    playerRb.velocity = new Vector2(horizontal * speed, verticle * climbSpeed);
-                    Physics2D.IgnoreLayerCollision(10, 3, true);
-                    //AudioManager.Instance.StopCurrentSound();
-                }
+                playerRb.gravityScale = 3f;
+                playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
+                Physics2D.IgnoreLayerCollision(10, 3, false);
             }
-        }
-        else
-        {
-            playerRb.gravityScale = 3f;
-            playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
-            Physics2D.IgnoreLayerCollision(10, 3, false);
-        }
 
-        if (isGrounded())
-        {
-            isJumping = false;
-            anima.SetBool("Jump", false);
-            anima.SetBool("RopeToGround", false);
-            anima.SetBool("ClimbMove", false);
-        }
+            if (isGrounded())
+            {
+                isJumping = false;
+                anima.SetBool("Jump", false);
+                anima.SetBool("RopeToGround", false);
+                anima.SetBool("ClimbMove", false);
+            } 
     }
-
-    //private void FixedUpdate()
-    //{
-    //    if (isClimbing)
-    //    {
-    //        anima.SetBool("Climbing", true);
-    //        playerRb.velocity = new Vector2(playerRb.velocity.x, verticle * climbSpeed);
-    //        playerRb.gravityScale = 0f;
-    //        AudioManager.Instance.CLimbingRope();
-    //    }
-    //    else
-    //    {
-    //        playerRb.gravityScale = 3f;
-    //        playerRb.velocity = new Vector2(horizontal * speed, playerRb.velocity.y);
-    //    }
-
-    //    if (isGrounded())
-    //    {
-    //        isJumping = false;
-    //        anima.SetBool("Jump", false);
-    //    }
-
-    //}
 
     private bool isGrounded()
     {

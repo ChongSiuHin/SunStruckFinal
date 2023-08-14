@@ -34,7 +34,10 @@ public class MenuScreen : MonoBehaviour
         //Start1();
         //chooseLevelButton.onClick.AddListener(OpenLevelMenu);
         //settingButton.onClick.AddListener(OpenSettingMenu);
-        transition.SetActive(false);
+        if (transition != null)
+        {
+            transition.SetActive(false);
+        }
     }
 
     public void Start1()

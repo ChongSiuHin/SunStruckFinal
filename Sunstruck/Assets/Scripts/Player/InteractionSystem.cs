@@ -118,11 +118,13 @@ public class InteractionSystem : MonoBehaviour
         {
             if (!isSwitchedOn)
             {
+                anima.SetBool("Switch", true);
                 AudioManager.Instance.drop();
                 stunGunScript.UpdateAmmoUI(--stunGunScript.ammo);
                 cameraSystemScript.SwitchOnCargo();
                 currentObjAnim.enabled = true;
                 isSwitchedOn = true;
+                StartCoroutine(SetSwitchToFalse());
             }
         }
     }
@@ -144,6 +146,7 @@ public class InteractionSystem : MonoBehaviour
         if(obj.CompareTag("Suit"))
         {
             CheckpointRespawn.currentTriggerObj = obj;
+            StartCoroutine(ActiveSuit());
             StartCoroutine(SuitDialogue(obj));
         }
 
@@ -241,5 +244,18 @@ public class InteractionSystem : MonoBehaviour
         }
         SceneController.instance.NextLevel();
         GetComponent<CheckpointRespawn>().respawnPoint = transform.position;
+    }
+
+    IEnumerator SetSwitchToFalse()
+    {
+        yield return new WaitForSeconds(1f);
+        anima.SetBool("Switch", false);
+    }
+
+    IEnumerator ActiveSuit()
+    {
+        anima.SetBool("SuitActivate", true);
+        yield return new WaitForSeconds(1f);
+        anima.SetBool("SuitActivate", false);
     }
 }
