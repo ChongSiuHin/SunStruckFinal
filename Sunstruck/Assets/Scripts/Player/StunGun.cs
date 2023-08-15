@@ -26,6 +26,7 @@ public class StunGun : MonoBehaviour
     private GameObject Enemy;
     private CameraSystem cameraSystemScript;
     public static bool canMove;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -38,10 +39,8 @@ public class StunGun : MonoBehaviour
         canMove = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //SpriteRenderer spriteRenderer = objectToHide.GetComponent<SpriteRenderer>();
         if (hit && !CameraSystem.onCam)
         {
 
@@ -92,7 +91,7 @@ public class StunGun : MonoBehaviour
                 popUpKey.SetActive(true);
             }
             else
-                transform.position = this.GetComponent<CheckpointRespawn>().respawnPoint;
+                StartCoroutine(Dying());
         }
     }
 
@@ -188,8 +187,9 @@ public class StunGun : MonoBehaviour
         yield return new WaitForSeconds(useDuration);
         
         if (!stunEnemy && hit)
-        {   
-            transform.position = GetComponent<CheckpointRespawn>().respawnPoint;
+        {
+            StartCoroutine(Dying());
+            //transform.position = GetComponent<CheckpointRespawn>().respawnPoint;
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
             Enemy.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -223,5 +223,13 @@ public class StunGun : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         playerSpriteRenderer.enabled = true;
+    }
+
+    IEnumerator Dying()
+    {
+        animator.SetBool("Died", true);
+        yield return new WaitForSeconds(1f);
+        transform.position = this.GetComponent<CheckpointRespawn>().respawnPoint;
+        animator.SetBool("Died", false);
     }
 }

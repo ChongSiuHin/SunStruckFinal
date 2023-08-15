@@ -498,6 +498,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3226677040076340680, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: anima
+      value: 
+      objectReference: {fileID: 1771898151}
+    - target: {fileID: 3226677040076340680, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: deadSpace
       value: 
       objectReference: {fileID: 876062816}
@@ -581,6 +585,10 @@ PrefabInstance:
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
       objectReference: {fileID: 519420032}
+    - target: {fileID: 8238007421831168283, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1771898151}
     - target: {fileID: 8238007421831168283, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: circles.Array.data[0]
       value: 
@@ -2604,7 +2612,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 4.8333054, y: 0}
@@ -10880,7 +10888,7 @@ MonoBehaviour:
   StunGunFire: {fileID: 0}
   RobotRun: {fileID: 8300000, guid: 0891e5b1ad351284f8841e58334cf872, type: 3}
   RobotStun: {fileID: 8300000, guid: b168ec0ea201af34dbff6c26e25d9b61, type: 3}
-  Checkpoint: {fileID: 8300000, guid: 8fe3c3f9cec829446a735d9a980325c9, type: 3}
+  Checkpoint: {fileID: 8300000, guid: 4e35fc8329703c743b3375800b4b38be, type: 3}
   PushingBox: {fileID: 8300000, guid: 6ade8f83854f7e740a9820602ec96a06, type: 3}
   Climbing: {fileID: 8300000, guid: 235496f4810624d4ab8abda8fd274f66, type: 3}
   Exposed: {fileID: 8300000, guid: 055063f6621ae5142a28bc6885ec0611, type: 3}
@@ -11267,6 +11275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c73f2582d73c34abd06afd2d65a323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1771898151 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6094136711215164034, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+  m_PrefabInstance: {fileID: 135193883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1782982238
 GameObject:
   m_ObjectHideFlags: 0
