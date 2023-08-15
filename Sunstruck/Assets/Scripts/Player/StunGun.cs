@@ -91,7 +91,7 @@ public class StunGun : MonoBehaviour
                 popUpKey.SetActive(true);
             }
             else
-                StartCoroutine(Dying());       
+                StartCoroutine(Dying());
         }
     }
 
