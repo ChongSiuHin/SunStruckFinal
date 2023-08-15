@@ -3490,6 +3490,7 @@ MonoBehaviour:
   Drop: {fileID: 8300000, guid: 235496f4810624d4ab8abda8fd274f66, type: 3}
   Charging: {fileID: 8300000, guid: 79c57891bbd37f848a5e970bf15b39a4, type: 3}
   Scanning: {fileID: 0}
+  LowHp: {fileID: 0}
   MyEnemy: {fileID: 0}
   MyEnemy2: {fileID: 0}
   MyEnemy3: {fileID: 0}
@@ -5868,6 +5869,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1575985618}
     - target: {fileID: 8238007421831168283, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 6094136710685944067}
+    - target: {fileID: 8238007421831168283, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -5884,3 +5889,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c73f2582d73c34abd06afd2d65a323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6094136710685944067 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6094136711215164034, guid: b6fe358aa497f14448e956f7c217a9df, type: 3}
+  m_PrefabInstance: {fileID: 6094136710685944065}
+  m_PrefabAsset: {fileID: 0}

@@ -19,6 +19,7 @@ public class CheckpointRespawn : MonoBehaviour
     public DialogueTrigger dTrigger;
     public static GameObject currentTriggerObj;
     private GameObject TutorialStunGun;
+    public Animator anima;
 
     public HealthBar healthBar;
     void Start()
@@ -79,7 +80,8 @@ public class CheckpointRespawn : MonoBehaviour
     {
         if(collision.CompareTag("Void"))
         {
-            transform.position = respawnPoint;
+            StartCoroutine(Dying());
+            //transform.position = respawnPoint;
             Die = true;
             StartCoroutine(DeadBool());
         }
@@ -103,11 +105,13 @@ public class CheckpointRespawn : MonoBehaviour
         }
         else if(collision.CompareTag("ExposeArea") && !InteractionSystem.pickUpSuit)
         {
-            transform.position = respawnPoint;
+            StartCoroutine(Dying());
+            //transform.position = respawnPoint;
             StartCoroutine(DeadBool());
             
         }
     }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -153,9 +157,18 @@ public class CheckpointRespawn : MonoBehaviour
     {
         if (collision.collider.CompareTag("ChaseEnemy"))
         {
-            transform.position = respawnPoint;
+            StartCoroutine(Dying());
+            //transform.position = respawnPoint;
             StartCoroutine(DeadBool());
             healthBar.ResetHealth();
+        }
+
+        if (collision.gameObject.CompareTag("Void"))
+        {
+            StartCoroutine(Dying());
+            //transform.position = respawnPoint;
+            Die = true;
+            StartCoroutine(DeadBool());
         }
     }
 
@@ -164,5 +177,14 @@ public class CheckpointRespawn : MonoBehaviour
         isDead = true;
         yield return null;
         isDead = false;
+        Die = false;
+    }
+
+    IEnumerator Dying()
+    {
+        anima.SetBool("Died", true);
+        yield return new WaitForSeconds(1f);
+        transform.position = respawnPoint;
+        anima.SetBool("Died", false);
     }
 }
