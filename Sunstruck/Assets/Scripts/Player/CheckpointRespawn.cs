@@ -105,7 +105,7 @@ public class CheckpointRespawn : MonoBehaviour
         }
         else if(collision.CompareTag("ExposeArea") && !InteractionSystem.pickUpSuit)
         {
-            //StartCoroutine(Dying());
+            StartCoroutine(Dying());
             //transform.position = respawnPoint;
             StartCoroutine(DeadBool());
             
