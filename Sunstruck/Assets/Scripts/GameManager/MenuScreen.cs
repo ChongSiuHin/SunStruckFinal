@@ -91,4 +91,9 @@ public class MenuScreen : MonoBehaviour
         Level.SetActive(false);
         Setting.SetActive(true);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

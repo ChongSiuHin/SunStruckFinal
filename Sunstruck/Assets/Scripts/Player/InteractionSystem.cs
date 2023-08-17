@@ -135,7 +135,7 @@ public class InteractionSystem : MonoBehaviour
         {
             if (!pickUpStunGun)
             {
-                obj.GetComponent<CutsceneTrigger>().PlayCutscene();
+                //obj.GetComponent<CutsceneTrigger>().PlayCutscene();
                 StartCoroutine(StunGunDialogue(obj));
                 AudioManager.Instance.StunGunP();
             }

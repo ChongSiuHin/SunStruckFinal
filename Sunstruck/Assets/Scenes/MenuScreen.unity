@@ -758,7 +758,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 486219312}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2093751405}
+        m_TargetAssemblyTypeName: MenuScreen, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &486219312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,10 +1477,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3118,10 +3130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3450,9 +3462,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8614031360876155911, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614031360876155911, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -39.663086
+      objectReference: {fileID: 0}
     - target: {fileID: 8614031361411300064, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614031361457681295, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.26672363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614031361528599643, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.4099121
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614031361572307769, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.41015625
       objectReference: {fileID: 0}
     - target: {fileID: 8614031361702487959, guid: 90192293c183d1e4eaa8b922f2ac66da, type: 3}
       propertyPath: m_AnchorMax.y
