@@ -22,7 +22,7 @@ public class CameraSystem : MonoBehaviour
 
     private float shakeIntensity = 3f;
     private float shakeTime = 1f;
-    private float timer;
+    private float timer = 0;
     private bool isClue;
 
     private CinemachineBasicMultiChannelPerlin _cbmcp;
@@ -55,7 +55,7 @@ public class CameraSystem : MonoBehaviour
             LaboCam = GameObject.Find("LaboratoryCam");
         }
 
-        StopShake();
+        StopShake(cinemachineVirtualCamera);
     }
 
     private void Update()
@@ -68,7 +68,7 @@ public class CameraSystem : MonoBehaviour
 
             if(timer <= 0)
             {
-                StopShake();
+                StopShake(cinemachineVirtualCamera);
             }
         }
 
@@ -98,12 +98,12 @@ public class CameraSystem : MonoBehaviour
         if (StunGun.hit)
         {
             hitZoomIn -= 1f;
-            ShakeCamera();
+            ShakeCamera(cinemachineVirtualCamera);
         }
         else
         {
             hitZoomIn += 1f;
-            StopShake();
+            StopShake(cinemachineVirtualCamera);
         }
 
         hitZoomIn = Mathf.Clamp(hitZoomIn, 1.5f, 3f);
@@ -119,6 +119,8 @@ public class CameraSystem : MonoBehaviour
 
     IEnumerator DropCargo()
     {
+        onCam = true;
+
         yield return new WaitForSeconds(1);
         cargoCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
         cinemachineVirtualCamera.enabled = false;
@@ -126,23 +128,26 @@ public class CameraSystem : MonoBehaviour
         craneAnim.enabled = true;
         yield return new WaitForSeconds(0.83f);
         cargoAnim.enabled = true;
-        ShakeCamera();
+        ShakeCamera(cargoCam.GetComponent<CinemachineVirtualCamera>());
         yield return new WaitForSeconds(1.5f);
+        StopShake(cargoCam.GetComponent<CinemachineVirtualCamera>());
         cinemachineVirtualCamera.enabled = true;
         cargoCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
+     
+        onCam = false;
     }
 
-    public void ShakeCamera()
+    public void ShakeCamera(CinemachineVirtualCamera cam)
     {
-        CinemachineBasicMultiChannelPerlin _cbmcp = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        CinemachineBasicMultiChannelPerlin _cbmcp = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _cbmcp.m_AmplitudeGain = shakeIntensity;
 
         timer = shakeTime;
     }
 
-    public void StopShake()
+    public void StopShake(CinemachineVirtualCamera cam)
     {
-        CinemachineBasicMultiChannelPerlin _cbmcp = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        CinemachineBasicMultiChannelPerlin _cbmcp = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _cbmcp.m_AmplitudeGain = 0f;
         timer = 0f;
     }
