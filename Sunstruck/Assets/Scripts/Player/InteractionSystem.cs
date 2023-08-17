@@ -36,6 +36,8 @@ public class InteractionSystem : MonoBehaviour
     public static GameObject EnemyCrate1;
     public static GameObject Door;
 
+    public GameObject audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -269,12 +271,12 @@ public class InteractionSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(6);
         labo.GetComponent<CutsceneTrigger>().PlayCutscene();
-
+        audioManager.SetActive(false);
         while (CutsceneTrigger.onCutscene)
         {
             yield return null;
         }
-
+        audioManager.SetActive(true);
         CameraSystem.onCam = false;
         SceneController.instance.NextLevel();
     }
