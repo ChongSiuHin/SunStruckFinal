@@ -12620,7 +12620,7 @@ MonoBehaviour:
   TrashCan: {fileID: 8300000, guid: 5cb8cbc72361e774c8a154c4e61b8def, type: 3}
   StunGunPickUp: {fileID: 8300000, guid: 322a343cc6739cf428be2967beb4e2d2, type: 3}
   SuitPickUp: {fileID: 0}
-  StunGunFire: {fileID: 0}
+  StunGunFire: {fileID: 8300000, guid: b168ec0ea201af34dbff6c26e25d9b61, type: 3}
   RobotRun: {fileID: 8300000, guid: 0891e5b1ad351284f8841e58334cf872, type: 3}
   RobotStun: {fileID: 8300000, guid: b168ec0ea201af34dbff6c26e25d9b61, type: 3}
   Checkpoint: {fileID: 8300000, guid: 4e35fc8329703c743b3375800b4b38be, type: 3}

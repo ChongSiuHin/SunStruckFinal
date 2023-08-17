@@ -106,7 +106,7 @@ public class StunGun : MonoBehaviour
                 shouldStopCharging = false;
                 canMove = false;
                 playerSpriteRenderer.enabled = false;
-                StartCoroutine(ChargeStunGun());
+                StartCoroutine(ChargeStunGun(collision.gameObject));
                 if (ChangeSprite.changeSuit)
                 {
                     collision.gameObject.GetComponent<Animator>().SetBool("Charging2", true);
@@ -119,19 +119,42 @@ public class StunGun : MonoBehaviour
         }
     }
 
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("ChargingStation"))
+        {
+            Debug.Log("Exit Trigger");
+            collision.gameObject.GetComponent<Animator>().SetBool("Activated", false);
+            shouldStopCharging = true;
+            //if (ammo >= maxHits)
+            //{
+            //    if (ChangeSprite.changeSuit)
+            //    {
+            //        collision.gameObject.GetComponent<Animator>().SetBool("Charging2", false);
+            //    }
+            //    else
+            //    {
+            //        collision.gameObject.GetComponent<Animator>().SetBool("Charging", false);
+            //    }
+            //}
+        }
+    }
+
     public void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("ChargingStation") && !isCharging && ammo < maxHits)
         {
             shouldStopCharging = false;
-            StartCoroutine(ChargeStunGun());
+            StartCoroutine(ChargeStunGun(other.gameObject));
         }
     }
 
-    IEnumerator ChargeStunGun()
+    IEnumerator ChargeStunGun(GameObject obj)
     {
         isCharging = true;
         AudioManager.Instance.ChargingStation();
+        StartCoroutine(ReEnableSprite(2f));
+
         while (ammo < maxHits && !shouldStopCharging)
         {
 
@@ -142,10 +165,24 @@ public class StunGun : MonoBehaviour
             }
             yield return new WaitForSeconds(2);
             UpdateAmmoUI(ammo);
+
+            if (ammo >= maxHits)
+            {
+                if (ChangeSprite.changeSuit)
+                {
+                    obj.GetComponent<Animator>().SetBool("Charging2", false);
+                }
+                else
+                {
+                    obj.GetComponent<Animator>().SetBool("Charging", false);
+                }
+            }
         }
         isCharging = false;
-        StartCoroutine(ReEnableSprite(2f));
+        
         canMove = true;
+
+        
     }
 
     public void UpdateAmmoUI(int ammo)
@@ -155,26 +192,6 @@ public class StunGun : MonoBehaviour
             circles[i].SetActive(i < ammo);
         }
 
-    }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("ChargingStation"))
-        {
-            collision.gameObject.GetComponent<Animator>().SetBool("Activated", false);
-            shouldStopCharging = true;
-            if (ammo >= maxHits)
-            {
-                if (ChangeSprite.changeSuit)
-                {
-                    collision.gameObject.GetComponent<Animator>().SetBool("Charging2", false);
-                }
-                else
-                {
-                    collision.gameObject.GetComponent<Animator>().SetBool("Charging", false);
-                } 
-            }
-        }
     }
 
     IEnumerator UseStunGunTimer()
@@ -229,7 +246,7 @@ public class StunGun : MonoBehaviour
     {
         animator.SetBool("Died", true);
         yield return new WaitForSeconds(1f);
-        transform.position = this.GetComponent<CheckpointRespawn>().respawnPoint;
+        transform.position = GetComponent<CheckpointRespawn>().respawnPoint;
         animator.SetBool("Died", false);
     }
 }
