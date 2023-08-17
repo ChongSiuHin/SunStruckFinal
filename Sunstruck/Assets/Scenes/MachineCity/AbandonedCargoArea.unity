@@ -430,7 +430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.36803436, y: 2.8179932}
+  m_AnchoredPosition: {x: 0.368042, y: 2.8179932}
   m_SizeDelta: {x: -6.23, y: -8.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &52728085
@@ -5438,6 +5438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 252024213}
   - component: {fileID: 252024214}
+  - component: {fileID: 252024215}
   m_Layer: 0
   m_Name: CargoCam
   m_TagString: Untagged
@@ -5459,7 +5460,7 @@ Transform:
   m_Children:
   - {fileID: 1486377039}
   m_Father: {fileID: 535052110}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &252024214
 MonoBehaviour:
@@ -5499,6 +5500,23 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1486377039}
+--- !u!114 &252024215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252024212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 1249718238}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!1 &287135708
 GameObject:
   m_ObjectHideFlags: 0
@@ -5764,7 +5782,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 535052110}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &301183288
 BoxCollider2D:
@@ -5917,7 +5935,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.02393341, y: 4.170044}
+  m_AnchoredPosition: {x: -0.023925781, y: 4.170044}
   m_SizeDelta: {x: -6.23, y: -8.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &382530277
@@ -6425,9 +6443,9 @@ Transform:
   m_Children:
   - {fileID: 2011230336}
   - {fileID: 385475385}
-  - {fileID: 301183287}
   - {fileID: 252024213}
   - {fileID: 1689864574}
+  - {fileID: 301183287}
   - {fileID: 1353057426}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -8254,7 +8272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.099861145, y: 1.1599731}
+  m_AnchoredPosition: {x: -0.099853516, y: 1.1599731}
   m_SizeDelta: {x: -6.23, y: -8.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1031953419
@@ -8454,7 +8472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.860054, y: 5.580017}
+  m_AnchoredPosition: {x: -0.8600464, y: 5.580017}
   m_SizeDelta: {x: -7.230011, y: -7.529999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1078319322
@@ -12388,6 +12406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1689864574}
   - component: {fileID: 1689864575}
+  - component: {fileID: 1689864576}
   m_Layer: 0
   m_Name: SwitchCam
   m_TagString: Untagged
@@ -12409,7 +12428,7 @@ Transform:
   m_Children:
   - {fileID: 921667897}
   m_Father: {fileID: 535052110}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1689864575
 MonoBehaviour:
@@ -12449,6 +12468,23 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 921667897}
+--- !u!114 &1689864576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689864573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 1249718238}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!1001 &1701194526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13192,7 +13228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.859993, y: 0.2300415}
+  m_AnchoredPosition: {x: -1.8599854, y: 0.2300415}
   m_SizeDelta: {x: -6.23, y: -8.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1814519575
@@ -14457,7 +14493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.8199997, y: 0.13000488}
+  m_AnchoredPosition: {x: -3.8200073, y: 0.13000488}
   m_SizeDelta: {x: -6.23, y: -8.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &2072890892
